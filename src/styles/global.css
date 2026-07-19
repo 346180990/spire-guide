@@ -37,17 +37,19 @@
 @layer base {
   body {
     @apply bg-surface text-text font-sans antialiased;
-    /* Slay the Spire 2 themed background — subtle dungeon atmosphere */
+    /* Slay the Spire 2 themed background — dungeon atmosphere */
     background-image:
-      /* Top — warm torchlight glow */
-      radial-gradient(ellipse 800px 400px at 50% 0%, rgba(212, 168, 67, 0.06) 0%, transparent 70%),
-      /* Bottom — deep dungeon shadow */
-      radial-gradient(ellipse 600px 300px at 50% 100%, rgba(15, 15, 26, 0.8) 0%, transparent 70%),
+      /* Top — warm torchlight from above (spire glow) */
+      radial-gradient(ellipse 1000px 500px at 50% 0%, rgba(212, 168, 67, 0.1) 0%, rgba(212, 168, 67, 0.04) 40%, transparent 65%),
+      /* Bottom — deep abyss darkness */
+      radial-gradient(ellipse 800px 400px at 50% 100%, rgba(15, 15, 26, 0.95) 0%, rgba(15, 15, 26, 0.5) 50%, transparent 75%),
+      /* Center vignette — darker edges, lighter center */
+      radial-gradient(ellipse 90% 70% at 50% 45%, transparent 40%, rgba(0, 0, 0, 0.35) 100%),
       /* Noise texture overlay */
       url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
     background-attachment: fixed;
-    background-size: 100% 100%, 100% 100%, 256px 256px;
-    background-repeat: no-repeat, no-repeat, repeat;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 256px 256px;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
   }
 
   h1, h2, h3 {

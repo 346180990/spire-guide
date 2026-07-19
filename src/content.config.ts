@@ -39,7 +39,6 @@ const guideSchema = z.object({
   reviewed: z.boolean().default(false),
   reviewedDate: z.date().optional(),
   relatedGuides: z.array(z.string()).default([]),
-  adSlots: z.array(z.enum(['in-content-1', 'in-content-2', 'after-content'])).default(['in-content-1', 'after-content']),
   featuredImage: z.string().optional(),
   difficulty: z.enum(['beginner', 'intermediate', 'advanced', 'expert']).optional(),
   coreCards: z.array(z.string()).default([]),

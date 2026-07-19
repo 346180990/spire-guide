@@ -9,7 +9,6 @@ import MechanicIconGrid from '../components/MechanicIconGrid.astro';
 import StartingHand from '../components/StartingHand.astro';
 import StrategyTimeline from '../components/StrategyTimeline.astro';
 import PitfallStrip from '../components/PitfallStrip.astro';
-import QuickReferenceBar from '../components/QuickReferenceBar.astro';
 import BuildCard from '../components/BuildCard.astro';
 import TierList from '../components/TierList.astro';
 import type { CharacterDashboard } from '../content/schemas/character-dashboard';
@@ -80,6 +79,21 @@ const typeColors: Record<string, string> = {
   Power: 'bg-yellow-950/40 text-yellow-300 border-yellow-800',
   Status: 'bg-gray-800/60 text-gray-400 border-gray-700',
   Curse: 'bg-purple-950/60 text-purple-400 border-purple-800',
+};
+
+// Helper functions for QuickRef info (now inlined in hero header)
+function renderDifficultyDots(rating: number): string {
+  const filled = '●';
+  const empty = '○';
+  return filled.repeat(Math.min(rating, 5)) + empty.repeat(Math.max(0, 5 - rating));
+}
+
+const difficultyLabels: Record<number, string> = {
+  1: 'Very Easy',
+  2: 'Easy',
+  3: 'Moderate',
+  4: 'Hard',
+  5: 'Very Hard',
 };
 
 const guideTypeLabels: Record<string, string> = {
@@ -189,11 +203,22 @@ const breadcrumbs = [
           </span>
         </div>
         {character.role && (
-          <p class="text-lg font-medium text-primary mb-2">{character.role}</p>
+          <p class="text-lg font-medium text-primary mb-1">
+            {character.role}
+            {character.quickRef?.difficultyRating && (
+              <span class="text-sm font-normal text-text-muted ml-3">
+                {renderDifficultyDots(character.quickRef.difficultyRating)}
+                <span class="ml-1">{difficultyLabels[character.quickRef.difficultyRating] || ''}</span>
+              </span>
+            )}
+          </p>
         )}
         <p class="text-text-muted max-w-2xl text-lg leading-relaxed">{character.tagline}</p>
-        <p class="text-xs text-text-muted mt-2 uppercase tracking-wide">
-          Playstyle: <span class="text-text font-medium">{character.playstyle}</span>
+        <p class="text-xs text-text-muted mt-2">
+          <span class="uppercase tracking-wide">Playstyle:</span> <span class="text-text font-medium">{character.playstyle}</span>
+          {character.quickRef?.paceLabel && (
+            <span class="ml-2 text-text-muted">· {character.quickRef.paceLabel}</span>
+          )}
         </p>
       </div>
     </header>
@@ -228,18 +253,22 @@ const breadcrumbs = [
 
     {!character.isColorless && (
       <>
-        {/* MechanicGrid + StartingHand side-by-side on desktop */}
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+        {/* Core Mechanics */}
+        <div class="mb-10">
           <MechanicIconGrid mechanics={character.mechanics} />
-          {character.startingDeck && (
+        </div>
+
+        {/* Starting Deck — Below Core Mechanics */}
+        {character.startingDeck && (
+          <div class="mb-10">
             <StartingHand
               cards={character.startingDeck.cards}
               gameSlug={game.slug}
               characterName={character.name}
               cardLookup={cardLookupMap}
             />
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Strategy Timeline */}
         {character.strategy && (
@@ -248,7 +277,7 @@ const breadcrumbs = [
           </div>
         )}
 
-        {/* Archetypes Grid + Relic Tier List */}
+        {/* Archetypes Grid */}
         {character.archetypes.length > 0 && (
           <div class="mb-10">
             <h2 class="text-xl font-bold mb-4">Archetypes & Builds</h2>
@@ -288,19 +317,12 @@ const breadcrumbs = [
       <PitfallStrip pitfalls={character.pitfalls} />
     </div>
 
-    {/* ========================================================== -->
-    <!-- Optional MDX Slot (before QuickReferenceBar)                  -->
-    <!-- ========================================================== -->
+    {/* Optional MDX Slot */}
     {Astro.slots.default && (
       <div class="mb-10 prose prose-slate max-w-none">
         <slot />
       </div>
     )}
-
-    {/* Quick Reference Bar */}
-    <div class="mb-10">
-      <QuickReferenceBar quickRef={character.quickRef} />
-    </div>
 
     <!-- ========================================================== -->
     <!-- Strategy Guides Listing                                        -->
@@ -347,57 +369,70 @@ const breadcrumbs = [
     </section>
 
     <!-- ========================================================== -->
-    <!-- Full Card Pool (preserved from existing page)                  -->
+    <!-- Full Card Pool (collapsible)                                   -->
     <!-- ========================================================== -->
     <section>
-      <h2 class="text-xl font-bold mb-4">Card Pool</h2>
-      <p class="text-sm text-text-muted mb-4">
-        All {cardPool.length} cards {character.name} can obtain during a run, grouped by rarity.
-      </p>
+      <details class="group">
+        <summary class="cursor-pointer text-xl font-bold mb-4 list-none flex items-center gap-2 hover:text-primary transition-colors">
+          <span class="group-open:hidden inline-block text-sm text-text-muted">▶</span>
+          <span class="group-open:inline-block hidden text-sm text-text-muted">▼</span>
+          Card Pool
+          <span class="text-sm font-normal text-text-muted">({cardPool.length} cards)</span>
+        </summary>
+        <p class="text-sm text-text-muted mb-4">
+          All {cardPool.length} cards {character.name} can obtain during a run, grouped by rarity.
+        </p>
 
-      {sortedRarities.map((rarity: string) => (
-        <div class="mb-6">
-          <h3 class="text-sm font-semibold mb-3 flex items-center gap-2">
-            <span class={`text-xs px-2 py-0.5 rounded-full border ${rarityColors[rarity] || ''}`}>{rarity}</span>
-            <span class="text-text-muted text-xs">({cardsByRarity[rarity].length} cards)</span>
-          </h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-            {cardsByRarity[rarity].map((card: CollectionEntry<'cards'>) => (
-              <a
-                href={`/games/${game.slug}/cards/${card.data.slug}/`}
-                class="block bg-surface border border-border rounded-lg overflow-hidden hover:border-primary/30 hover:shadow-sm transition-all no-underline group"
-              >
-                {card.data.image && (
-                  <div class="h-24 bg-surface-dark relative flex items-center justify-center p-1">
-                    <img
-                      src={card.data.image}
-                      alt={card.data.name}
-                      width="180"
-                      height="96"
-                      loading="lazy"
-                      class="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300"
-                      onerror={`this.parentElement.innerHTML='<span class=\\'text-text-muted text-xs\\'>${card.data.name}</span>';`}
-                    />
-                  </div>
-                )}
-                <div class="p-2">
-                  <div class="flex items-center justify-between gap-1">
-                    <h4 class="text-xs font-semibold text-text group-hover:text-primary transition-colors truncate">{card.data.name}</h4>
-                    <span class={`text-[10px] font-medium px-1 py-0.5 rounded border ${typeColors[card.data.type] || 'bg-gray-800/60 text-gray-300 border-gray-700'}`}>
-                      {card.data.type[0]}
-                    </span>
-                  </div>
-                  {card.data.effect && (
-                    <p class="text-[11px] text-text-muted mt-1 line-clamp-1">
-                      {card.data.effect.replace(/\*\*/g, '')}
-                    </p>
+        {sortedRarities.map((rarity: string) => (
+          <div class="mb-6">
+            <h3 class="text-sm font-semibold mb-3 flex items-center gap-2">
+              <span class={`text-xs px-2 py-0.5 rounded-full border ${rarityColors[rarity] || ''}`}>{rarity}</span>
+              <span class="text-text-muted text-xs">({cardsByRarity[rarity].length} cards)</span>
+            </h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+              {cardsByRarity[rarity].map((card: CollectionEntry<'cards'>) => (
+                <a
+                  href={`/games/${game.slug}/cards/${card.data.slug}/`}
+                  class="block bg-surface border border-border rounded-lg overflow-hidden hover:border-primary/30 hover:shadow-sm transition-all no-underline group"
+                >
+                  {card.data.image && (
+                    <div class="h-24 bg-surface-dark relative flex items-center justify-center p-1">
+                      <img
+                        src={card.data.image}
+                        alt={card.data.name}
+                        width="180"
+                        height="96"
+                        loading="lazy"
+                        class="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                        onerror={`this.parentElement.innerHTML='<span class=\\'text-text-muted text-xs\\'>${card.data.name}</span>';`}
+                      />
+                    </div>
                   )}
-                </div>
-              </a>
-            ))}
+                  <div class="p-2">
+                    <div class="flex items-center justify-between gap-1">
+                      <h4 class="text-xs font-semibold text-text group-hover:text-primary transition-colors truncate">{card.data.name}</h4>
+                      <span class={`text-[10px] font-medium px-1 py-0.5 rounded border ${typeColors[card.data.type] || 'bg-gray-800/60 text-gray-300 border-gray-700'}`}>
+                        {card.data.type[0]}
+                      </span>
+                    </div>
+                    {card.data.effect && (
+                      <p class="text-[11px] text-text-muted mt-1 line-clamp-1">
+                        {card.data.effect.replace(/\*\*/g, '')}
+                      </p>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </details>
+
+      <noscript>
+        <style>
+          details.card-pool details { display: block !important; }
+        </style>
+      </noscript>
     </section>
 
   </div>

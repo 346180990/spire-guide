@@ -1,7 +1,7 @@
 ---
 // StrategyTimeline — Three-act strategy progression timeline
-// Desktop: horizontal flex row with arrow connectors
-// Mobile: vertical stack with arrow connectors
+// Desktop: horizontal 3-column grid with CSS arrow connectors
+// Mobile: vertical stack
 
 interface ActStrategy {
   goal: string;
@@ -28,14 +28,36 @@ const acts: Array<{ key: string; label: string; icon: string; data: ActStrategy 
 ];
 ---
 
+<style>
+  .timeline-grid {
+    position: relative;
+  }
+  /* Arrow between cards — only on desktop */
+  @media (min-width: 768px) {
+    .timeline-card:not(:last-child) .timeline-arrow {
+      display: flex;
+    }
+  }
+  .timeline-arrow {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    flex-shrink: 0;
+    color: var(--color-primary, #d4a843);
+    opacity: 0.3;
+    font-size: 1.5rem;
+  }
+</style>
+
 <section class={`not-prose ${className || ''}`}>
   <h2 class="text-xl font-bold mb-6">Strategy Timeline</h2>
 
-  <!-- Desktop: horizontal timeline with flex -->
-  <div class="hidden md:flex md:items-stretch md:gap-0">
+  <!-- Desktop: horizontal flex row -->
+  <div class="hidden md:flex md:items-stretch timeline-grid">
     {acts.map((act, i) => (
       <>
-        <div class="flex-1 bg-surface border border-border rounded-xl p-5 flex flex-col gap-3">
+        <div class="flex-1 bg-surface border border-border rounded-xl p-5 flex flex-col gap-3 timeline-card">
           <div class="flex items-center gap-2 mb-1">
             <span class="text-2xl" role="img" aria-label={act.label}>{act.icon}</span>
             <h3 class="font-bold text-lg text-text">{act.label}</h3>
@@ -70,15 +92,13 @@ const acts: Array<{ key: string; label: string; icon: string; data: ActStrategy 
           )}
         </div>
         {i < acts.length - 1 && (
-          <div class="flex items-center justify-center flex-shrink-0 w-8">
-            <span class="text-xl text-primary/30">→</span>
-          </div>
+          <div class="timeline-arrow">→</div>
         )}
       </>
     ))}
   </div>
 
-  <!-- Mobile: vertical timeline -->
+  <!-- Mobile: vertical stack -->
   <div class="md:hidden flex flex-col gap-0">
     {acts.map((act, i) => (
       <>

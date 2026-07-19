@@ -2,7 +2,6 @@
 import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
 import CardImg from '../../../../components/CardImg.astro';
 import { getCollection, getEntry, render } from 'astro:content';
-import AdSlot from '../../../../components/AdSlot.astro';
 import GameThemeProvider from '../../../../components/GameThemeProvider.astro';
 
 export async function getStaticPaths() {
@@ -49,9 +48,6 @@ const headerRelics = keyRelicNames.map(name => {
   return { name, image: match?.image, slug: match?.slug };
 });
 
-const adPositions = guide.data.adSlots || ['in-content-1', 'after-content'];
-const maxAds = 3;
-const limitedAdSlots = [...new Set(adPositions)].slice(0, maxAds);
 ---
 
 <GameThemeProvider colorScheme={gameEntry?.data.colorScheme}>
@@ -62,9 +58,6 @@ const limitedAdSlots = [...new Set(adPositions)].slice(0, maxAds);
     <slot name="article-content">
       <Content />
 
-      {limitedAdSlots.map((position: string) => (
-        <AdSlot position={position} />
-      ))}
     </slot>
   </ArticleLayout>
 </GameThemeProvider>
