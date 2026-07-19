@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
+  <!-- Spire tower -->
+  <path d="M64 8L32 32h12l-8 16h12l-10 20h16l-10 20h14l-8 32h28l-8-32h14l-10-20h16l-10-20h12l-8-16h12L64 8z" fill="#d4a843"/>
+  <!-- Base glow -->
+  <ellipse cx="64" cy="112" rx="36" ry="8" fill="#d4a843" opacity="0.3"/>
+  <!-- Inner detail -->
+  <path d="M64 20L42 40h6l-6 12h8l-6 12h10l-6 12h8l-4 18h12l-4-18h8l-6-12h10l-6-12h8l-6-12h6L64 20z" fill="#1a1a2e" opacity="0.4"/>
+</svg>

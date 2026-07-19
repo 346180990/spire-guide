@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ReferenceLayout from '../../../../layouts/ReferenceLayout.astro';
+import PotionDisplay from '../../../../components/reference/PotionDisplay.astro';
+import GameThemeProvider from '../../../../components/GameThemeProvider.astro';
+
+export async function getStaticPaths() {
+  const potions = await getCollection('potions', ({ data }) => data.game === 'slay-the-spire-2');
+  return potions.map((potion) => ({
+    params: { game: 'slay-the-spire-2', slug: potion.data.slug },
+    props: { potion },
+  }));
+}
+
+const { potion } = Astro.props;
+const { Content } = await render(potion);
+
+const gameEntry = await getEntry('games', 'slay-the-spire-2');
+
+const title = `${potion.data.name} — ${potion.data.rarity} Potion | STS2`;
+const description = `${potion.data.name} is a ${potion.data.rarity.toLowerCase()} potion in Slay the Spire 2.`;
+---
+
+<GameThemeProvider colorScheme={gameEntry?.data.colorScheme}>
+  <ReferenceLayout
+    title={title}
+    description={description}
+    entityType="Potion"
+    entityName={potion.data.name}
+  >
+    <PotionDisplay
+      name={potion.data.name}
+      rarity={potion.data.rarity}
+      character={potion.data.character}
+      image={potion.data.image}
+    />
+
+    <div class="prose prose-slate max-w-none">
+      <Content />
+    </div>
+  </ReferenceLayout>
+</GameThemeProvider>

@@ -1,0 +1,200 @@
+---
+title: "Necrobinder Doom One-Shot Build — Best Cards & Relics Guide"
+description: "Complete Doom build guide for Necrobinder in Slay the Spire 2. Master Doom stacking, No Escape scaling, survival tactics, and detailed act-by-act strategy."
+publishDate: 2026-07-19
+game: slay-the-spire-2
+featuredImage: "/images/characters/necrobinder.jpg"
+character: Necrobinder
+guideType: build
+phase: research
+difficulty: intermediate
+relatedGuides:
+  - necrobinder-overview
+  - necrobinder-soul-cycle-build
+coreCards:
+  - "No Escape"
+  - "Negative Pulse"
+  - "Time's Up"
+  - "Death's Door"
+  - "Countdown"
+  - "Shroud"
+  - "Reaper Form"
+keyRelics:
+  - "Unsettling Lamp"
+  - "Undying Sigil"
+  - "Book Repair Knife"
+  - "Funerary Mask"
+  - "Mummified Hand"
+---
+
+Doom is the Necrobinder's highest-ceiling offensive build — a purple debuff that executes enemies at the end of their turn when stacks equal or exceed remaining HP. Unlike Poison (which ticks at the start of the enemy's turn), Doom executes AFTER the enemy acts. This means you MUST defend yourself even on the turn the enemy is marked to die. Doom numbers are tuned higher than Poison to compensate for this delay, and the effect never decays — it persists until triggered.
+
+The Doom deck is a defensive control build. Your game plan: stack Doom aggressively on priority targets, survive with strong block and Osty summons, then watch enemies explode at the end of their turn. It rewards patience and precise math over burst aggression.
+
+## Build Overview
+
+The Doom game plan has three phases: stack Doom → survive → execute. Unlike Soul Cycle which converts souls into damage immediately, Doom has a delay between application and kill. This means your deck MUST include robust defense. But the payoff is worth it — a single No Escape can apply 50+ Doom to a boss, and with proper scaling, bosses die in 3-4 turns without you playing a single attack card.
+
+import BuildCard from '../../components/BuildCard.astro';
+import CardImg from '../../components/CardImg.astro';
+
+<BuildCard
+  name="Doom Control"
+  character="Necrobinder"
+  difficulty="intermediate"
+  coreCards={["No Escape", "Negative Pulse", "Time's Up", "Death's Door", "Countdown", "Shroud", "Reaper Form"]}
+  keyRelics={["Unsettling Lamp", "Undying Sigil", "Book Repair Knife", "Funerary Mask", "Mummified Hand"]}
+  strategy="Stack Doom with No Escape and Negative Pulse in the first 3 turns. Use Death's Door and Shroud for block while Doom builds. Countdown provides passive Doom every turn (like Noxious Fumes for Doom). At 40+ Doom on the target, Time's Up converts stacks into instant damage. Save End of Days for multi-enemy fights where all targets have 20+ Doom. Against bosses, Reaper Form transforms every attack into a Doom applier — play it early and every Strike becomes a Doom card."
+/>
+
+## How Doom Works
+
+1. Apply Doom stacks to enemies via cards
+2. At the end of each enemy's turn, check: Doom ≥ remaining HP? If yes, enemy dies
+3. Doom NEVER decays (unlike Poison in STS1) — it persists until death
+4. The kill happens AFTER the enemy acts, so you still take damage on their final turn
+
+The critical implication of point 4: if an enemy has 30 HP and 35 Doom, they STILL get to attack you before dying. Always calculate whether you can survive that final hit.
+
+## Core Cards — The Doom Engine
+
+### S-Tier: Doom Appliers
+
+**No Escape** <CardImg name="No Escape" /> (Uncommon Skill, 1 energy) — Apply 10 Doom, plus 5 more for every 10 Doom already on target. This is arguably the best Doom card in the game. Against a boss with 30 existing Doom: 10 + 15 = 25 bonus. At 60 Doom: 10 + 30 = 40 bonus. Multiple copies snowball each other — the second No Escape counts the first one's application. Bosses die in 3 casts. Upgrade adds +3 base Doom.
+
+> **Pick priority**: Take EVERY copy you see. Two No Escapes + any other Doom source is a complete boss-killing engine. This is your win condition.
+
+**Negative Pulse** <CardImg name="Negative Pulse" /> (Common Skill, 1 energy) — Gain 5 Block + apply 7 Doom to ALL enemies. A staple combining defense and AoE Doom in one card. The Block smooths out the Doom delay problem perfectly. Upgrade: 7 Block + 9 Doom. Take 2-3 copies — this is your bread and butter.
+
+**Deathbringer** (Uncommon Skill, 2 energy) — Apply 21 Doom + 1 Weak to ALL enemies. Massive AoE with built-in damage mitigation. At 2 energy it's expensive, but 21 Doom on everything + Weak is incredible value. In multi-enemy fights, this single card can represent 60+ total Doom. Upgrade: 28 Doom + 2 Weak.
+
+> **Pick priority**: Take 1 copy in Act 2. Essential for multi-fight hallways. Skip in Act 1 — 2 energy is too heavy before you have energy support.
+
+**Blight Strike** (Common Attack, 1 energy) — Deal 8 damage + apply Doom equal to damage dealt. Combos with Vulnerable (+50% damage = +50% Doom) and Strength. With 2 Strength + Vulnerable on enemy: 10 × 1.5 = 15 Doom from a 1-cost common. Upgrade: 12 damage. Also, it's an Attack — doesn't trigger Gremlin Nob's skill penalty!
+
+**Scourge** (Common Attack, 1 energy) — Deal 13 damage, draw 1 card. Efficient damage + cycle. The card draw keeps your hand flowing while applying pressure. Take 1-2 copies in Act 1.
+
+### A-Tier: Payoff/Finisher Cards
+
+**Time's Up** <CardImg name="Time's Up" /> (Rare Skill, 2 energy) — Deal damage equal to the target's current Doom stacks. Exhaust. This is your boss finisher. At 40 Doom: deals 40 damage PLUS the Doom still executes. Total: 40 immediate + 40 end-of-turn = 80. Don't waste it on low-stack targets. Wait for 30+ Doom. Upgrade: 1 energy. Highest upgrade priority in the deck.
+
+**End of Days** (Rare Skill, 3 energy) — Apply 29 Doom to all enemies + immediately kills any whose Doom ≥ HP. Expensive but devastating. Use in multi-enemy fights where everything has 20+ Doom. The "immediately kill" clause bypasses the Doom delay — enemies die before they act. Upgrade: 38 Doom + 2 energy.
+
+**Oblivion** (Rare Skill, 0 energy) — Apply 3 Doom every time you play a card this turn. Free and pairs beautifully with card spam/Souls. With 8 cards played (easy with Souls cycling): 24 Doom for 0 energy. Combo with Borrowed Time/Neurosurge turns for massive single-turn Doom stacking. Exhausts.
+
+### A-Tier: Defense
+
+**Death's Door** <CardImg name="Death's Door" /> (Uncommon Skill, 1 energy) — Gain 6 Block (18 if you've applied Doom this turn). INCREDIBLE value. In a Doom deck, you apply Doom nearly every turn — this is always 18 Block for 1 energy. That's Impervious-level efficiency. Take 2-3 copies. This is your primary block engine.
+
+**Shroud** (Uncommon Power, 1 energy) — Gain 2 Block every time you apply Doom. Across a fight where you apply Doom 15+ times: 30 passive Block. With two copies: 60. This is the Doom equivalent of After Image. Upgrade: 3 Block per application. Take 1-2 copies.
+
+### B-Tier: Support
+
+**Countdown** (Uncommon Power, 1 energy) — Apply 6 Doom to a random enemy at the start of each turn. Like Noxious Fumes for Doom — constant passive pressure. In a 10-turn boss fight: 60+ free Doom. Upgrade: 9 Doom/turn + Innate. Take 1 copy — a second copy doubles passive output.
+
+**Sleight of Flesh** (Uncommon Power, 2 energy) — Enemies take 9 damage every time you apply a debuff (including Doom). Every Negative Pulse deals 7 Doom + 9 damage. Every No Escape deals 10+ Doom + 9 damage. Pairs incredibly with Reaper Form (every attack = debuff = 9 damage). Upgrade: 12 damage per trigger.
+
+**Reaper Form** (Rare Power, 3 energy) — Turns every attack into a Doom applier (4 Doom per hit). The game-changing power. At 3 energy it's expensive, but once in play, EVERY Strike, every attack card becomes a Doom source. Multi-hit attacks become Doom cannons. Note: upgrade only adds Retain — not the highest priority.
+
+### Energy/Draw Support
+
+- **Borrowed Time** — Apply 3 Doom to yourself, gain 1 Energy. The self-Doom is almost irrelevant in most fights. Free energy.
+- **Neurosurge** — Gain 3 Energy, draw 2. Applies 3 Doom/turn to yourself. Play mid-fight, not early — the self-Doom adds up if you play it on turn 1.
+- **Souls Package** (Grave Warden, Capture Spirit, Seance) — 0-cost card draw cycles into Doom pieces faster. Every good Doom deck runs 2-4 Soul generators.
+
+## Relic Priority
+
+### Run-Defining
+- **Unsettling Lamp** (Rare): Doubles the FIRST instance of Doom applied each combat. A turn-1 No Escape: 10→20 base Doom (plus bonus Doom from existing stacks). Massive opening burst.
+- **Undying Sigil** (Shop): Enemies with Doom ≥ their HP deal 50% less damage. This solves the "Doom delay" problem — you take half damage on the turn they die. Critical for boss survival.
+- **Book Repair Knife**: Heal 3 HP whenever a non-minion enemy dies to Doom. Exceptional sustain throughout the run. 5 enemies killed by Doom = 15 HP healed. Silent has no sustain, but this relic gives Necrobinder Ironclad-level recovery.
+
+### High Impact
+- **Mummified Hand** (Rare): Playing a Power makes a random card in hand cost 0. Doom decks run 3-5 Powers (Countdown, Shroud, Sleight of Flesh, Reaper Form). Free spells.
+- **Funerary Mask**: Starts each combat with 3 Souls in draw pile. Free cycle every fight, no downside.
+- **Dolly's Mirror** (Shop): Copy your best Doom card. A second No Escape or Time's Up wins runs.
+- **Oddly Smooth Stone** (Common): +1 Dexterity — improves all Block cards by 1. With Death's Door and Shrug equivalents, Dexterity is efficient HP.
+
+## Act-by-Act Strategy
+
+### Act 1 — Early Defense
+
+Doom cards are generally Skills, which means Gremlin Nob punishes you. Act 1 priorities:
+1. Take Blight Strike and Scourge (Attacks that apply Doom — safe against Nob)
+2. Take Negative Pulse (Block + Doom — efficient and defensive)
+3. Draft 2-3 pure Attacks for Nob insurance
+4. Skip expensive Powers (Reaper Form at 3 energy is a curse in Act 1)
+5. Upgrade Death's Door first (18 Block for 1 energy is Act 1's best defense)
+
+Elite strategy:
+- **Sentries (Favorable)**: Negative Pulse hits all 3. Death's Door at 18 Block every turn.
+- **Lagavulin (Medium)**: Stack Doom during sleep. After waking, block while Doom timer ticks.
+- **Gremlin Nob (DANGEROUS)**: All Doom Skills trigger Strength gain. Rely on Blight Strike and Scourge (Attacks). Avoid if Skill-heavy.
+
+### Act 2 — Hunt No Escape
+
+Act 2 is where Doom becomes lethal. Priority:
+1. Find No Escape — check every shop. Buy on sight.
+2. Add Countdown for passive Doom generation
+3. Add Shroud for passive block engine
+4. Start removing Strikes — basic attacks don't contribute to the Doom plan
+
+Boss prep:
+- **Champ (Favorable)**: Phase 1 = stack Doom without triggering phase 2. At 80+ Doom on him, Time's Up + Doom execution kills in one cycle.
+- **Collector (Favorable)**: Doom kills minions in one cycle each. Deathbringer hits everything.
+- **Bronze Automaton (Hard)**: Hyper Beam one-shots you if Doom isn't lethal. Rush Doom stacking.
+
+### Act 3 — The Execution Phase
+
+Your deck should have 2+ No Escapes, Countdown, Shroud, and Time's Up. The game becomes about precise math:
+1. Calculate: how many turns until Doom ≥ enemy HP?
+2. Apply exactly enough Doom, then full-block until execution
+3. Against bosses, Reaper Form + Sleight of Flesh = every card deals damage AND Doom
+
+- **Time Eater (Hard)**: 12-card limit. Make each card count. Don't waste plays on low-impact Doom. No Escape at 30+ existing Doom is worth 6 small Doom cards.
+- **Awakened One (Favorable)**: Cultists feed Doom practice. Stack massive Doom in phase 1, execute phase 2 quickly.
+- **Donu & Deca (Favorable)**: Deathbringer hits both. Time's Up one, Doom kills the other.
+
+### Act 4 — The Heart
+
+Beat of Death (2 damage per card) punishes multi-card Doom stacking. Strategy:
+1. Turn 1: Countdown + Shroud (if Innate)
+2. Turn 2: Stack Doom aggressively — No Escape, Negative Pulse. Accept chip damage.
+3. Turn 3: Undying Sigil reduces the 67-nuke by 50% (if Doom ≥ HP). Block the remaining 34.
+4. Turn 4+: Heart dies to Doom execution. Survive 3 turns to win.
+
+## Upgrade Priority
+
+1. **Time's Up** (2→1 energy) — Highest priority. Saves 1 energy on your finisher turn.
+2. **Death's Door** (6/18→8/24 Block) — More block per energy. Your primary defense.
+3. **Countdown** (6→9 Doom/turn, adds Innate) — Guaranteed turn 1 play + 50% more passive Doom.
+4. **No Escape** (+3 base Doom) — Each copy benefits every other copy's scaling.
+5. **Shroud** (2→3 Block per Doom application) — 50% more passive block.
+6. **Negative Pulse** (5/7→7/9 Block/Doom) — Efficient but not transformative.
+
+## Key Tips
+
+1. **Doom executes at END of enemy turn.** Always calculate whether you can survive that final hit. If an enemy with 30 HP and 35 Doom attacks for 20 damage, and you have 15 HP with no Block — you die before the Doom kills them. Block is non-negotiable.
+
+2. **No Escape is your boss killer.** With existing stacks, this single card can apply 50+ Doom. Two copies snowball each other. This is the card you build around.
+
+3. **Use End of Days strategically.** Its high cost (3 energy) means you need energy support, but it can instantly clear multi-enemy fights if Doom ≥ HP thresholds are met. The "immediately kill" clause bypasses the Doom delay entirely.
+
+4. **Time's Up timing matters.** Don't waste it on low-stack targets. Wait until Doom is roughly 1/3 of enemy max HP. Combined with Doom execution, it effectively deals 2× stack value.
+
+5. **Splash Soul generation.** Cards like Grave Warden and Capture Spirit dramatically improve consistency by helping you find key Doom pieces faster.
+
+6. **The Doom deck is a control deck, not a burst deck.** Patience and defensive planning win runs. Having 3 Doom cards and no Block means you're dead before the timer runs out.
+
+## Alternative Cards
+
+**Misery** (Rare Skill): Take Doom from one enemy and apply it to ALL enemies. In multi-fights, steal the Doom from a dying enemy and spread it. Amazing with Deathbringer setup.
+
+**Soul Storm**: Deal damage + bonus per Soul in Exhaust pile. Provides immediate damage while waiting for Doom to tick — fills the "wait" turns with pressure.
+
+**Delay** (Uncommon Skill, 2 energy): Decent Block with an Energy refund. Good defensive glue if you're missing Death's Door.
+
+### Cards to AVOID
+- **Curse-heavy cards** (Malediction, Cursed Blade): Different archetype (Curse Weaver). Don't split focus.
+- **Minion-heavy cards**: Occupies the same deck space. Doom + Minions is too slow.
+- **Exhaust-heavy engine cards**: The Soul Cycle/Exhaust engine needs its own deck. Mixing it with Doom dilutes both plans.

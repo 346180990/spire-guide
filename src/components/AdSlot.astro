@@ -1,0 +1,79 @@
+---
+interface Props {
+  position: 'in-content-1' | 'in-content-2' | 'after-content';
+}
+
+const { position } = Astro.props;
+
+const isDev = import.meta.env.DEV;
+const publisherId = import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID || '';
+
+const positionLabels: Record<string, string> = {
+  'in-content-1': 'In Content #1',
+  'in-content-2': 'In Content #2',
+  'after-content': 'After Content',
+};
+---
+
+<div class="ad-slot my-8 flex justify-center" data-ad-position={position} data-ad-client={publisherId} style="min-height: 100px;">
+  {
+    isDev || !publisherId ? (
+      <div class="w-full max-w-[728px] mx-auto bg-surface-alt border-2 border-dashed border-border rounded-lg flex items-center justify-center" style="height: 90px;">
+        <span class="text-text-muted text-sm font-medium">
+          Ad &mdash; {positionLabels[position] || 'Ad Slot'}
+        </span>
+      </div>
+    ) : (
+      <div class="w-full max-w-[728px] mx-auto flex justify-center">
+        <ins
+          class="adsbygoogle"
+          style="display:block; min-height: 90px;"
+          data-ad-client={publisherId}
+          data-ad-slot=""
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+      </div>
+    )
+  }
+</div>
+
+{!isDev && publisherId && (
+  <script>
+    (function() {
+      var slots = document.querySelectorAll('.ad-slot[data-ad-position]');
+      if (slots.length === 0) return;
+
+      var firstSlot = slots[0];
+      var publisherId = firstSlot.getAttribute('data-ad-client') || '';
+
+      if (!document.querySelector('script[src*="pagead2.googlesyndication.com"]')) {
+        var script = document.createElement('script');
+        script.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+        script.async = true;
+        script.setAttribute('data-ad-client', publisherId);
+        document.head.appendChild(script);
+      }
+
+      var observer = new IntersectionObserver(
+        function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var ins = entry.target.querySelector('.adsbygoogle');
+              if (ins && !ins.dataset.adInitialized) {
+                ins.dataset.adInitialized = 'true';
+                try {
+                  (window.adsbygoogle = window.adsbygoogle || []).push({});
+                } catch (e) {}
+              }
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '200px' }
+      );
+
+      slots.forEach(function(slot) { observer.observe(slot); });
+    })();
+  </script>
+)}

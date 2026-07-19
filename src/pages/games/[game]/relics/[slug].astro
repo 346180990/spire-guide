@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ReferenceLayout from '../../../../layouts/ReferenceLayout.astro';
+import RelicDisplay from '../../../../components/reference/RelicDisplay.astro';
+import GameThemeProvider from '../../../../components/GameThemeProvider.astro';
+
+export async function getStaticPaths() {
+  const relics = await getCollection('relics', ({ data }) => data.game === 'slay-the-spire-2');
+  return relics.map((relic) => ({
+    params: { game: 'slay-the-spire-2', slug: relic.data.slug },
+    props: { relic },
+  }));
+}
+
+const { relic } = Astro.props;
+const { Content } = await render(relic);
+
+const gameEntry = await getEntry('games', 'slay-the-spire-2');
+
+const title = `${relic.data.name} — ${relic.data.rarity} Relic${relic.data.character ? ` (${relic.data.character})` : ''} | STS2`;
+const description = `${relic.data.name} is a ${relic.data.rarity.toLowerCase()} relic${relic.data.character ? ` for ${relic.data.character}` : ''} in Slay the Spire 2.`;
+---
+
+<GameThemeProvider colorScheme={gameEntry?.data.colorScheme}>
+  <ReferenceLayout
+    title={title}
+    description={description}
+    entityType="Relic"
+    entityName={relic.data.name}
+  >
+    <RelicDisplay
+      name={relic.data.name}
+      rarity={relic.data.rarity}
+      character={relic.data.character}
+      image={relic.data.image}
+    />
+
+    <div class="prose prose-slate max-w-none">
+      <Content />
+    </div>
+  </ReferenceLayout>
+</GameThemeProvider>

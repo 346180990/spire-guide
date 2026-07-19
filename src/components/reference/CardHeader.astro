@@ -1,0 +1,45 @@
+---
+import EntityBadge from './EntityBadge.astro';
+import EnergyOrb from '../icons/EnergyOrb.astro';
+import CardTypeIcon from '../icons/CardTypeIcon.astro';
+import RarityIcon from '../icons/RarityIcon.astro';
+
+export interface Props {
+  name: string;
+  type: string;
+  character: string;
+  rarity: string;
+  energy_cost?: number | string;
+}
+
+const { name, type, character, rarity, energy_cost } = Astro.props;
+const game = 'slay-the-spire-2';
+---
+
+<div class="bg-surface border border-border rounded-xl p-6 mb-6 not-prose">
+  <div class="flex flex-wrap items-center justify-between gap-4 mb-3">
+    <h1 class="text-2xl md:text-3xl font-extrabold text-text">{name}</h1>
+    <div class="flex items-center gap-2">
+      {energy_cost !== undefined && (
+        <div class="flex items-center gap-1.5">
+          <EnergyOrb cost={energy_cost} size="md" character={character} />
+        </div>
+      )}
+    </div>
+  </div>
+  <div class="flex flex-wrap gap-2 items-center">
+    <EntityBadge>
+      <CardTypeIcon type={type} size="sm" />
+      <span>{type}</span>
+    </EntityBadge>
+    <EntityBadge>
+      <RarityIcon rarity={rarity} size="sm" />
+      <span>{rarity}</span>
+    </EntityBadge>
+    <EntityBadge
+      href={`/games/${game}/characters/${character.toLowerCase()}/`}
+    >
+      <span>{character}</span>
+    </EntityBadge>
+  </div>
+</div>

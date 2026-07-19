@@ -1,0 +1,127 @@
+---
+// StrategyTimeline — Three-act strategy progression timeline
+// Desktop: horizontal flex row with arrow connectors
+// Mobile: vertical stack with arrow connectors
+
+interface ActStrategy {
+  goal: string;
+  picks: string[];
+  upgrade?: string;
+  elites?: string;
+}
+
+interface Props {
+  strategy: {
+    act1: ActStrategy;
+    act2: ActStrategy;
+    act3: ActStrategy;
+  };
+  class?: string;
+}
+
+const { strategy, class: className } = Astro.props;
+
+const acts: Array<{ key: string; label: string; icon: string; data: ActStrategy }> = [
+  { key: 'act1', label: 'Act 1', icon: '🏰', data: strategy.act1 },
+  { key: 'act2', label: 'Act 2', icon: '🌆', data: strategy.act2 },
+  { key: 'act3', label: 'Act 3', icon: '🗼', data: strategy.act3 },
+];
+---
+
+<section class={`not-prose ${className || ''}`}>
+  <h2 class="text-xl font-bold mb-6">Strategy Timeline</h2>
+
+  <!-- Desktop: horizontal timeline with flex -->
+  <div class="hidden md:flex md:items-stretch md:gap-0">
+    {acts.map((act, i) => (
+      <>
+        <div class="flex-1 bg-surface border border-border rounded-xl p-5 flex flex-col gap-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-2xl" role="img" aria-label={act.label}>{act.icon}</span>
+            <h3 class="font-bold text-lg text-text">{act.label}</h3>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Goal</h4>
+            <p class="text-sm text-text leading-relaxed">{act.data.goal}</p>
+          </div>
+          {act.data.picks.length > 0 && (
+            <div>
+              <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">Priority Picks</h4>
+              <div class="flex flex-wrap gap-1">
+                {act.data.picks.map(pick => (
+                  <span class="text-xs font-medium px-2 py-0.5 rounded bg-surface-alt text-text border border-border">
+                    {pick}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {act.data.upgrade && (
+            <div>
+              <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">Upgrade Order</h4>
+              <p class="text-xs text-accent-gold">{act.data.upgrade}</p>
+            </div>
+          )}
+          {act.data.elites && (
+            <div class="mt-auto pt-2 border-t border-border">
+              <h4 class="text-xs font-semibold text-accent-red uppercase tracking-wide mb-1">Elite Tactics</h4>
+              <p class="text-xs text-text-muted leading-relaxed">{act.data.elites}</p>
+            </div>
+          )}
+        </div>
+        {i < acts.length - 1 && (
+          <div class="flex items-center justify-center flex-shrink-0 w-8">
+            <span class="text-xl text-primary/30">→</span>
+          </div>
+        )}
+      </>
+    ))}
+  </div>
+
+  <!-- Mobile: vertical timeline -->
+  <div class="md:hidden flex flex-col gap-0">
+    {acts.map((act, i) => (
+      <>
+        <div class="bg-surface border border-border rounded-xl p-4 flex flex-col gap-2">
+          <div class="flex items-center gap-2">
+            <span class="text-xl" role="img" aria-label={act.label}>{act.icon}</span>
+            <h3 class="font-bold text-base text-text">{act.label}</h3>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold text-primary uppercase tracking-wide mb-1">Goal</h4>
+            <p class="text-sm text-text leading-relaxed">{act.data.goal}</p>
+          </div>
+          {act.data.picks.length > 0 && (
+            <div>
+              <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">Priority Picks</h4>
+              <div class="flex flex-wrap gap-1">
+                {act.data.picks.map(pick => (
+                  <span class="text-xs font-medium px-2 py-0.5 rounded bg-surface-alt text-text border border-border">
+                    {pick}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          {act.data.upgrade && (
+            <div>
+              <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wide mb-1">Upgrade Order</h4>
+              <p class="text-xs text-accent-gold">{act.data.upgrade}</p>
+            </div>
+          )}
+          {act.data.elites && (
+            <div class="pt-2 border-t border-border">
+              <h4 class="text-xs font-semibold text-accent-red uppercase tracking-wide mb-1">Elite Tactics</h4>
+              <p class="text-xs text-text-muted leading-relaxed">{act.data.elites}</p>
+            </div>
+          )}
+        </div>
+        {i < acts.length - 1 && (
+          <div class="flex justify-center py-1">
+            <span class="text-xl text-primary/30">↓</span>
+          </div>
+        )}
+      </>
+    ))}
+  </div>
+</section>

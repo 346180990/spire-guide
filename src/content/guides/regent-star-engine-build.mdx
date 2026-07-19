@@ -1,0 +1,213 @@
+---
+title: "Regent Star Engine Build — Command Generation & Elite Allies Guide"
+description: "Complete Star Engine build guide for Regent in Slay the Spire 2. Master Command generation, elite ally deployment, Order sequencing, and detailed floor-by-floor strategy."
+publishDate: 2026-07-19
+game: slay-the-spire-2
+featuredImage: "/images/characters/regent.jpg"
+character: Regent
+guideType: build
+phase: research
+difficulty: beginner
+relatedGuides:
+  - regent-overview
+  - regent-rally-commander-build
+  - regent-legacy-stacking-build
+coreCards:
+  - "Call to Arms"
+  - "Astronomical Chart"
+  - "Royal Knight"
+  - "Precision Strike"
+  - "Flanking Maneuver"
+  - "Commander's Presence"
+keyRelics:
+  - "Battle Standard"
+  - "War Council"
+  - "General's Baton"
+  - "Crown of Legacy"
+  - "Starforged Banner"
+---
+
+The Star Engine is the Regent's most consistent build and the recommended starting archetype for learning the character. It operates on a simple economic loop: generate Command points → deploy elite allies → issue Orders that turn those allies into killing machines. Unlike Rally Commander (which goes wide with 3+ allies) or Legacy Stacking (which goes long with permanent buffs), the Star Engine goes TALL — 1-2 elite allies that each deal 15+ damage per turn, protected by your block cards. It's the most straightforward Regent build and the easiest to pilot, making it the perfect entry point.
+
+## Build Overview
+
+The Star Engine's economic loop: invest energy into Command generation (Call to Arms, Astronomical Chart), spend Command to deploy elite allies (Royal Knight), then issue Orders every turn for damage and utility. The key resource is Command — you need enough to both deploy allies AND issue Orders in the same turn. A typical turn 3 with a Royal Knight: generate 3 Command, deploy Knight (3 Command), issue Precision Strike (2 Command) = need 5+ Command. This is why Command generation is your highest priority.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Star Engine"
+  character="Regent"
+  difficulty="beginner"
+  coreCards={["Call to Arms", "Astronomical Chart", "Royal Knight", "Precision Strike", "Flanking Maneuver", "Commander's Presence"]}
+  keyRelics={["Battle Standard", "War Council", "General's Baton", "Crown of Legacy", "Starforged Banner"]}
+  strategy="Generate 3+ Command in your first 2 turns using Call to Arms and Astronomical Chart. Deploy a Royal Knight or equivalent elite ally. Issue Orders every turn — Precision Strike for damage, Flanking Maneuver for hybrid damage+block. Keep your elite ally alive with Commander's Presence. Add a second elite ally by turn 4-5 for overwhelming board presence. The Command surplus means you always have options — never float Command without spending it on an Order."
+/>
+
+## Core Cards — The Star Engine Arsenal
+
+### S-Tier: Command Economy
+
+**Call to Arms** (Starter Skill, 1 energy) — Gain 2 Command (3 upgraded), draw 1 card. This is in your starting deck and defines the entire Command economy. Upgrading it (2→3 Command) is your FIRST campfire priority — the difference between deploying Royal Knight on turn 2 vs. turn 3 is often the difference between winning and dying. At 3 Command for 1 energy + draw, this card is why the Regent functions.
+
+> **Upgrade priority**: #1. Always upgrade first. 2→3 Command is a 50% increase that accelerates every subsequent turn.
+
+**Astronomical Chart** (Uncommon Skill, 1 energy) — Gain 3 Command (upgrade: also draw 1 card). Pure Command generation. It looks boring but it's the oil in the engine. The difference between 2 Command and 5 Command is the difference between "deploy ally and pass" and "deploy ally + Precision Strike + Flanking Maneuver." Take every copy. Upgrade after Call to Arms.
+
+> **Math**: Call to Arms+ (3 Command) + Astronomical Chart (3 Command) = 6 Command on turn 2. Royal Knight costs 3. Precision Strike costs 2. Flanking Maneuver costs 2. You can deploy AND issue two Orders. That kills most Act 2 hallway enemies.
+
+### A-Tier: Elite Allies
+
+**Royal Knight** (Uncommon Ally, 3 Command) — Summon a Knight: 18 HP, deals 10 damage/turn, blocks 5/turn. The elite ally that defines the build. 18 HP survives 3-4 attacks from Act 2 enemies. 10 damage/turn passively kills hallway fights in 4 turns. With Precision Strike: 20 damage in one turn. This card transforms the deck from "scrappy skirmisher" to "elite commander."
+
+> **Pick priority**: Hunt at shops and card rewards starting mid-Act 1. Once you have Royal Knight, you can fight 2+ elites in Act 2.
+
+**Imperial Lancer** (Uncommon Ally, 2 Command) — Summon a Lancer: 12 HP, deals 14 damage/turn, 0 block. Glass cannon. Higher damage than Royal Knight but fragile. Pairs perfectly as the second ally — deploy Knight first (tank), Lancer second (DPS). With both active: 24 damage/turn passively + Orders.
+
+**Shieldbearer** (Common Ally, 2 Command) — Summon: 20 HP, blocks 8/turn, blocks YOU for 3. Defensive elite ally. If you find Shieldbearer before Royal Knight in Act 1, take it — 20 HP tanks everything in Act 1. Pairs with Imperial Lancer (Lancer deals damage, Shieldbearer protects both).
+
+### B-Tier: Orders
+
+**Precision Strike** (Uncommon Order, 2 Command) — Target ally attacks for double damage this turn. The Star Engine's primary damage button. Royal Knight: 10→20. With Battle Standard (+2): 12→24. With 1 Legacy Strength: 13→26. Costs 2 Command, which means you need 5+ Command/turn to use it alongside ally deployment.
+
+**Flanking Maneuver** (Common Order, 2 Command) — Target ally attacks, then blocks you for half the damage dealt. Hybrid damage + block. Royal Knight deals 10, blocks you for 5. With Precision Strike the following turn, Flanking Maneuver deals 20 and blocks 10. Sequencing matters — Flanking Maneuver on turn 1, Precision Strike on turn 2, repeat.
+
+**Marching Orders** (Uncommon Order, 2 Command) — All allies attack, gain +1 Legacy Strength. Your bridge to Legacy Stacking. With 2 allies, this deals damage + permanently buffs them. After 3 Marching Orders, both allies have +3 Strength forever. This card scales into Act 3.
+
+**Commander's Presence** (Common Skill, 1 energy) — Heal target ally 8 HP (12 upgraded). Keeps your elite investment alive. Royal Knight at 18 HP takes 2-3 hits — Commander's Presence extends this to the entire fight. One copy is enough; upgrade it.
+
+## Detailed Act-by-Act Strategy
+
+### Act 1 — Command Economy First
+
+The Regent starts with Call to Arms, Royal Guard (a basic ally), and a mix of Strikes and Defends. Your Royal Guard carries early fights — it's a 1-cost ally with 10 HP, 6 damage/turn. Use it as a disposable tank. Let it die if needed; it's replaceable.
+
+**Floor 1-5: Build the Command Base**
+
+Card pick priority:
+1. **Astronomical Chart** — Always take. 3 Command for 1 energy makes every subsequent turn smoother.
+2. **Commanding Shout** — Gain 2 Command, all allies gain 3 block. Efficient hybrid that fuels engine + protects board.
+3. **Shieldbearer** — 20 HP tank. Survives all of Act 1 by itself.
+4. **Flanking Maneuver** — Take 1 copy. Hybrid damage + block is what you need early.
+5. **Call the Reinforcements** — Summon 2 basic Guards (1 Command each). Bodies on board for early fights.
+
+Do NOT take early: multiple expensive allies (3 Command each with only 2 Command/turn generation = dead cards), Precision Strike (2 Command for an Order you can't afford yet without Command generation).
+
+**Floor 6-10: Hunt Your Elite Ally**
+
+By now you should have 1-2 Command generators. You can afford expensive allies:
+1. **Royal Knight** — Hunt at shops. This is the best uncommon for the deck.
+2. **Imperial Lancer** — If Knight isn't available, Lancer fills the same role.
+3. **Commander's Presence** — Sustain for your ally.
+4. **Precision Strike** — Now you have enough Command to afford Orders.
+
+**Elite Strategy (Act 1)**
+
+- **Sentries (Favorable)**: Royal Guard + Shieldbearer tank them one by one. Focus fire on a single Sentry. Your ally's passive damage outpaces theirs. Take &lt;10 damage.
+- **Lagavulin (Medium)**: Deploy your best ally during 3-turn sleep. Royal Knight + Commander's Presence keeps it alive through waking attacks. Focus damage after waking. Expect 15-25 damage.
+- **Gremlin Nob (Medium-Dangerous)**: Nob doesn't have AoE, so your ally lives. But Nob's scaling Strength makes the fight a race. Deploy ally on turn 1. Attack with ally + your own attacks. Don't play too many Skills.
+
+> **Rule of thumb**: Path to 2 elites. The Regent has strong elite matchups thanks to ally blocking. Your ally tanks hits that would go to your HP.
+
+**Campfire Priority (Act 1)**
+1. **Upgrade Call to Arms** — #1 priority. 2→3 Command. Always do this first.
+2. **Upgrade Astronomical Chart** — Gain draw 1 card on top of 3 Command.
+3. **Upgrade Commander's Presence** — 8→12 heal keeps allies alive.
+4. Rest only if HP &lt; 20.
+
+**Boss Preparation (Act 1)**
+- **Hexaghost (Favorable)**: Royal Knight + Shieldbearer tank hits while you block. Precision Strike when he's not attacking. Inferno turn: block with your life, let allies die — redeploy after.
+- **Slime Boss (Medium)**: Single-target focus with Royal Knight. Burn boss HP before split. After split, Flanking Maneuver + ally attacks clean up small slimes.
+- **Guardian (Favorable)**: Ally damage doesn't trigger Thorns (it's not YOUR attack). Royal Knight deals damage freely. Commander's Presence heals any chip damage.
+
+### Act 2 — Deploy the Knight
+
+Act 2 hallway fights are brutal but the Star Engine handles them well — your ally takes hits that would otherwise hit you.
+
+**Early Act 2: Elite Ally + Orders**
+
+Card picks:
+1. **Royal Knight** — If you haven't found it yet, hunt aggressively at shops.
+2. **Precision Strike** — Now essential. With 5+ Command/turn, you can afford it.
+3. **War Council** (relic equivalent) — Start each combat with +1 Command. Accelerates deployment.
+4. **Imperial Lancer** — Second ally for when Knight is established.
+
+Remove basic Guards (the 1-cost allies) at shops. You want elite allies, not disposable ones.
+
+**Mid Act 2: Add Second Ally**
+
+Once Knight is established, add a second elite ally:
+- Imperial Lancer (damage) + Royal Knight (tank) = 24 passive damage + 5 passive block per turn
+- Shieldbearer (defense) + Imperial Lancer (damage) = 20 HP wall protecting your glass cannon
+- Two Royal Knights = 20 damage + 10 block per turn. Win condition.
+
+**Elite Strategy (Act 2)**
+- **Tri-Slavers (Favorable)**: Ally targets red Slaver (Vulnerable applier). Focus fire. Your ally tanks while you block.
+- **Book of Stabbing (Hard)**: Multi-hits threaten your ally's HP. Commander's Presence every other turn. Shieldbearer is premium here — 20 HP survives the stab chain.
+- **Gremlin Leader (Medium)**: Ally targets the Leader. You block. Minions die to incidental damage. If ally gets low, Commander's Presence.
+
+**Campfire Priority (Act 2)**
+1. Upgrade Royal Knight (more HP/damage)
+2. Upgrade Precision Strike (more damage multiplier)
+3. Upgrade Commander's Presence if not done yet
+
+**Act 2 Boss Prep**
+- **The Champ**: Phase 1 = setup. Deploy both allies, stack Marching Orders for Legacy Strength. Phase 2: Precision Strike with 3+ Legacy Strength = 30+ damage in one Order. Ally tanks Execute.
+- **Bronze Automaton (Hard)**: Hyper Beam kills your ally. Have backup Command saved to redeploy immediately. Without a spare ally in hand, you'll take Hyper Beam directly.
+- **Collector (Favorable)**: Minions die to ally passive damage. Focus Collector with Precision Strike. Ally blocks minion chip damage.
+
+### Act 3 — Elite Platoon
+
+By Act 3, your deck: 2-3 Command generators, 2 elite allies, 2-3 Orders, 1 Commander's Presence. Add 1-2 Legacy cards for permanent scaling.
+
+Card picks:
+1. **Marching Orders** — All allies attack + Legacy Strength. Scales your entire board.
+2. **General's Baton** (relic) — Issue 2 Orders/turn. Precision Strike + Flanking Maneuver same turn = 30+ damage + 15 block.
+3. **Second elite ally** (if only have 1) — 2 allies × Orders = double value.
+4. **Starforged Banner** (relic) — Star cards cost 1 less Command. +1 effective Command per card.
+
+**Final Boss Strategy**
+- **Time Eater (Medium)**: 12-card limit constrains Order cycling. Deploy both allies early (2 cards). Marching Orders for permanent buffs (1-2 cards). Precision Strike on non-blocking turns. Ally passive damage carries.
+- **Awakened One (Favorable)**: Cultists in phase 1 don't threaten allies. Phase 2 multi-hits threaten ally HP — Commander's Presence ready. Precision Strike for lethal.
+- **Donu & Deca (Favorable)**: Focus Donu with ally + Precision Strike. Ally blocks Deca. Marching Orders scales both allies through the fight.
+
+## Relic Priority
+
+### Run-Defining
+- **General's Baton**: Issue 2 Orders/turn. Doubles effective output. Boss relic — take over almost anything.
+- **Battle Standard**: Allies deal +2 damage. Multiplicative across all Orders and passive attacks.
+- **Starforged Banner**: Star cards cost 1 less Command. +1 Command per Star card = engine feeds itself.
+
+### High Impact
+- **War Council**: +1 Command and +1 draw at start. Accelerates deployment by 1 full turn.
+- **Crown of Legacy**: Legacy effects apply to you. Commander's Presence heals BOTH ally and you.
+- **Army Rations**: Allies heal 3 HP after each combat. Saves Commander's Presence uses.
+
+### Nice to Have
+- **Tactical Manual**: First Order each combat costs 0 Command. Free Precision Strike turn 1.
+- **Recruitment Poster**: Start each combat with a free basic Guard. Disposable blocker.
+
+## Matchup Guide
+
+### Bosses You Crush
+**Sentries**: Ally focuses them one by one. 3 targets = 3 kills = smooth fight.
+**Collector**: Minions die to ally passive damage. Focus Collector.
+**Donu & Deca**: Ally tanks one while you burst the other.
+
+### Bosses That Test You
+**Bronze Automaton**: Hyper Beam kills ally. Save backup Command for immediate redeployment.
+**Awakened One**: Multi-hits in phase 2 threaten ally HP. Commander's Presence is essential.
+**Corrupted Heart**: Beat of Death (2/card) adds up. Ally tanks. Marching Orders for permanent scaling over long fight.
+
+## Alternative Cards
+
+**Call the Reinforcements**: Summon 2 basic Guards. Good for early Act 1 body count. Remove in Act 2-3.
+
+**Tactical Retreat**: Return ally to hand, gain 1 energy per Command cost. Saves a dying ally. 1 copy is niche but useful.
+
+**Supply Lines**: Gain 2 Command, draw 1 ally from draw pile. Searches for your elite ally. Better than Astronomical Chart if your deck has multiple ally types.
+
+### Cards to AVOID
+- **Conscript**: 1-cost ally, too weak to justify deck slot in Act 2+.
+- **War Drums**: Legacy card with no immediate impact. Star Engine needs tempo.
+- **Mass Promotion**: Rally card requiring 3+ allies. Star Engine runs 1-2.

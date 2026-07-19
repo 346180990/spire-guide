@@ -1,0 +1,27 @@
+# Obsidian vault source data (not committed)
+vault-source/
+
+# Dependencies
+node_modules/
+
+# Astro cache
+.astro/
+
+# Cloudflare cache
+.wrangler/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,33 @@
+---
+// Reusable badge for type/rarity/character/energy tags
+// Supports both `label` prop (text-only) and children (icon + text)
+export interface Props {
+  label?: string;
+  variant?: 'default' | 'type' | 'rarity' | 'character' | 'energy';
+  href?: string;
+}
+
+const { label, variant = 'default', href } = Astro.props;
+
+const variantStyles: Record<string, string> = {
+  default: 'bg-surface-alt text-text-muted border-border',
+  type: 'bg-blue-900/40 text-blue-300 border-blue-800',
+  rarity: 'bg-amber-900/40 text-amber-300 border-amber-800',
+  character: 'bg-purple-900/40 text-purple-300 border-purple-800',
+  energy: 'bg-green-900/40 text-green-300 border-green-800',
+};
+
+const badgeClass = `text-xs font-semibold px-2.5 py-1 rounded-full border inline-flex items-center gap-1 ${variantStyles[variant] || variantStyles.default}`;
+---
+
+{href ? (
+  <a href={href} class={badgeClass + ' hover:opacity-80 transition-opacity no-underline'}>
+    {label && <span>{label}</span>}
+    <slot />
+  </a>
+) : (
+  <span class={badgeClass}>
+    {label && <span>{label}</span>}
+    <slot />
+  </span>
+)}

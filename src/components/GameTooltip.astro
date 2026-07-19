@@ -1,0 +1,48 @@
+---
+interface Props {
+  name: string;
+  type?: 'card' | 'relic' | 'character' | 'status';
+  description?: string;
+  class?: string;
+}
+
+const { name, type = 'card', description, class: className } = Astro.props;
+
+const typeStyles: Record<string, string> = {
+  card: 'text-primary border-b border-dotted border-primary/50',
+  relic: 'text-accent-gold border-b border-dotted border-accent-gold/50',
+  character: 'text-accent-green border-b border-dotted border-accent-green/50',
+  status: 'text-accent-red border-b border-dotted border-accent-red/50',
+};
+
+const tooltipId = `tt-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<span
+  id={tooltipId}
+  class={`relative inline cursor-help ${typeStyles[type] || typeStyles.card} ${className || ''}`}
+  data-tooltip={description || ''}
+>
+  {name}
+  {description && (
+    <span
+      class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-3 py-1.5 bg-surface-dark text-text text-xs rounded shadow-lg whitespace-nowrap z-50 opacity-0 pointer-events-none"
+      style="display: none;"
+    >
+      {description}
+    </span>
+  )}
+</span>
+
+<script define:vars={{ tooltipId }}>
+  const el = document.getElementById(tooltipId);
+  if (el) {
+    const tip = el.querySelector('span');
+    if (tip) {
+      el.addEventListener('mouseenter', () => { tip.style.display = 'block'; });
+      el.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+      el.addEventListener('focus', () => { tip.style.display = 'block'; });
+      el.addEventListener('blur', () => { tip.style.display = 'none'; });
+    }
+  }
+</script>

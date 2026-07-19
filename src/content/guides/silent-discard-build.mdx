@@ -1,0 +1,184 @@
+---
+title: "Silent Sly Discard Build — Infinite Draw & Combo Engine Guide"
+description: "Complete Sly Discard build guide for Silent in Slay the Spire 2. Master discard chains, Reflex/Tactician synergy, Calculated Gamble burst turns, and act-by-act strategy."
+publishDate: 2026-07-19
+game: slay-the-spire-2
+featuredImage: "/images/characters/silent.jpg"
+character: Silent
+guideType: build
+phase: research
+difficulty: advanced
+relatedGuides:
+  - silent-overview
+  - silent-poison-build
+  - silent-shiv-build
+coreCards:
+  - "Acrobatics"
+  - "Calculated Gamble"
+  - "Reflex"
+  - "Tactician"
+  - "Tools of the Trade"
+  - "Flick-Flack"
+  - "Untouchable"
+  - "Master Planner"
+keyRelics:
+  - "Tingsha"
+  - "Tough Bandages"
+  - "Hovering Kite"
+  - "The Abacus"
+  - "Pen Nib"
+---
+
+The Sly Discard deck is the most powerful Silent archetype in Slay the Spire 2 and the hardest to pilot. It revolves around a new keyword — **Sly**: cards with Sly are played automatically for free when discarded from your hand. The core loop chains Acrobatics and Calculated Gamble discards into Reflex (draw) and Tactician (energy) triggers, creating turns where you play 15+ cards, draw your entire deck, and gain more energy than you spent.
+
+This is an ADVANCED build. It requires tight deck management, understanding of discard sequencing, and comfort with probabilistic draw chains. But when it works, it's the strongest thing the Silent can do.
+
+## Build Overview
+
+The Sly engine has three parts: discard enablers (Acrobatics, Prepared, Calculated Gamble), Sly payoff cards (Reflex, Tactician, Flick-Flack, Untouchable), and support (Tools of the Trade, Well-Laid Plans). The core loop: play a discard enabler → discard Sly cards → Sly cards trigger for free → draw more cards and gain energy → repeat until the enemy is dead. A well-built Sly deck can play 20+ cards per turn without spending a single point of energy on attacks.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Sly Infinite Discard"
+  character="Silent"
+  difficulty="advanced"
+  coreCards={["Acrobatics", "Calculated Gamble", "Reflex", "Tactician", "Tools of the Trade", "Flick-Flack", "Untouchable", "Master Planner"]}
+  keyRelics={["Tingsha", "Tough Bandages", "Hovering Kite", "The Abacus", "Pen Nib"]}
+  strategy="Play Tools of the Trade turn 1 (guarantees 1 free discard + draw every turn). Use Acrobatics to draw 3 and discard Sly cards like Reflex and Tactician. Reflex triggers for free draw, Tactician for free energy. When your hand has 3+ Sly cards, unleash Calculated Gamble — discards entire hand, triggers every Sly card simultaneously, draws a fresh hand, and often generates more energy than you spent. Repeat. Against bosses, chain Acrobatics → Calculated Gamble → Acrobatics for infinite turns."
+/>
+
+## How Sly Works
+
+**Sly keyword**: When a card with "Sly" is discarded from your hand, it's played automatically for FREE (no energy cost, doesn't consume a card play). Key implications:
+1. Sly cards don't need to be played from hand — they need to be discarded
+2. Discard enablers (Acrobatics, Prepared) are your "mana" — they convert cards in hand into free Sly triggers
+3. Calculated Gamble discards your ENTIRE hand — triggering 3-4 Sly cards simultaneously
+4. Sly cards still count as cards played for relics (Shuriken, Kunai, Pen Nib)
+
+## Core Cards — The Sly Engine
+
+### S-Tier: Discard Enablers
+
+**Acrobatics** (Uncommon Skill, 1 energy) — Draw 3 cards, discard 1 card. Upgrade: discard 0. This is your primary draw engine AND discard enabler in one card. Draw 3 finds your Sly cards, and the discard triggers them. The upgrade removing the discard cost is deceptively powerful — it removes a lever you sometimes want. Consider NOT upgrading if you have many Sly cards and few discard outlets. Take 2-3 copies.
+
+**Calculated Gamble** (Uncommon Skill, 0 energy) — Discard your hand, draw that many cards. Exhausts. The EXPLOSION button. With 5 cards in hand including 2 Sly cards: discard 5, trigger 2 Sly effects, draw 5 new cards. With Reflex in the mix: you draw 2 MORE from Reflex's trigger, netting 7 fresh cards. This single 0-cost card can reset a bad hand into a winning one. The downside (Exhaust) means you get one use per fight — make it count. Use when you have 3+ cards in hand including at least one Sly card.
+
+> **Critical play pattern**: Don't fire Calculated Gamble immediately. Wait until your hand has Reflex and/or Tactician. Discarding them for free draw/energy makes the Gamble net-positive on both cards and energy. At minimum, have one Sly card in hand before gambling.
+
+**Prepared** (Common Skill, 0 energy) — Draw 1 card, discard 1 card. Upgrade: draw 2, discard 1. The most efficient discard enabler at common. At 0 cost, it's always playable. With an upgraded Prepared: draw 2, discard 1 = cycle neutral + Sly trigger. Think of it as "0 energy: trigger a Sly card and replace itself." Take 1-2 copies.
+
+**Tools of the Trade** (Rare Power, 0/1 energy) — At the start of your turn, draw 1 card and discard 1 card. This is the single best enabler. For 0 energy, it guarantees one Sly trigger EVERY turn with zero cost forever. In a 12-turn fight: 12 free discards = 12 free Sly triggers. Upgrade makes it 0 cost. If you see this card, take it. It's the Sly deck's Noxious Fumes equivalent.
+
+### S-Tier: Sly Payoffs
+
+**Reflex** (Uncommon Skill — Sly, 1 energy) — When discarded: draw 2/3 cards. The card draw engine. Every time you discard Reflex (via Acrobatics, Prepared, Tools of the Trade, Calculated Gamble), you draw 2 more cards for free. This keeps the chain going — you discard cards to draw cards, finding more Sly cards to discard. Take 2-3 copies. This is the deck's heart — without Reflex, the engine sputters.
+
+**Tactician** (Uncommon Skill — Sly, 1 energy) — When discarded: gain 1/2 Energy. The Silent's only true energy generation. Every time you discard Tactician, you gain energy. With two Tacticians in a big Calculated Gamble: gain 2-4 energy — more than you spent on the enabler. The energy from Tactician lets you play more Acrobatics, which trigger more discards, creating infinite chains. Take 2-3 copies.
+
+### A-Tier: Sly Attack/Defense
+
+**Flick-Flack** (Common Attack — Sly, 1 energy) — Deal 7/9 damage to ALL enemies when discarded. Your primary AoE damage in the Sly deck. Every discard trigger = 7 AoE. With 5 discards in a turn: 35 AoE for zero energy (from Sly triggers). In multi-enemy fights, Flick-Flack clears minions while the rest of the deck targets the boss. Take 1-2 copies.
+
+**Untouchable** (Uncommon Skill — Sly, 1 energy) — Gain 9/12 Block when discarded. Your primary defense. Every discard = 9 Block. In a Calculated Gamble turn where you discard 5 cards including Untouchable: 9 free Block. With multiple discard enablers: 18-27 passive Block per turn. This is the Sly deck's answer to defense — block happens automatically as a byproduct of the engine.
+
+**Eviscerate** (Uncommon Attack — Sly, 3 energy) — Deal 7×3/9×3 damage when discarded. Costs 3 energy to play from hand but triggers for FREE when discarded. Three hits at 7 damage each = 21 damage. With Strength (from Shuriken), each hit gets the bonus. With Vulnerable on target, this becomes your single-target finisher. One copy is enough.
+
+### B-Tier: Support
+
+**Master Planner** (Rare Skill, 0 energy) — All Skills in your hand become Sly for this turn. Turns every Skill into a Sly trigger. With a hand of Defends, Acrobatics, and Backflips: every one of them now triggers for free when discarded. The ultimate Calculated Gamble setup: Master Planner → everything is Sly → Gamble = everything triggers.
+
+**Well-Laid Plans** (Uncommon Power, 1/0 energy) — Retain 1/2 cards. Hold Reflex and Tactician in hand until you draw a discard enabler. Also holds Calculated Gamble for the perfect moment when your hand is full of Sly cards. Essential consistency tool.
+
+**Dagger Throw** (Common Attack, 1 energy) — Deal 9/12 damage, draw 1, discard 1. Early-game damage + discard enabler in one card. Better than Prepared in Act 1 because it deals damage. Phase out in Act 2-3.
+
+## Key Relics
+
+### Run-Defining
+- **Tingsha**: Deal 3 damage to a random enemy every time you discard a card. In a 15-discard turn: 45 free damage. With Calculated Gamble (5 discards): 15 damage. This adds up to 100+ passive damage per fight. S-Tier.
+- **Tough Bandages**: Gain 3 Block every time you discard a card. The defensive Tingsha. 15 discards = 45 free Block per turn. With Untouchable stacking: you're generating 60+ Block without playing a single Block card. S-Tier.
+- **Hovering Kite**: Gain 1 Energy the first time you discard each turn. Free energy every single turn. With Tools of the Trade: guaranteed trigger at turn start. Equivalent to a free energy relic with no downside.
+
+### High Impact
+- **The Abacus**: Gain 6 Block whenever you shuffle your draw pile. Sly decks cycle through the deck 1-2 times per fight. Multiple shuffles = 18-30 free Block per fight.
+- **Pen Nib**: Every 10th attack deals double damage. Sly decks play 15+ cards per turn — Pen Nib triggers every 1-2 turns. Time Eviscerate or Flick-Flack for the critical hit.
+- **Shuriken/Kunai**: Strength/Dexterity after 3 attacks per turn. Sly Flick-Flack and Eviscerate count as attacks. 3 Sly attack triggers = +1 Strength AND +1 Dexterity.
+
+### Nice to Have
+- **Letter Opener**: Deal 5 AoE every 3 Skills. All discard enablers are Skills. Constant AoE triggers.
+- **Sundial**: Gain 2 Energy every 3 shuffles. Sly decks shuffle often.
+- **Bag of Preparation**: Draw 2 extra cards turn 1. Helps find Tools of the Trade and key Sly cards faster.
+
+## Act-by-Act Strategy
+
+### Act 1 — Don't Force It
+
+The Sly deck is the hardest archetype to assemble. In Act 1, you CANNOT force it. Most Sly core cards are Uncommon or Rare — you won't find enough early. Your Act 1 game plan:
+
+1. Draft solid damage: Dagger Throw, Dagger Spray, Quick Slash, Sucker Punch
+2. Take early discard enablers when offered: Prepared, Dagger Throw
+3. Do NOT take Reflex or Tactician before you have 2+ discard enablers (they're curses without enablers)
+4. Do NOT take Calculated Gamble without Sly cards in deck (it's just a hand reset, not engine fuel)
+5. Fight 1-2 elites if you have enough damage
+
+Elite strategy:
+- **Sentries (Medium)**: Flick-Flack (if you somehow have it) is AoE. Otherwise, standard Silent early game.
+- **Gremlin Nob (Dangerous)**: Sly cards are Skills. Bring Attacks.
+- **Lagavulin (Hard)**: Sly engine is too slow for Lag's HP pool without scaling.
+
+### Act 2 — Assemble the Engine
+
+This is where the Sly deck comes online. After Act 1, you should have 2-3 discard enablers (Prepared, Dagger Throw, maybe Acrobatics). Act 2 priorities:
+
+1. Add Reflex and Tactician — now they're active, not dead draws
+2. Find Tools of the Trade — hunt at shops, this card IS the deck
+3. Add Untouchable for defense (every discard = Block)
+4. Upgrade Acrobatics (or don't — remember: sometimes the discard is useful)
+5. Remove Strikes at every shop (Strikes are not Sly — they clog the engine)
+
+- **Tri-Slavers (Hard without engine)**: Without Tingsha/Tough Bandages, the damage race is real. Focus red Slaver first.
+- **Book of Stabbing (Medium with engine)**: Untouchable on discard generates massive Block. Multi-hit damage is negated.
+- **Gremlin Leader (Favorable)**: Flick-Flack clears minions as a byproduct of your engine.
+
+### Act 3 — Perfect the Cycle
+
+Your deck: 20-25 card thin, 2-3 Reflex, 2-3 Tactician, 1-2 Flick-Flack, 1-2 Untouchable, Tools of the Trade, Acrobatics+, Calculated Gamble.
+
+Every turn: Tools of the Trade triggers (free discard + draw) → Reflex/Tactician trigger → play Acrobatics to chain → find Calculated Gamble → wait for 4+ card hand with Sly cards → Gamble → play 15+ cards → enemy dead.
+
+- **Time Eater (Hard)**: 12-card limit caps your infinite chain. Make each card count. Eviscerate as finisher. Master Planner helps consolidate power into fewer cards.
+- **Awakened One (Medium)**: Powers (Tools of the Trade) feed Awakened One's Strength. Play Tools early or skip it. The engine still works on Acrobatics alone.
+- **Donu & Deca (Favorable)**: Flick-Flack AoE hits both. Engine outscales both simultaneously.
+
+### Act 4 — The Heart
+
+Beat of Death hurts but Sly triggers don't count as card plays (they trigger automatically). So 15-discard turn = only 3-4 actual card plays for Beat of Death, but 15 effects. This makes Sly the BEST Silent archetype against Heart. Untouchable should block most damage. Tough Bandages + Untouchable = 60+ Block per cycle. Heart dies to Flick-Flack accumulation over 8-10 turns.
+
+## Upgrade Priority
+
+1. **Calculated Gamble** (Exhaust → doesn't Exhaust? or less restrictive?): This is build-dependent check the card
+2. **Tools of the Trade** (1→0 energy): Free vs. costs 1. Massive tempo difference.
+3. **Reflex** (2→3 cards drawn): 50% more draw per trigger. More chain fuel.
+4. **Tactician** (1→2 Energy): 100% more energy per trigger.
+5. **Acrobatics** (discard 1→0): Consider NOT upgrading if you want the discard trigger. Upgrade only if you have other, better discard outlets.
+
+## Key Tips
+
+1. **Don't force the archetype.** The Sly deck requires specific Uncommon/Rare synergy pieces. If you don't find Reflex + Tactician by mid-Act 2, pivot to Shiv or Poison. A half-built Sly deck is worse than a complete Shiv deck.
+
+2. **Keep the deck thin.** Remove Strikes at every Merchant. Each non-Sly card dilutes how often Reflex and Tactician get discarded. At 20 cards with 6 Sly cards: 30% chance to discard a Sly card. At 30 cards with 6 Sly cards: 20% chance. Thin deck = consistent engine.
+
+3. **Tough Bandages or Tingsha defines the build.** Finding one of these early shifts Sly from "fun combo" to "run-winning machine." If you find either in Act 1, commit to Sly immediately.
+
+4. **Calculated Gamble timing is the skill gap.** Don't fire it when your hand has 1-2 cards without Sly pieces. Wait for 4+ cards with at least one Reflex or Tactician. The difference between a good Gamble (draws 5, triggers 2 Sly effects, net positive) and a bad Gamble (draws 3, triggers nothing, you're just sad) determines whether you win or lose.
+
+5. **Tools of the Trade is your best friend.** One free discard every turn for zero energy, forever. If offered in any shop or card reward, take it. The Sly deck reaches its full potential with this card in play.
+
+6. **The Heart is actually favorable.** Sly triggers don't count as card plays, so Beat of Death barely touches you. Most Silent builds struggle against Heart — Sly laughs at it.
+
+## Cards to AVOID
+- **Setup**: Too slow. Sly deck wants discard, not setup.
+- **Concentrate**: Discard-heavy but doesn't trigger Sly (Sly requires "discard from hand"). Concentrate discards are not the same trigger.
+- **Grand Finale**: Deck manipulation focus. Sly doesn't track deck position.
+- **Bullet Time**: Anti-synergy — you WANT to play lots of cards.
+- **Velvet Choker (relic)**: 6 cards/turn limit kills Sly. Never take this boss relic.

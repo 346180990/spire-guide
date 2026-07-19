@@ -1,0 +1,166 @@
+# Character Dashboard — Silent (静默猎手)
+slug: silent
+name: Silent
+game: slay-the-spire-2
+characterImage: ""
+role: "Venomous Assassin"
+difficulty: intermediate
+tagline: "Stack poison, throw shivs, discard and draw forever"
+playstyle: control
+isColorless: false
+
+mechanics:
+  - id: poison
+    icon: "☠️"
+    name: Poison
+    passive: "Deals damage equal to stack at turn start"
+    evoke: ""
+    tip: "Catalyst doubles/triples poison — the safest boss killer in the game"
+
+  - id: shiv
+    icon: "🔪"
+    name: Shiv Generation
+    passive: "Free 0-cost 4-damage attacks"
+    evoke: ""
+    tip: "Scale Shivs with Accuracy, Wrist Blade, and strength relics"
+
+  - id: discard
+    icon: "🃏"
+    name: Discard Engine
+    passive: "Discard triggers energy, draw, and block"
+    evoke: ""
+    tip: "Acrobatics + Tactician = infinite energy. Reflex adds infinite draw."
+
+  - id: intangible
+    icon: "👻"
+    name: Intangible
+    passive: "Reduce all damage taken to 1"
+    evoke: ""
+    tip: "Wraith Form gives 3 turns of near-invincibility — time it for boss phases"
+
+startingDeck:
+  cards:
+    - name: Strike
+      slug: strike
+      count: 5
+      upgradePriority: 5
+    - name: Defend
+      slug: defend
+      count: 5
+      upgradePriority: 4
+    - name: Neutralize
+      slug: neutralize
+      count: 1
+      upgradePriority: 2
+    - name: Survivor
+      slug: survivor
+      count: 1
+      upgradePriority: 3
+
+archetypes:
+  - name: Poison Catalyst
+    difficulty: beginner
+    keyCards: [catalyst, bouncing-flask, corpse-explosion, noxious-fumes, crippling-cloud, burst]
+    keyRelics: [twisted-funnel, snecko-skull, specimen]
+    description: "Stack poison with Bouncing Flask and Noxious Fumes, then Catalyst for lethal. Corpse Explosion solves AoE fights. Safest and most consistent Silent build."
+
+  - name: Shiv Spam
+    difficulty: intermediate
+    keyCards: [blade-dance, cloak-and-dagger, infinite-blade, accuracy, afterimage, envenom]
+    keyRelics: [wrist-blade, shuriken, kunai, ornamental-fan]
+    description: "Generate Shivs with Blade Dance and Cloak and Dagger. Scale them with Accuracy. Afterimage gives block per card played. Envenom adds poison per hit."
+
+  - name: Discard Cycle
+    difficulty: advanced
+    keyCards: [acrobatics, tactician, reflex, calculated-gamble, eviscerate, sneaky-strike]
+    keyRelics: [tingsha, tough-bandages, hovering-kite]
+    description: "Acrobatics draws and discards. Tactician gives energy on discard. Reflex gives draw. Together they cycle the entire deck every turn. Eviscerate deals massive discounted damage."
+
+  - name: Grand Finale
+    difficulty: expert
+    keyCards: [grand-finale, well-laid-plans, acrobatics, expertise, backflip]
+    keyRelics: [runic-pyramid, sundial, abacus]
+    description: "Manipulate draw pile to exactly 0 cards, then Grand Finale deals 60 AoE damage. Requires precise deck management. Most satisfying build in the game."
+
+strategy:
+  act1:
+    goal: "Draft damage cards — Silent's starting deck is the weakest"
+    picks: [blade-dance, dagger-spray, dash, poisoned-stab, skewer, all-out-attack]
+    upgrade: "Neutralize → Blade Dance → Dagger Spray"
+    elites: "Avoid Gremlin Nob unless you have Blade Dance or Skewer. Lagavulin is fine with poison."
+
+  act2:
+    goal: "Add AoE and commit to a scaling engine"
+    picks: [corpse-explosion, crippling-cloud, bouncing-flask, catalyst, afterimage, footwork]
+    upgrade: "Catalyst → Bouncing Flask → Footwork"
+    elites: "Book of Stabbing dies to Malaise. Gremlin Leader needs Corpse Explosion or Dagger Spray."
+
+  act3:
+    goal: "Maximize defense, Wraith Form for final bosses"
+    picks: [wraith-form, burst, malaise, nightmare, adrenaline, piercing-wail]
+    upgrade: "Wraith Form → Footwork → Malaise"
+    elites: "Giant Head takes massive poison damage. Nemesis is trivial with Intangible."
+
+pitfalls:
+  - title: "Taking too many card rewards"
+    severity: critical
+    tip: "Silent's starting deck is 12 cards (largest). Thin it. Skip mediocre cards aggressively."
+
+  - title: "Underestimating Footwork"
+    severity: high
+    tip: "One Footwork+ makes every Defend block for 8. Two Footworks make block effortless."
+
+  - title: "Catalyst with no poison"
+    severity: medium
+    tip: "Don't draft Catalyst before you have consistent poison. It's a dead card without setup."
+
+  - title: "Over-valuing Shivs without scaling"
+    severity: high
+    tip: "4-damage Shivs fall off by Act 2. You need Accuracy, Wrist Blade, or strength scaling."
+
+  - title: "Neglecting draw manipulation"
+    severity: medium
+    tip: "Silent's power comes from playing many cards per turn. Card draw = card play = power."
+
+quickRef:
+  similarTo: ["MTG Dimir control", "LoR Teemo poison", "Hearthstone Rogue"]
+  difficultyRating: 3
+  powerCurve: ["weak", "spike", "dominant"]
+  paceLabel: "Fragile start, unstoppable late game"
+
+relicTiers:
+  - tier: S
+    label: "Run-defining"
+    items:
+      - name: "Wrist Blade"
+        description: "0-cost Attack cards deal +4 damage. Transforms Shivs from 4→8 damage each."
+        icon: "🗡️"
+      - name: "Twisted Funnel"
+        description: "+4 Poison at combat start. Free scaling from turn 1."
+        icon: "🧪"
+      - name: "Tingsha"
+        description: "Deal 3 damage to random enemy whenever you discard. Massive chip damage."
+        icon: "🔔"
+
+  - tier: A
+    label: "Strong synergy"
+    items:
+      - name: "Tough Bandages"
+        description: "Gain 3 block whenever you discard a card. Free defense engine."
+        icon: "🩹"
+      - name: "Hovering Kite"
+        description: "+1 energy every turn. First discard each turn draws a card."
+        icon: "🪁"
+      - name: "Snecko Skull"
+        description: "+1 Poison whenever you apply Poison. Affordable scaling."
+        icon: "💀"
+
+  - tier: B
+    label: "Situationally good"
+    items:
+      - name: "Paper Crane"
+        description: "Enemies with Weak deal 40% less damage instead of 25%."
+        icon: "🦢"
+      - name: "Specimen"
+        description: "When an enemy dies, transfer its Poison to another enemy."
+        icon: "🔬"

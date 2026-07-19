@@ -1,0 +1,88 @@
+---
+export interface FilterOption {
+  label: string;
+  value: string;
+}
+
+export interface Props {
+  filterId: string;
+  filters: Array<{
+    id: string;
+    label: string;
+    options: FilterOption[];
+  }>;
+}
+
+const { filterId, filters } = Astro.props;
+---
+
+<div id={`${filterId}-container`} class="flex flex-wrap gap-3 mb-6 not-prose">
+  {filters.map((filter) => (
+    <div class="flex items-center gap-2">
+      <label for={`${filterId}-${filter.id}`} class="text-sm font-medium text-text-muted">
+        {filter.label}:
+      </label>
+      <select
+        id={`${filterId}-${filter.id}`}
+        class="text-sm border border-border rounded-lg px-3 py-1.5 bg-surface text-text focus:outline-none focus:ring-2 focus:ring-primary/20"
+        data-filter={filter.id}
+      >
+        <option value="">All</option>
+        {filter.options.map((opt) => (
+          <option value={opt.value}>{opt.label}</option>
+        ))}
+      </select>
+    </div>
+  ))}
+
+  <button
+    id={`${filterId}-clear`}
+    class="text-sm text-primary hover:text-primary-dark underline underline-offset-2"
+  >
+    Clear Filters
+  </button>
+</div>
+
+<script define:vars={{ filterId }}>
+  const container = document.getElementById(`${filterId}-container`);
+  if (!container) throw new Error(`Filter container #${filterId}-container not found`);
+
+  const selects = container.querySelectorAll<HTMLSelectElement>('select[data-filter]');
+  const clearBtn = document.getElementById(`${filterId}-clear`);
+  const cards = document.querySelectorAll<HTMLElement>('[data-entity-card]');
+
+  function applyFilters() {
+    const activeFilters: Record<string, string> = {};
+    selects.forEach((sel) => {
+      // Use selectedIndex > 0 to check if a non-"All" option is selected
+      // (handles empty string values like char="" for Universal)
+      if (sel.selectedIndex > 0) activeFilters[sel.dataset.filter!] = sel.value;
+    });
+
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      let visible = true;
+      for (const [key, value] of Object.entries(activeFilters)) {
+        if (card.dataset[key] !== value) {
+          visible = false;
+          break;
+        }
+      }
+      card.classList.toggle('hidden', !visible);
+      if (visible) visibleCount++;
+    });
+
+    // Update result count
+    const countEl = document.getElementById(`${filterId}-count`);
+    if (countEl) {
+      countEl.textContent = `${visibleCount} of ${cards.length} results`;
+    }
+  }
+
+  selects.forEach((sel) => sel.addEventListener('change', applyFilters));
+
+  clearBtn?.addEventListener('click', () => {
+    selects.forEach((sel) => { sel.value = ''; });
+    applyFilters();
+  });
+</script>

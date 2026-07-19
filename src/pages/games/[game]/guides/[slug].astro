@@ -1,0 +1,70 @@
+---
+import ArticleLayout from '../../../../layouts/ArticleLayout.astro';
+import CardImg from '../../../../components/CardImg.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import AdSlot from '../../../../components/AdSlot.astro';
+import GameThemeProvider from '../../../../components/GameThemeProvider.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map(g => ({
+    params: { game: g.data.game, slug: g.id },
+    props: { guide: g },
+  }));
+}
+
+const { game, slug } = Astro.params;
+const { guide } = Astro.props as { guide: any };
+
+const gameEntry = await getEntry('games', game!);
+const { Content } = await render(guide);
+
+// Look up core card images for header display
+const coreCardNames: string[] = guide.data.coreCards || [];
+const allCards = await getCollection('cards', ({ data }) => data.game === 'slay-the-spire-2');
+const cardImageMap = new Map<string, { image?: string; slug: string }>();
+for (const card of allCards) {
+  cardImageMap.set(card.data.name.toLowerCase(), {
+    image: card.data.image,
+    slug: card.data.slug,
+  });
+}
+const headerCards = coreCardNames.map(name => {
+  const match = cardImageMap.get(name.toLowerCase());
+  return { name, image: match?.image, slug: match?.slug };
+}).filter(c => c.image);
+
+// Look up key relic images for header display
+const keyRelicNames: string[] = guide.data.keyRelics || [];
+const allRelics = await getCollection('relics', ({ data }) => data.game === 'slay-the-spire-2');
+const relicDataMap = new Map<string, { image?: string; slug: string }>();
+for (const relic of allRelics) {
+  relicDataMap.set(relic.data.name.toLowerCase(), {
+    image: relic.data.image,
+    slug: relic.data.slug,
+  });
+}
+const headerRelics = keyRelicNames.map(name => {
+  const match = relicDataMap.get(name.toLowerCase());
+  return { name, image: match?.image, slug: match?.slug };
+});
+
+const adPositions = guide.data.adSlots || ['in-content-1', 'after-content'];
+const maxAds = 3;
+const limitedAdSlots = [...new Set(adPositions)].slice(0, maxAds);
+---
+
+<GameThemeProvider colorScheme={gameEntry?.data.colorScheme}>
+  <ArticleLayout
+    guide={guide}
+    gameMetadata={gameEntry ? { name: gameEntry.data.name, slug: gameEntry.data.slug } : undefined}
+  >
+    <slot name="article-content">
+      <Content />
+
+      {limitedAdSlots.map((position: string) => (
+        <AdSlot position={position} />
+      ))}
+    </slot>
+  </ArticleLayout>
+</GameThemeProvider>

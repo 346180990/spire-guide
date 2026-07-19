@@ -1,0 +1,95 @@
+---
+// QuickReferenceBar — Bottom reference bar with difficulty, power curve, similar games
+// Shows: difficulty dots ●●○○○, power curve phases, similar game analogies
+
+interface QuickRef {
+  difficultyRating: number;  // 1-5
+  powerCurve: string[];      // e.g. ["weak", "spike", "god"]
+  similarTo: string[];       // e.g. ["MTG Blue control", "WoW Warlock"]
+  paceLabel?: string;
+}
+
+interface Props {
+  quickRef: QuickRef;
+  class?: string;
+}
+
+const { quickRef, class: className } = Astro.props;
+
+function renderDifficultyDots(rating: number): string {
+  const filled = '●';
+  const empty = '○';
+  const max = 5;
+  return filled.repeat(Math.min(rating, max)) + empty.repeat(Math.max(0, max - rating));
+}
+
+const difficultyLabels: Record<number, string> = {
+  1: 'Very Easy',
+  2: 'Easy',
+  3: 'Moderate',
+  4: 'Hard',
+  5: 'Very Hard',
+};
+
+const powerCurveIcons: Record<number, string> = {
+  0: '🌱',
+  1: '📈',
+  2: '💪',
+  3: '👑',
+};
+---
+
+<section class={`not-prose ${className || ''}`}>
+  <div class="bg-surface border border-border rounded-xl p-5">
+    <h2 class="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">Quick Reference</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+      {/* Difficulty */}
+      <div class="flex flex-col gap-1">
+        <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wide">Difficulty</h3>
+        <div class="flex items-center gap-2">
+          <span class="text-lg tracking-wider text-accent-gold" aria-label={`${quickRef.difficultyRating} out of 5`}>
+            {renderDifficultyDots(quickRef.difficultyRating)}
+          </span>
+        </div>
+        <p class="text-xs text-text-muted">
+          {difficultyLabels[quickRef.difficultyRating] || 'Moderate'}
+          {quickRef.paceLabel && ` — ${quickRef.paceLabel}`}
+        </p>
+      </div>
+
+      {/* Power Curve */}
+      <div class="flex flex-col gap-1">
+        <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wide">Power Curve</h3>
+        <div class="flex items-center gap-1.5">
+          {quickRef.powerCurve.map((phase, i) => (
+            <span class="text-sm font-medium text-text flex items-center gap-1">
+              {powerCurveIcons[i] && <span class="text-base" role="img">{powerCurveIcons[i]}</span>}
+              {phase}
+              {i < quickRef.powerCurve.length - 1 && <span class="text-text-muted mx-0.5">→</span>}
+            </span>
+          ))}
+        </div>
+        <p class="text-xs text-text-muted">Relative strength across a run</p>
+      </div>
+
+      {/* Similar To */}
+      <div class="flex flex-col gap-1">
+        <h3 class="text-xs font-semibold text-text-muted uppercase tracking-wide">Similar To</h3>
+        {quickRef.similarTo.length > 0 ? (
+          <div class="flex flex-wrap gap-1.5">
+            {quickRef.similarTo.map((game) => (
+              <span class="text-xs font-medium px-2 py-1 rounded bg-surface-alt text-text-muted border border-border">
+                🎮 {game}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p class="text-xs text-text-muted">—</p>
+        )}
+        <p class="text-xs text-text-muted">If you enjoy these, you'll like this playstyle</p>
+      </div>
+
+    </div>
+  </div>
+</section>

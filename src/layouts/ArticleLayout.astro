@@ -1,0 +1,253 @@
+---
+import MainLayout from './MainLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  guide: CollectionEntry<'guides'>;
+  gameMetadata?: {
+    name: string;
+    slug: string;
+  };
+  headerCards?: Array<{ name: string; image?: string; slug?: string }>;
+  headerRelics?: Array<{ name: string; image?: string; slug?: string }>;
+}
+
+const { guide, gameMetadata, headerCards = [], headerRelics = [] } = Astro.props;
+const { title, description, publishDate, updatedDate, phase, guideType, character } = guide.data;
+const siteUrl = Astro.site?.href || 'https://example.com';
+
+const phaseLabels: Record<string, string> = {
+  research: 'Community Research',
+  verified: 'Player Verified',
+  authoritative: 'Authoritative',
+};
+
+const phaseColors: Record<string, string> = {
+  research: 'bg-amber-100 text-amber-800 border-amber-200',
+  verified: 'bg-green-100 text-green-800 border-green-200',
+  authoritative: 'bg-blue-100 text-blue-800 border-blue-200',
+};
+
+const guideTypeLabels: Record<string, string> = {
+  'build': 'Build Guide',
+  'tier-list': 'Tier List',
+  'beginner': 'Beginner Guide',
+  'advanced': 'Advanced Guide',
+  'character-overview': 'Character Overview',
+  'roadmap': 'Roadmap',
+};
+
+const typeLabel = guideTypeLabels[guideType] || guideType;
+const phaseLabel = phaseLabels[phase] || 'Research';
+const phaseColor = phaseColors[phase] || phaseColors.research;
+
+const breadcrumbs = [
+  { label: 'Home', href: '/' },
+  { label: gameMetadata?.name || guide.data.game, href: `/games/${guide.data.game}/` },
+  ...(character ? [{ label: character, href: `/games/${guide.data.game}/characters/${character.toLowerCase().replace(/\s+/g, '-')}/` }] : []),
+  { label: title },
+];
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+const articleUrl = `/games/${guide.data.game}/guides/${guide.id}/`;
+const canonicalURL = new URL(articleUrl, siteUrl).href;
+---
+
+<MainLayout
+  title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+      <ol class="flex flex-wrap items-center gap-1 text-text-muted">
+        {breadcrumbs.map((crumb, i) => (
+          <li class="flex items-center gap-1">
+            {i > 0 && <span class="mx-1" aria-hidden="true">/</span>}
+            {crumb.href ? (
+              <a href={crumb.href} class="text-text-muted hover:text-primary no-underline">
+                {crumb.label}
+              </a>
+            ) : (
+              <span class="text-text font-medium truncate max-w-[200px]">{crumb.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <!-- JSON-LD BreadcrumbList -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: crumb.href
+          ? { '@id': new URL(crumb.href, siteUrl).href, name: crumb.label }
+          : { name: crumb.label },
+      })),
+    })} />
+
+    <!-- Article Header -->
+    <header class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-3">
+        <span class={`text-xs font-semibold px-2.5 py-1 rounded-full border ${phaseColor}`}>
+          {phaseLabel}
+        </span>
+        <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-surface-alt text-text-muted border border-border">
+          {typeLabel}
+        </span>
+        {guide.data.difficulty && (
+          <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-surface-dark text-text border border-surface-dark">
+            {guide.data.difficulty}
+          </span>
+        )}
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">{title}</h1>
+      <div class="flex flex-wrap items-center gap-4 text-sm text-text-muted">
+        <time datetime={publishDate.toISOString()}>
+          Published: {formatDate(publishDate)}
+        </time>
+        {updatedDate && updatedDate > publishDate && (
+          <time datetime={updatedDate.toISOString()}>
+            Updated: {formatDate(updatedDate)}
+          </time>
+        )}
+      </div>
+    </header>
+
+    <!-- JSON-LD Article -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      description: description,
+      datePublished: publishDate.toISOString(),
+      dateModified: (updatedDate || publishDate).toISOString(),
+      author: {
+        '@type': 'Person',
+        name: 'Spire Guide Editor',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Spire Guide',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalURL,
+      },
+    })} />
+
+    <!-- Featured Image -->
+    {guide.data.featuredImage && (
+      <div class="mb-8 rounded-lg overflow-hidden">
+        <img
+          src={guide.data.featuredImage}
+          alt={title}
+          width="1200"
+          height="630"
+          class="w-full h-auto max-h-96 object-cover rounded-lg"
+          onerror={`this.style.display='none';`}
+        />
+      </div>
+    )}
+
+    <!-- Core Cards in Header -->
+    {headerCards.length > 0 && (
+      <div class="mb-8 not-prose bg-surface border border-border rounded-xl p-5">
+        <h2 class="text-sm font-semibold text-text-muted uppercase tracking-wide mb-4">Core Cards</h2>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
+          {headerCards.map(card => (
+            <a
+              href={card.slug ? `/games/${guide.data.game}/cards/${card.slug}/` : '#'}
+              class="block bg-surface-dark border border-border rounded-lg overflow-hidden hover:border-primary/40 hover:shadow-sm transition-all no-underline group"
+            >
+              {card.image ? (
+                <div class="h-24 bg-surface-dark relative flex items-center justify-center p-1">
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    width="160"
+                    height="90"
+                    loading="lazy"
+                    class="max-h-full w-auto object-contain group-hover:scale-105 transition-transform duration-200"
+                    onerror="this.style.display='none'"
+                  />
+                </div>
+              ) : (
+                <div class="h-24 bg-surface-dark flex items-center justify-center">
+                  <span class="text-text-muted text-xs font-medium">{card.name}</span>
+                </div>
+              )}
+              <div class="p-1.5">
+                <p class="text-2xs font-medium text-text group-hover:text-primary transition-colors text-center truncate">{card.name}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Key Relics in Header -->
+    {headerRelics.length > 0 && (
+      <div class="mb-8 not-prose bg-surface border border-border rounded-xl p-5">
+        <h2 class="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">Key Relics</h2>
+        <div class="flex flex-wrap gap-1.5">
+          {headerRelics.map(relic => (
+            <a
+              href={relic.slug ? `/games/${guide.data.game}/relics/${relic.slug}/` : '#'}
+              class="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-lg bg-accent-gold/8 text-accent-gold border border-accent-gold/15 hover:bg-accent-gold/15 transition-colors no-underline"
+            >
+              {relic.image && (
+                <img
+                  src={relic.image}
+                  alt={relic.name}
+                  width="24"
+                  height="24"
+                  loading="lazy"
+                  class="w-4 h-4 object-contain"
+                  onerror="this.remove();"
+                />
+              )}
+              {relic.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Article Body -->
+    <div class="prose prose-slate max-w-none">
+      {phase === 'research' && (
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-800 not-prose">
+          <strong>Community Research Phase:</strong> This guide is compiled from community sources
+          (wikis, forums, subreddits) and player-contributed research. It has not yet been play-tested
+          by our editor. You can help — if you spot an error, we'd appreciate hearing about it.
+        </div>
+      )}
+
+      <slot />
+    </div>
+
+    <!-- Related Guides -->
+    {guide.data.relatedGuides && guide.data.relatedGuides.length > 0 && (
+      <footer class="mt-12 pt-8 border-t border-border">
+        <h2 class="text-xl font-bold mb-4">Related Guides</h2>
+        <ul class="space-y-2">
+          {guide.data.relatedGuides.map(related => (
+            <li>
+              <a href={`/games/${guide.data.game}/guides/${related}/`} class="text-primary hover:text-primary-dark">
+                {related.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </footer>
+    )}
+  </article>
+</MainLayout>

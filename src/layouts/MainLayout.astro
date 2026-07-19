@@ -1,0 +1,106 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const { title, description, ogImage, canonicalURL } = Astro.props;
+const siteName = 'Spire Guide';
+const siteUrl = Astro.site?.href || 'https://example.com';
+const fullTitle = `${title} | ${siteName}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <title>{fullTitle}</title>
+
+    <link rel="canonical" href={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL || new URL(Astro.url.pathname, siteUrl).href} />
+    <meta property="og:site_name" content={siteName} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-border bg-surface/95 sticky top-0 z-50 backdrop-blur-sm">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="text-xl font-extrabold text-text no-underline hover:text-primary transition-colors">
+          Spire Guide
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="/games/slay-the-spire-2/guides/" class="text-sm font-medium text-text-muted hover:text-primary no-underline transition-colors">Guides</a>
+          <a href="/games/slay-the-spire-2/cards/" class="text-sm font-medium text-text-muted hover:text-primary no-underline transition-colors">Cards</a>
+          <a href="/games/slay-the-spire-2/relics/" class="text-sm font-medium text-text-muted hover:text-primary no-underline transition-colors">Relics</a>
+          <slot name="nav-links" />
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border bg-surface-alt mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-3">Spire Guide</h3>
+            <p class="text-text-muted text-sm">
+              In-depth Slay the Spire 2 strategy guides, player-tested and community-reviewed.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-3">Guides</h3>
+            <slot name="footer-games">
+              <p class="text-text-muted text-sm">
+                <a href="/games/slay-the-spire-2/" class="text-text-muted hover:text-primary no-underline">All Guides</a>
+              </p>
+            </slot>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-3">Reference</h3>
+            <p class="text-text-muted text-sm space-y-1">
+              <a href="/games/slay-the-spire-2/cards/" class="text-text-muted hover:text-primary no-underline block">Cards</a>
+              <a href="/games/slay-the-spire-2/relics/" class="text-text-muted hover:text-primary no-underline block">Relics</a>
+              <a href="/games/slay-the-spire-2/potions/" class="text-text-muted hover:text-primary no-underline block">Potions</a>
+            </p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold mb-3">About</h3>
+            <p class="text-text-muted text-sm">
+              Every guide is reviewed by a human player before publication.
+              Content phases let you know how thoroughly each guide has been verified.
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-border text-center text-text-muted text-sm space-y-3">
+          <p class="max-w-3xl mx-auto text-xs leading-relaxed">
+            Spire Guide is an <strong>unofficial fan project</strong>, not affiliated with or endorsed by
+            <strong>Mega Crit</strong> or <strong>Humble Games</strong>.
+            "Slay the Spire" is a registered trademark of Mega Crit.
+            All game assets, card art, character designs, and game data are the property of their respective owners.
+            This site is for informational and educational purposes only.
+          </p>
+          <p>&copy; {new Date().getFullYear()} Spire Guide.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

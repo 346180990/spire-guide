@@ -1,0 +1,15 @@
+---
+import { getCollection } from 'astro:content';
+
+const games = await getCollection('games');
+const activeGames = games.filter(g => g.data.active);
+---
+
+{activeGames.map(game => (
+  <a
+    href={`/games/${game.data.slug}/`}
+    class="text-sm font-medium text-text-muted hover:text-primary no-underline transition-colors"
+  >
+    {game.data.name}
+  </a>
+))}

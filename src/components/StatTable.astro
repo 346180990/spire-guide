@@ -1,0 +1,110 @@
+---
+interface Column {
+  key: string;
+  label: string;
+  sortable?: boolean;
+  align?: 'left' | 'center' | 'right';
+}
+
+interface Props {
+  columns: Column[];
+  rows: Record<string, string | number>[];
+  title?: string;
+  class?: string;
+}
+
+const { columns, rows, title, class: className } = Astro.props;
+
+// Generate a unique ID for this table instance
+const tableId = `stat-table-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<div class={`not-prose my-6 ${className || ''}`}>
+  {title && <h3 class="text-xl font-bold mb-4">{title}</h3>}
+
+  <div class="overflow-x-auto rounded-lg border border-border">
+    <table id={tableId} class="w-full text-sm">
+      <thead>
+        <tr class="bg-surface-alt border-b border-border">
+          {columns.map(col => (
+            <th
+              class={`px-4 py-3 text-left font-semibold text-text-muted text-xs uppercase tracking-wide whitespace-nowrap
+                ${col.sortable ? 'cursor-pointer hover:text-primary select-none' : ''}
+                ${col.align === 'center' ? 'text-center' : ''}
+                ${col.align === 'right' ? 'text-right' : ''}
+              `}
+              data-sort-key={col.key}
+            >
+              {col.label}
+              {col.sortable && <span class="ml-1 text-text-light">↕</span>}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row, i) => (
+          <tr class={`border-b border-border last:border-b-0 ${i % 2 === 0 ? 'bg-surface' : 'bg-surface-alt/50'} hover:bg-primary/5 transition-colors`}>
+            {columns.map(col => (
+              <td class={`px-4 py-2.5 text-text whitespace-nowrap
+                ${col.align === 'center' ? 'text-center' : ''}
+                ${col.align === 'right' ? 'text-right' : ''}
+              `}>
+                {row[col.key]}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script define:vars={{ tableId }}>
+  const table = document.getElementById(tableId);
+  if (!table) {
+    // Table not found; skip sort setup.
+  } else {
+    const headers = table.querySelectorAll('th[data-sort-key]');
+    headers.forEach((th) => {
+      const header = th;
+      header.addEventListener('click', () => {
+        const key = header.dataset.sortKey;
+        if (!key) return;
+
+        const tbody = table.querySelector('tbody');
+        if (!tbody) return;
+
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        const currentDir = header.dataset.sortDir || 'asc';
+        const newDir = currentDir === 'asc' ? 'desc' : 'asc';
+        header.dataset.sortDir = newDir;
+
+        headers.forEach(h => {
+          if (h !== header) {
+            delete h.dataset.sortDir;
+          }
+        });
+
+        const colIndex = Array.from(header.parentElement.children).indexOf(header);
+
+        rows.sort((a, b) => {
+          const aVal = a.children[colIndex]?.textContent?.trim() || '';
+          const bVal = b.children[colIndex]?.textContent?.trim() || '';
+
+          const aNum = parseFloat(aVal);
+          const bNum = parseFloat(bVal);
+
+          if (!isNaN(aNum) && !isNaN(bNum)) {
+            return newDir === 'asc' ? aNum - bNum : bNum - aNum;
+          }
+
+          return newDir === 'asc'
+            ? aVal.localeCompare(bVal)
+            : bVal.localeCompare(aVal);
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+      });
+    });
+  }
+</script>

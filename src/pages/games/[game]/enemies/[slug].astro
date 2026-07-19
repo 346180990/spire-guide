@@ -1,0 +1,50 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import ReferenceLayout from '../../../../layouts/ReferenceLayout.astro';
+import EnemyDisplay from '../../../../components/reference/EnemyDisplay.astro';
+import GameThemeProvider from '../../../../components/GameThemeProvider.astro';
+
+export async function getStaticPaths() {
+  const enemies = await getCollection('enemies', ({ data }) => data.game === 'slay-the-spire-2');
+  return enemies.map((enemy) => ({
+    params: { game: 'slay-the-spire-2', slug: enemy.data.slug },
+    props: { enemy },
+  }));
+}
+
+const { enemy } = Astro.props;
+const { Content } = await render(enemy);
+
+const gameEntry = await getEntry('games', 'slay-the-spire-2');
+
+const title = `${enemy.data.name} — Moveset, Strategy & Weakness Guide | STS2`;
+const description = `${enemy.data.name} guide for Slay the Spire 2. ${
+  enemy.data.moves && enemy.data.moves.length > 0
+    ? `Moves: ${enemy.data.moves.map(m => m.name).join(', ')}. `
+    : ''
+}Learn how to defeat it with our act-by-act strategy.`;
+---
+
+<GameThemeProvider colorScheme={gameEntry?.data.colorScheme}>
+  <ReferenceLayout
+    title={title}
+    description={description}
+    entityType="Enemy"
+    entityName={enemy.data.name}
+  >
+    <EnemyDisplay
+      name={enemy.data.name}
+      act={enemy.data.act}
+      hp_range={enemy.data.hp_range}
+      moves={enemy.data.moves}
+      weakness={enemy.data.weakness}
+      is_elite={enemy.data.is_elite}
+      is_boss={enemy.data.is_boss}
+      image={enemy.data.image}
+    />
+
+    <div class="prose prose-slate max-w-none">
+      <Content />
+    </div>
+  </ReferenceLayout>
+</GameThemeProvider>

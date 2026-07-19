@@ -1,0 +1,156 @@
+# Character Dashboard — Regent (储君)
+slug: regent
+name: Regent
+game: slay-the-spire-2
+characterImage: ""
+role: "Commander of Armies"
+difficulty: intermediate
+tagline: "Build your army, issue commands, and let loyalty win the fight"
+playstyle: hybrid
+isColorless: false
+
+mechanics:
+  - id: command
+    icon: "📋"
+    name: Command
+    passive: "Allies trigger bonus effects when commanded"
+    evoke: ""
+    tip: "Command target order matters — set up buffs before attacks"
+
+  - id: ally
+    icon: "👥"
+    name: Ally Summons
+    passive: "Summon allies to fight alongside you"
+    evoke: ""
+    tip: "Balance summoning with Command — dogs without orders are wasted actions"
+
+  - id: legacy
+    icon: "📜"
+    name: Legacy
+    passive: "Persistent effects that last the entire combat"
+    evoke: ""
+    tip: "Prioritize Legacy cards early — their value compounds over a long fight"
+
+  - id: venerate
+    icon: "✨"
+    name: Venerate
+    passive: "Power up the entire team for explosive turns"
+    evoke: ""
+    tip: "Time Venerate before a full Command chain for maximum burst"
+
+startingDeck:
+  cards:
+    - name: Strike
+      slug: strike
+      count: 4
+      upgradePriority: 5
+    - name: Defend
+      slug: defend
+      count: 4
+      upgradePriority: 4
+    - name: Rally
+      slug: rally
+      count: 1
+      upgradePriority: 1
+    - name: Squire
+      slug: squire
+      count: 1
+      upgradePriority: 2
+
+archetypes:
+  - name: Command Chain
+    difficulty: beginner
+    keyCards: [rally, battle-orders, coordinated-strike, formation, warcry, banner-of-courage]
+    keyRelics: [war-banner, signet-ring, signal-whistle]
+    description: "Issue multiple Commands per turn, each triggering ally bonuses. Build a small loyal team and maximize Command value per turn."
+
+  - name: Army of Light
+    difficulty: intermediate
+    keyCards: [call-to-arms, knight-commander, squire, royal-guard, holy-lancer, muster]
+    keyRelics: [legion-standard, barracks-tent, crown-of-command]
+    description: "Summon a wide board of allies. Each ally adds chip damage and utility. Overwhelm enemies with numbers."
+
+  - name: Legacy Combo
+    difficulty: advanced
+    keyCards: [ancient-decree, succession, blood-oath, ancestral-blade, last-will, royal-lineage]
+    keyRelics: [sealed-testament, historians-quill, royal-seal]
+    description: "Stack Legacy effects that persist across turns. Each Legacy card permanently buffs your character or allies for the entire combat."
+
+strategy:
+  act1:
+    goal: "Draft early ally cards and efficient attacks"
+    picks: [squire, rally, holy-lancer, coordinated-strike, shield-bearer]
+    upgrade: "Rally → Squire → Battle Orders"
+    elites: "Fight Elites with at least one Ally in play — Squire blocks chip damage"
+
+  act2:
+    goal: "Layer Command synergies and add AoE"
+    picks: [battle-orders, formation, banner-of-courage, call-to-arms, muster]
+    upgrade: "Battle Orders → Formation → Banner of Courage"
+    elites: "Protect allies with Bodyguard and Shield Bearer vs heavy attacks"
+
+  act3:
+    goal: "Add Legacy scaling and finisher combos"
+    picks: [ancient-decree, succession, knight-commander, last-will, coordinated-assault]
+    upgrade: "Ancient Decree → Knight Commander → Succession"
+    elites: "Stack Legacies early in elite fights — the value compounds fast"
+
+pitfalls:
+  - title: "Over-summoning without Commands"
+    severity: critical
+    tip: "Allies without Command triggers are just weak attacks. Prioritize Command density over summon spam."
+
+  - title: "Neglecting ally protection"
+    severity: high
+    tip: "Bodyguard and Shield Bearer keep key allies alive. A dead Knight Commander loses the run."
+
+  - title: "Late Legacy, early game punishment"
+    severity: medium
+    tip: "Legacy cards are slow. Draft 2-3 strong attacks before touching Legacy."
+
+  - title: "Too many different allies"
+    severity: medium
+    tip: "Focus on 2-3 ally types. Spreading thin means no Command overlaps."
+
+quickRef:
+  similarTo: ["MTG White weenie", "LoL Azir", "Fire Emblem tactician"]
+  difficultyRating: 3
+  powerCurve: ["weak", "building", "dominant"]
+  paceLabel: "Slow buildup, explosive Command turns"
+
+relicTiers:
+  - tier: S
+    label: "Run-defining"
+    items:
+      - name: "War Banner"
+        description: "Allies deal +3 damage. Buffs every summon and attack."
+        icon: "🚩"
+      - name: "Signet Ring"
+        description: "First Command each turn is free. Massively increases Command chains."
+        icon: "💍"
+      - name: "Barracks Tent"
+        description: "Start combat with a random Ally in play."
+        icon: "⛺"
+
+  - tier: A
+    label: "Strong synergy"
+    items:
+      - name: "Signal Whistle"
+        description: "Commanding an Ally draws a card. Solves Commander's draw issues."
+        icon: "📯"
+      - name: "Crown of Command"
+        description: "Commands trigger twice on the first target each turn."
+        icon: "👑"
+      - name: "Sealed Testament"
+        description: "Legacy effects are 50% stronger. Massive endgame scaling."
+        icon: "📜"
+
+  - tier: B
+    label: "Situationally good"
+    items:
+      - name: "Historian's Quill"
+        description: "Playing a Legacy card heals 3 HP."
+        icon: "🖊️"
+      - name: "Legion Standard"
+        description: "+2 max HP per Ally in your deck."
+        icon: "🏴"

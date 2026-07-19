@@ -1,0 +1,226 @@
+---
+title: "Silent Poison Build — Catalyst & Noxious Fumes Guide"
+description: "Complete Poison build guide for Silent in Slay the Spire 2. Master Catalyst multiplication, Noxious Fumes stacking, Corpse Explosion clears, and detailed floor-by-floor strategy."
+publishDate: 2026-07-19
+game: slay-the-spire-2
+featuredImage: "/images/characters/silent.jpg"
+character: Silent
+guideType: build
+phase: research
+difficulty: beginner
+relatedGuides:
+  - silent-overview
+  - silent-shiv-build
+  - silent-discard-build
+coreCards:
+  - "Catalyst"
+  - "Noxious Fumes"
+  - "Deadly Poison"
+  - "Crippling Cloud"
+  - "Corpse Explosion"
+  - "Bouncing Flask"
+keyRelics:
+  - "The Specimen"
+  - "Snecko Skull"
+  - "Twisted Funnel"
+  - "Paper Crane"
+  - "Fossilized Helix"
+---
+
+Poison is the Silent's safest, most consistent archetype and the one I recommend for every new Silent player. The core insight: poison damage happens at the start of the enemy's turn, which means you can spend ALL your energy on blocking while enemies die to an ever-ticking clock. Unlike Shiv builds that require threading together damage, block, and draw in the same hand, or Discard builds that demand precise sequencing, Poison lets you build your deck as 60% defense and 40% setup — and then just survive. This guide teaches you when to take each poison card, how to survive Act 1 with the Silent's weak early game, and how to multiply a few points of poison into hundreds of damage against bosses.
+
+## Build Overview
+
+The Poison game plan: apply poison stacks to enemies, multiply them with Catalyst, and block until everything dies. After turn 3-4, you don't need to play attack cards — you just need to survive. A single Noxious Fumes+ deals 60+ damage over a boss fight. At 8 poison, Catalyst+ makes it 32. At 32, a second Catalyst+ makes it 128. The boss dies next turn from one tick.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Poison Stacking"
+  character="Silent"
+  difficulty="beginner"
+  coreCards={["Catalyst", "Noxious Fumes", "Deadly Poison", "Crippling Cloud", "Corpse Explosion", "Bouncing Flask"]}
+  keyRelics={["The Specimen", "Snecko Skull", "Twisted Funnel", "Paper Crane", "Fossilized Helix"]}
+  strategy="Apply poison with Deadly Poison and Noxious Fumes in the first 2-3 turns. Once you have 8+ poison stacked, hit Catalyst to triple it. Crippling Cloud clears artifact charges and applies Weak to everything. Against multiple enemies, Corpse Explosion on the lowest-HP target turns their death into 100+ damage on everyone else. Spend the rest of your energy on block and card draw. The poison timer does the killing for you."
+/>
+
+## Core Cards — Building the Poison Factory
+
+### S-Tier: The Cards That Win Runs
+
+**Catalyst** (Rare Skill, 1 energy) — Triple (quadruple when upgraded) an enemy's poison. 8 poison → 24 → 96 → 384 with two Catalysts+. At 384 poison, the boss dies in one tick. Always upgrade Catalyst (+3× → +4×) — it's a 33% multiplier improvement that compounds with multiple copies. Two copies is the sweet spot; a third is overkill.
+
+> **Critical decision**: Don't play Catalyst too early. If the enemy has 3 poison, Catalyst makes it 9 (gain of 6). Wait until 8+ for Catalyst to create 24 (gain of 16). The value scales with current poison. Against bosses, apply ALL your poison first (Deadly Poison + Bouncing Flask + Noxious Fumes), THEN multiply. One big Catalyst at 12+ poison wins the fight.
+
+**Noxious Fumes** (Uncommon Power, 2 energy) — Apply 2 poison to ALL enemies every turn (3 upgraded). This is your boss-killer, your AoE engine, your "play and forget" win condition. An upgraded Noxious Fumes on turn 1 deals cumulative damage of: turn 3 = 9, turn 5 = 15, turn 10 = 30, turn 15 = 45. Against 10-turn+ boss fights, one copy deals 60+ total. In multi-enemy fights, it stacks on EVERY enemy simultaneously — and with The Specimen relic, all that poison transfers to the survivor when each enemy dies.
+
+> **Pick priority**: Take on sight. A second copy stacks to 6 poison/turn, killing bosses in 7 turns with zero other cards.
+
+### A-Tier: Poison Sources
+
+**Deadly Poison** (Common Skill, 1 energy) — Apply 5 poison (7 upgraded). This seems modest. It isn't. Deadly Poison is your Catalyst base — stack 2-3 Deadly Poisons in the first turns, then multiply. Two Deadly Poisons = 10 poison → Catalyst+ = 40 → enemy takes 40/turn. Upgrade all copies (+5→+7 is 40% more base for Catalyst to multiply). Take 2-3 copies.
+
+**Bouncing Flask** (Uncommon Skill, 2 energy) — Apply 3 poison to a random enemy, 3 times (4 per bounce upgraded). Best single-target application: 9 poison for 2 energy. With Snecko Skull (+1 per application), it's 4×3 = 12 poison. Best in single-enemy fights. In multi-fights, the random targeting spreads love — synergy with The Specimen and Corpse Explosion.
+
+> **Pick priority**: Take over Deadly Poison in Act 2-3. In Act 1, 2 energy is expensive — Deadly Poison is better early.
+
+**Crippling Cloud** (Uncommon Skill, 2 energy) — Apply 4 poison AND 2 Weak to ALL enemies (7 upgraded). Three jobs in one card: spreads poison (Specimen synergy), applies Weak (your primary damage reduction while poison ticks), strips Artifact charges (1 poison per enemy = debuff application). Upgrade for 7 poison.
+
+> **Pick priority**: Take 1 copy in Act 2. Essential for multi-enemy fights. Skip in Act 1 — 2 energy for 4 poison isn't enough without existing poison synergy.
+
+**Corpse Explosion** (Rare Skill, 2 energy) — Apply 6 poison (9 upgraded). When the enemy dies, deal damage equal to its MAX HP to ALL enemies. This is the "delete enemy team" button. Corpse Explosion the weakest enemy, Catalyst the strongest. When the weak one dies to poison, its full HP (50+) explodes onto the strong one — which already has 80 poison. Cascade. Against Donu & Deca: Corpse Explosion on Donu, poison both, both die simultaneously.
+
+> **Pick priority**: Take on sight. Even a second copy is valid for two-target Corpse Explosion. Upgrade after Catalyst and Noxious Fumes.
+
+### B-Tier: The Bridge Cards
+
+**Poison Stab** (Common Skill, 1 energy) — Deal 6 damage + apply 3 poison (8+4 upgraded). The Act 1 bridge between immediate damage and poison scaling. This card lets poison decks survive Act 1 — it kills NOW and kills SOON. Take 2 copies in Act 1. Phase out in Act 2-3. Upgrade if no better options.
+
+**Footwork** (Uncommon Power, 1 energy) — Gain 2/3 Dexterity. Since poison decks spend 60%+ energy on block, every Dexterity point is +1 block on every Defend, Backflip, and Blur. At 3 Dexterity, a basic Defend blocks 8. Your block engine matches the poison timer. Take 1-2 copies.
+
+**Backflip** (Common Skill, 1 energy) — Gain 5/8 block, draw 2 cards. Finds Catalyst while keeping you alive. 2-3 copies is the sweet spot.
+
+**Blur** (Uncommon Skill, 1 energy) — Gain 5/8 block. Block carries over to next turn. With Footwork stacking, you can pool block across turns and spend one turn playing 3 poison cards without blocking.
+
+## Detailed Act-by-Act Strategy
+
+### Act 1 — Survive First, Poison Second
+
+The Silent starts with 5 Strikes, 5 Defends, Survivor, Neutralize, and Ring of the Snake (draw 2 extra turn 1). This is defensive. You have 7 block-related cards and 6 attack-related. You WILL struggle to kill Act 1 elites without adding front-loaded damage.
+
+**Floor 1-5: Damage First**
+
+Card pick priority:
+1. **Poison Stab** — 6 damage + 3 poison. Best common. Immediate + delayed damage in one card.
+2. **Dagger Spray** — Deal 4×2 to ALL. 8 AoE for 1 energy. Premium against Sentries and Slime Boss.
+3. **Dagger Throw** — Deal 9, draw 1, discard 1. Cycles itself while dealing damage.
+4. **Quick Slash** — Deal 8, draw 1. Simple and effective.
+5. **Sucker Punch** — Deal 7, apply 1 Weak. Saves HP against elites.
+
+Do NOT take early: Catalyst (dead card with 0 poison), Noxious Fumes (2 energy for slow damage isn't enough without other poison), any pure-block card before you have 3+ attacks.
+
+**Floor 6-10: Add Poison Enablers**
+
+By now you have 3-5 attacks. You can start taking poison setup:
+1. **Deadly Poison** — 1-2 copies. Your Catalyst base.
+2. **Noxious Fumes** — Safe now with enough damage to survive while it ticks.
+3. **Backflip** — 1 copy for consistency.
+
+**Elite Strategy (Act 1)**
+
+- **Sentries (Medium)**: Dagger Spray hits all 3. Poison Stab on outer Sentries (lower HP). Focus one at a time. Poison ticks during their alternating block turns. Expect 10-20 damage.
+- **Lagavulin (Hard)**: Stack Poison Stabs during 3-turn sleep. After waking, block and let poison tick. Dagger Spray for damage. Fight is long enough that poison wins. Expect 20-30 damage.
+- **Gremlin Nob (VERY Dangerous)**: Gains 2 Strength per Skill played. Poison Stab, Deadly Poison, Neutralize are ALL Skills. You MUST have pure Attacks (Dagger Throw, Quick Slash, Sucker Punch). Avoid if your deck is Skill-heavy. Will deal 40+ damage otherwise.
+
+> **Rule of thumb**: Path to 1 elite in Act 1. Poison is weak early. Your goal: reach Act 2 with Catalyst or Noxious Fumes and enough damage to survive.
+
+**Campfire Priority (Act 1)**
+1. Upgrade Neutralize — 0-cost 2-turn Weak. Most efficient upgrade in your deck.
+2. Upgrade Deadly Poison — 5→7 poison, 40% more base for Catalyst.
+3. Upgrade Catalyst if you have it and no Deadly Poison to upgrade.
+4. Rest — Silent has no sustain. Rest if HP &lt; 30.
+
+**Boss Preparation (Act 1)**
+- **Hexaghost (Favorable)**: Noxious Fumes turn 1. Fight lasts 8-10 turns. Poison accumulates. Block during Inferno. Take &lt;15 damage.
+- **Slime Boss (Medium)**: Corpse Explosion on the big slime BEFORE split. Poison spreads through splits.
+- **Guardian (Medium)**: Poison ignores Thorns (poison isn't an attack). Stack poison freely during Thorn form — zero counter-damage.
+
+### Act 2 — The Poison Engine Ignites
+
+**Early Act 2: Hunt Catalyst**
+
+Act 2 enemies demand block AND damage simultaneously. Without Catalyst, your poison is too slow.
+
+Shop priority: Catalyst (Rare) — buy regardless of cost. Check every shop.
+
+Card picks:
+1. **Catalyst** (1-2 copies) — Defines the build. Without it, poison is supplementary. With it, poison kills.
+2. **Corpse Explosion** — AoE solver for Act 2's brutal multi-fights.
+3. **Crippling Cloud** — AoE poison + Weak. Strips Artifact.
+4. **Footwork** — Block scaling. Without it, Defends fall off hard.
+
+**Mid Act 2: Refine**
+
+Once you have Catalyst + 2 poison sources:
+- Remove Strikes at shops. Every Strike you draw could have been Backflip or Deadly Poison.
+- Add card draw: Backflip, Acrobatics, Calculated Gamble. Finding Catalyst is priority #1 each fight.
+- **Well-Laid Plans**: Retain 1 card (2 upgraded). Hold Catalyst for the perfect poison-multiply turn. This card alone improves win rate by 20%.
+
+**Elite Strategy (Act 2)**
+- **Tri-Slavers (Hard without AoE)**: Corpse Explosion red Slaver (applies Vulnerable), Catalyst blue. Poison cascade kills them while you block.
+- **Book of Stabbing (Medium)**: Crippling Cloud applies Weak to reduce multi-hit damage. Noxious Fumes stacks. Catalyst at 10+ poison. Fight ends turn 6.
+- **Gremlin Leader (Hard without AoE)**: MUST have Corpse Explosion or Crippling Cloud. Without AoE, gremlins overwhelm. With Corpse Explosion on Leader + poison on minions, fight cascades.
+
+**Campfire Priority (Act 2)**
+1. Upgrade Catalyst (first) — Triple→Quadruple. Single most impactful upgrade.
+2. Upgrade Noxious Fumes — 2→3 poison/turn, 50% more poison.
+3. Upgrade Footwork — 2→3 Dexterity.
+4. Upgrade Corpse Explosion — +3 poison on application.
+
+**Act 2 Boss Prep**
+- **The Champ**: Phase 1 = setup. Apply all poison but DON'T Catalyst. When he drops below 50% HP, Catalyst+ on 15+ poison → 60+. He dies in 2 ticks — phase 2 never happens.
+- **Bronze Automaton**: Poison bypasses his defensive stance. Catalyst after Hyper Beam (he's vulnerable). Damage race — poison wins in 5 turns.
+- **Collector**: Corpse Explosion wins. Poison cascades through minions. Focus the Collector, let AoE poison clear minions.
+
+### Act 3 — Perfected Poison
+
+Your deck: 25-35 cards. 2-3 Deadly Poisons, 1-2 Noxious Fumes, 1-2 Catalysts, 3-4 block cards, 1-2 AoE. Remove remaining Strikes. Upgrade key pieces.
+
+Card picks for Act 3:
+1. **Burst** — Next Skill played twice. Burst→Catalyst+ = poison ×8. Burst→Deadly Poison = 10-14 poison. This kills Act 3 bosses in one turn.
+2. **Wraith Form** — Gain 2/3 Intangible. Lose 1 Dexterity/turn. Intangible = take 1 damage from everything. With 15+ poison ticking, fight ends before Dexterity drain matters. Panic button that saves lost runs.
+3. **After Image** — Every card played grants 1 block. Play 3-4 cards/turn = 3-4 passive block. Stacks with Footwork.
+4. **Malaise** — Spend X. Enemy loses X Strength, apply X Weak. Against Heart/Time Eater, reducing Strength by 6 = 36 less damage from 6-hit attack.
+
+**Final Boss Strategy**
+- **Time Eater (Difficult)**: HEALS at half HP, clearing ALL poison. Phase 1: apply only enough to reach half. Do NOT Catalyst. Phase 2 (after heal): NOW Deadly Poison + Catalyst+. One shot to kill before scaling. Malaise premium here.
+- **Awakened One (Favorable)**: Poison ticks through both phases. Stack Noxious Fumes early. Catalyst after transition.
+- **Donu & Deca (Medium)**: Corpse Explosion Donu. Poison both. Catalyst Deca when Donu near death. Donu explosion + Deca poison = simultaneous kill.
+
+### Act 4 — The Heart
+
+Poison excels against Heart because poison ticks don't trigger Beat of Death. Game plan: Survive turns 1-3 (Footwork + block). Noxious Fumes turn 1. Catalyst+ at 15+ poison. Wraith Form on turn 3 (blocks 67 nuke). Catalyst again turn 6. Heart dies turn 9.
+
+## Relic Priority
+
+### Run-Defining
+- **The Specimen**: Poison transfers on death. In multi-fights, poison never leaves — it cascades. Noxious Fumes accumulates on all enemies, then all transfers to the last survivor. Boss + minion fights become trivial.
+- **Snecko Skull**: +1 poison per application. Deadly Poison 5→6, Bouncing Flask 9→12, Noxious Fumes 2→3/turn. Hundreds of extra damage per run.
+- **Fossilized Helix**: Prevents first HP loss each combat. Guarantees zero damage during setup turns.
+
+### High Impact
+- **Twisted Funnel**: Start combat with 4 poison on ALL enemies. Free turn-0 Noxious Fumes. Wins Act 2 hallways alone.
+- **Paper Crane**: Weak reduces 40% instead of 25%. You apply Weak constantly — this is +15% block effectiveness.
+- **Tough Bandages**: Discard = 3 block. With Acrobatics/Calculated Gamble, that's free passive block.
+
+### Nice to Have
+- **Clockwork Souvenir**: Block Wraith Form's Dexterity drain. Permanent 3 Intangible.
+- **Pantograph**: Heal 25 HP before boss fights. Silent has no sustain. Saves runs.
+- **Chemical X**: +2 to X-cost cards. Malaise with free +2 = reduce Strength by 7.
+
+## Matchup Guide
+
+### Bosses You Crush
+**Hexaghost**: Predictable pattern, Noxious Fumes stacks, long fight = poison wins.
+**Guardian**: Poison ignores Thorns — deal damage without triggering counter.
+**Awakened One**: Long fight = more ticks = more Noxious Fumes value.
+
+### Bosses That Test You
+**Time Eater**: Clears poison at half HP. Save Catalyst for phase 2. Malaise reduces damage.
+**Champ**: Don't trigger phase 2 until poison is lethal. Catalyst BEFORE he hits half HP.
+**Corrupted Heart**: Poison ticks avoid Beat of Death. Wraith Form turn 3. Catalyst chain for 800 damage.
+
+## Alternative Cards
+
+**Envenom**: Every attack applies 1 poison. Pairs with multi-hit attacks. Not core but compensates for missing Bouncing Flask.
+
+**Burst**: Next Skill doubles. Burst→Catalyst+ = ×8 poison. Burst→Deadly Poison = 10-14 poison. The combo card.
+
+**Sadistic Nature**: Whenever you apply a debuff, deal 4/5 damage. Every Deadly Poison triggers 4 extra damage. Turns poison application into immediate damage — helps Act 1.
+
+**Acrobatics**: Draw 3, discard 1. Premium draw. With Tough Bandages, discard gives 3 free block.
+
+### Cards to AVOID
+- **Accuracy, Blade Dance**: Shiv archetype. Zero value in poison deck.
+- **Grand Finale**: Requires precise deck manipulation. Poison doesn't thin or count cards.
+- **Thousand Cuts**: Too slow at 2 energy. Poison IS your damage.

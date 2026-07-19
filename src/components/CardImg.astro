@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+// Look up card image
+const allCards = await getCollection('cards', ({ data }) => data.game === 'slay-the-spire-2');
+const card = allCards.find(c => c.data.name.toLowerCase() === name.toLowerCase());
+const image = card?.data.image;
+const slug = card?.data.slug;
+---
+
+{image ? (
+  <a
+    href={slug ? `/games/slay-the-spire-2/cards/${slug}/` : '#'}
+    class="inline-flex items-center gap-1.5 no-underline mx-0.5 align-middle"
+    title={name}
+  >
+    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-dark border border-border hover:border-primary/40 transition-colors">
+      <img
+        src={image}
+        alt={name}
+        width="80"
+        height="45"
+        loading="lazy"
+        class="h-8 w-auto object-contain rounded"
+        onerror="this.remove();"
+      />
+      <span class="text-xs font-medium text-primary">{name}</span>
+    </span>
+  </a>
+) : (
+  <span class="text-sm font-medium text-primary">{name}</span>
+)}

@@ -1,0 +1,79 @@
+# Character Dashboard — Colorless (无色)
+# Colorless is not a playable character — these are universal cards/relics
+# Dashboard skips: MechanicGrid, StartingHand, ArchetypeGrid
+
+slug: colorless
+name: Colorless
+game: slay-the-spire-2
+characterImage: ""
+role: "Universal Cards & Relics"
+difficulty: beginner
+tagline: "Cards and relics available to every character — the universal toolbox"
+playstyle: hybrid
+isColorless: true
+
+# No mechanics — Colorless has no unique character mechanics
+mechanics: []
+
+# No starting deck — Colorless is not playable
+
+# No archetypes — Colorless cards support all characters
+
+# No act strategy — not applicable
+
+pitfalls:
+  - title: "Buying too many Colorless cards"
+    severity: medium
+    tip: "Colorless cards cost gold and rare card rewards. Pick 1-2 that directly support your build — don't dilute your deck."
+
+  - title: "Underestimating Rarity tiers"
+    severity: high
+    tip: "Rare Colorless cards (Apotheosis, Master of Strategy) are some of the strongest cards in the game. Always check the shop."
+
+  - title: "Ignoring remove-targeting"
+    severity: medium
+    tip: "Transmutation and Purge offer flexible removal. Use them on Strikes before Act 2."
+
+  - title: "Shop relic trap"
+    severity: medium
+    tip: "Not every Colorless relic is worth the gold. Prioritize relics that synergize with your character's core mechanic."
+
+quickRef:
+  similarTo: ["MTG Artifact cards", "Hearthstone Neutral cards", "LoR Celestial cards"]
+  difficultyRating: 1
+  powerCurve: ["utility", "utility", "utility"]
+  paceLabel: "Consistent utility throughout the run"
+
+relicTiers:
+  - tier: S
+    label: "Run-defining"
+    items:
+      - name: "Prismatic Shard"
+        description: "Cards from all characters appear in card rewards. Infinite possibilities."
+        icon: "💎"
+      - name: "Cultist Headpiece"
+        description: "Lose starting relic. Gain +1 energy at start of every turn."
+        icon: "🎭"
+
+  - tier: A
+    label: "Strong utility"
+    items:
+      - name: "Cauldron"
+        description: "Brew potions at campfires. 5 random potions to choose from."
+        icon: "🫕"
+      - name: "Membership Card"
+        description: "50% shop discount. Pays for itself in Act 2."
+        icon: "💳"
+      - name: "Clockwork Souvenir"
+        description: "At combat start, gain 1 Artifact. Blocks debuffs."
+        icon: "⚙️"
+
+  - tier: B
+    label: "Situationally good"
+    items:
+      - name: "Toolbox"
+        description: "Start each combat with a random Colorless card in hand."
+        icon: "🧰"
+      - name: "Hand of Greed"
+        description: "Deal 20 damage. If Fatal, gain 20 Gold."
+        icon: "🪙"
