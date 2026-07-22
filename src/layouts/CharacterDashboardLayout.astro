@@ -5,6 +5,7 @@
 // Preserves JSON-LD, breadcrumbs, ads, and card pool from existing pages
 
 import MainLayout from './MainLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
 import MechanicIconGrid from '../components/MechanicIconGrid.astro';
 import StartingHand from '../components/StartingHand.astro';
 import StrategyTimeline from '../components/StrategyTimeline.astro';
@@ -367,6 +368,9 @@ const breadcrumbs = [
         </div>
       )}
     </section>
+
+    <!-- After-content ad -->
+    <AdSlot slot="after-content" />
 
     <!-- ========================================================== -->
     <!-- Full Card Pool (collapsible)                                   -->

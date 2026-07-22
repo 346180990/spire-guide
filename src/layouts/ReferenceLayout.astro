@@ -1,5 +1,6 @@
 ---
 import MainLayout from './MainLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
 
 export interface Props {
   title: string;
@@ -78,6 +79,9 @@ const pageUrl = `${siteUrl}games/${gameSlug}/${entityType.toLowerCase()}s/${Astr
     })} />
 
     <slot />
+
+    <!-- After-content ad -->
+    <AdSlot slot="after-content" />
 
     <div class="bg-amber-900/20 border border-amber-700/50 rounded-lg p-4 mt-8 text-sm text-amber-300 not-prose">
       <strong>Community Research Phase:</strong> This reference data is compiled from community sources and has not yet been independently verified by our editor. Game data may change with patches.

@@ -1,0 +1,113 @@
+---
+// AdSlot.astro — Google AdSense ad unit with lazy loading
+// Renders responsive ad units that only load when within 200px of the viewport.
+// Shows placeholder boxes in dev mode. Enforces max 3 ads per page.
+//
+// Usage in MDX:
+//   import AdSlot from '../../components/AdSlot.astro';
+//   <AdSlot slot="in-content-1" />
+//
+// Usage in Astro layouts:
+//   <AdSlot slot="after-content" />
+
+export interface Props {
+  /**
+   * Semantic slot name — determines sizing hints.
+   * Actual ad unit IDs are configured in the AdSense dashboard.
+   */
+  slot?: 'in-content-1' | 'in-content-2' | 'after-content' | 'sidebar';
+}
+
+const { slot = 'in-content-1' } = Astro.props;
+
+const isDev = import.meta.env.DEV;
+const publisherId: string | undefined = import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID;
+const hasPublisherId = Boolean(publisherId);
+
+// Real ads only on production builds with a configured publisher ID
+const showRealAds = !isDev && hasPublisherId;
+
+// Semantic labels for placeholder display
+const slotLabels: Record<string, string> = {
+  'in-content-1': 'In-Content Ad',
+  'in-content-2': 'In-Content Ad',
+  'after-content': 'After-Content Ad',
+  'sidebar': 'Sidebar Ad',
+};
+
+const label = slotLabels[slot] || 'Ad';
+---
+
+<div
+  class="ad-slot-container my-8 flex justify-center overflow-hidden"
+  data-ad-slot={slot}
+>
+  {
+    showRealAds ? (
+      <ins
+        class="adsbygoogle"
+        style="display:block; min-width:300px; max-width:100%; min-height:90px;"
+        data-ad-client={publisherId}
+        data-ad-slot={slot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      >
+      </ins>
+    ) : (
+      <div class="ad-placeholder w-full max-w-[728px] h-[90px] border-2 border-dashed border-border rounded-lg flex items-center justify-center bg-surface-alt text-text-muted text-xs tracking-wide select-none">
+        {label}
+      </div>
+    )
+  }
+</div>
+
+<script>
+  // AdSlot lazy-loading via Intersection Observer
+  // Astro hoists & bundles this script once per page — all slots share one observer.
+
+  function initAdSlots() {
+    const MAX_ADS_PER_PAGE = 3;
+    const ROOT_MARGIN = '200px';
+    let adCount = 0;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+
+          const container = entry.target as HTMLElement;
+          // Stop observing once the slot is in view
+          observer.unobserve(container);
+
+          // Enforce ad density limit (spec: max 3 per page)
+          if (adCount >= MAX_ADS_PER_PAGE) {
+            container.style.display = 'none';
+            continue;
+          }
+
+          // Trigger AdSense ad load
+          try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            adCount++;
+          } catch (_err) {
+            // AdSense script not loaded — likely ad blocker or network issue
+            // Silently skip; the placeholder remains hidden
+          }
+        }
+      },
+      { rootMargin: ROOT_MARGIN },
+    );
+
+    const slots = document.querySelectorAll<HTMLElement>('.ad-slot-container');
+    for (const el of slots) {
+      observer.observe(el);
+    }
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAdSlots);
+  } else {
+    initAdSlots();
+  }
+</script>

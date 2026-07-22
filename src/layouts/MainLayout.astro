@@ -37,6 +37,30 @@ const fullTitle = `${title} | ${siteName}`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Google AdSense -->
+    {import.meta.env.PROD && import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID && (
+      <script
+        is:inline
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
+
+    <!-- Google Analytics 4 -->
+    {import.meta.env.PROD && import.meta.env.PUBLIC_GA_MEASUREMENT_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_MEASUREMENT_ID}`}></script>
+        <script>
+          // Attach to window so the async gtag.js (which replaces window.gtag) can flush the queue
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function gtag() { window.dataLayer!.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', import.meta.env.PUBLIC_GA_MEASUREMENT_ID);
+        </script>
+      </>
+    )}
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="border-b border-border bg-surface/95 sticky top-0 z-50 backdrop-blur-sm">

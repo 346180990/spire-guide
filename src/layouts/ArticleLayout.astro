@@ -1,5 +1,6 @@
 ---
 import MainLayout from './MainLayout.astro';
+import AdSlot from '../components/AdSlot.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -233,6 +234,9 @@ const canonicalURL = new URL(articleUrl, siteUrl).href;
 
       <slot />
     </div>
+
+    <!-- After-content ad -->
+    <AdSlot slot="after-content" />
 
     <!-- Related Guides -->
     {guide.data.relatedGuides && guide.data.relatedGuides.length > 0 && (
