@@ -49,15 +49,14 @@ const fullTitle = `${title} | ${siteName}`;
     )}
 
     <!-- Google Analytics 4 -->
-    {import.meta.env.PROD && import.meta.env.PUBLIC_GA_MEASUREMENT_ID && (
+    {import.meta.env.DEV || !(import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-5EXR9W01MP') ? null : (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_MEASUREMENT_ID}`}></script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-5EXR9W01MP'}`}></script>
         <script>
-          // Attach to window so the async gtag.js (which replaces window.gtag) can flush the queue
           window.dataLayer = window.dataLayer || [];
           window.gtag = function gtag() { window.dataLayer!.push(arguments); };
           window.gtag('js', new Date());
-          window.gtag('config', import.meta.env.PUBLIC_GA_MEASUREMENT_ID);
+          window.gtag('config', import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-5EXR9W01MP');
         </script>
       </>
     )}
