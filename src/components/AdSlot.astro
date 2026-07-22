@@ -21,7 +21,7 @@ export interface Props {
 const { slot = 'in-content-1' } = Astro.props;
 
 const isDev = import.meta.env.DEV;
-const publisherId: string | undefined = import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID;
+const publisherId: string = import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-8481130725209151';
 const hasPublisherId = Boolean(publisherId);
 
 // Real ads only on production builds with a configured publisher ID

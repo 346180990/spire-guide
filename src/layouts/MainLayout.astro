@@ -39,11 +39,11 @@ const fullTitle = `${title} | ${siteName}`;
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Google AdSense -->
-    {import.meta.env.PROD && import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID && (
+    {import.meta.env.DEV ? null : (
       <script
         is:inline
         async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID}`}
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${import.meta.env.PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-8481130725209151'}`}
         crossorigin="anonymous"
       ></script>
     )}
