@@ -1,0 +1,108 @@
+---
+title: "Regent Command Chain Build — Best Cards & Relics"
+description: "Complete Command Chain build guide for Regent in Slay the Spire 2. Core cards, relic priorities, act-by-act strategy, and matchup advice."
+publishDate: 2026-07-24
+game: slay-the-spire-2
+gameVersion: "Early Access 0.3.x"
+featuredImage: "/images/characters/regent.jpg"
+character: Regent
+guideType: build
+phase: research
+difficulty: beginner
+relatedGuides:
+  - regent-overview
+  - regent-star-engine-build
+coreCards:
+  - "Rally"
+  - "Battle Orders"
+  - "Coordinated Strike"
+  - "Formation"
+  - "Warcry"
+  - "Banner of Courage"
+keyRelics:
+  - "War Banner"
+  - "Signet Ring"
+  - "Signal Whistle"
+  - "Crown of Command"
+  - "Sealed Testament"
+---
+
+The Command Chain build is the most straightforward way to play Regent — you summon a small team of allies, then issue Commands every turn to trigger their bonus effects. A well-piloted Command Chain generates more value per energy than any other build in the game. The catch: if your allies die, you're left with expensive blanks.
+
+## Build Overview
+
+The Command mechanic is Regent's defining feature. Each ally has a passive bonus and a Command trigger — when you play a Command card targeting that ally, the trigger fires. The build focuses on assembling a tight squad of 2-3 reliable allies and packing enough Command cards to trigger them every turn.
+
+The ideal sequence: play an ally → next turn, Rally them → the Rally triggers their Command bonus → follow with Coordinated Strike for the finisher.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Command Chain"
+  character="Regent"
+  difficulty="beginner"
+  coreCards={["Rally", "Battle Orders", "Coordinated Strike", "Formation", "Warcry", "Banner of Courage"]}
+  keyRelics={["War Banner", "Signet Ring", "Signal Whistle", "Crown of Command", "Sealed Testament"]}
+  strategy="Summon 2-3 allies early. Each turn, play Rally or Battle Orders to trigger Command bonuses. Coordinated Strike deals damage and triggers an additional Command. Formation plays two Commands back to back. Warcry buffs all allies simultaneously. The build scales through Command density — more Commands = more ally triggers = more value."
+/>
+
+## Core Cards
+
+**Rally** — The basic Command. Target ally gains +3 damage and attacks immediately. Your bread and butter. Draft multiple copies. Upgrade for +5 damage and draw 1 card.
+
+**Battle Orders** — Target ally gains 8 block and attacks. The defensive Command that keeps allies alive through hallway fights. Crucial for longer fights where ally HP matters.
+
+**Coordinated Strike** — Deal 12 damage. Then trigger the nearest ally's Command for free. This card effectively plays itself + a free Rally. Your highest-value single card. Upgrade to 18 damage.
+
+**Formation** — Play the next two Commands in your hand for 0 cost. Sets up devastating Command chains where Formation → Battle Orders → Rally triggers three ally effects in one turn.
+
+**Warcry** — All allies gain +2 damage this turn and attack. Mass Command for wide boards. Better with 3+ allies, but still decent with 2.
+
+**Banner of Courage** — Legacy card. For the rest of combat, your first Command each turn costs 0. The tempo swing from free Commands every turn is game-winning.
+
+## Key Relics
+
+**War Banner** — Allies deal +3 damage. Every summon, every Command attack, every Coordinated Strike — all buffed.
+
+**Signet Ring** — First Command each turn costs 0. Stacks with Banner of Courage for potentially 2 free Commands per turn.
+
+**Signal Whistle** — Commanding an ally draws a card. Solves the build's biggest weakness: running out of gas after your Command chain.
+
+**Crown of Command** — Commands trigger twice on the first target each turn. Double Rally means +6 damage and two attacks from one card.
+
+**Sealed Testament** — Legacy effects are 50% stronger. Banner of Courage now reduces Command cost by 2 instead of 1.
+
+## Act Strategy
+
+### Act 1
+**Goal:** Draft Squire and at least two Command cards. Build the foundation.
+
+Pick priority: Squire > Rally > Shield Bearer > Coordinated Strike > Holy Lancer > Strike.
+
+Upgrade Rally first. A free draw on Rally makes a huge difference in cycling through your deck.
+
+Fight elites with Squire on board for chip block. Your starting deck is decent for Act 1 because Squire provides free value every turn.
+
+### Act 2
+**Goal:** Add Battle Orders for ally protection and Coordinated Strike for damage.
+
+Pick priority: Coordinated Strike > Battle Orders > Formation > Holy Lancer > Bodyguard.
+
+Protect allies with Bodyguard. Losing a Knight Commander to chip damage is how Command Chain runs die.
+
+### Act 3
+**Goal:** Add Banner of Courage and Formation. Your Command density should be 40%+ of your deck.
+
+Pick priority: Banner of Courage > Formation > Warcry > Knight Commander > Ancient Decree.
+
+Ancient Decree is a Legacy card that makes all Commands cost 1 less for the combat. Combined with Banner of Courage, all Commands are free. You play your entire hand every turn.
+
+## Common Pitfalls
+
+**Too many allies, too few Commands** — 4 allies and 2 Commands means most allies sit idle. The ratio should be roughly 1:2 (ally to Command).
+
+**Ally dies without backup** — If your only Squire dies and you have no other ally in hand, your entire Command hand becomes dead cards. Have 2-3 allies in the deck minimum.
+
+**Ignoring defensive Commands** — Battle Orders and Shield Bearer aren't flashy, but they keep your allies alive. A dead ally provides zero Command value.
+
+**Formation without setup** — Playing Formation with no Commands in hand does literally nothing. Check your hand before playing it.

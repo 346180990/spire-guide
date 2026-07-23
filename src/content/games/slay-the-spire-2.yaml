@@ -8,6 +8,8 @@ description: >
   synergies, and the Spire will fall.
 coverImage: "/images/steam-header.jpg"
 releaseDate: "2026-03-01"
+version: "Early Access 0.3.x"
+lastVersionCheck: "2026-07-24"
 steamAppId: "2868840"
 heroImage: "/images/steam-hero.jpg"
 colorScheme:

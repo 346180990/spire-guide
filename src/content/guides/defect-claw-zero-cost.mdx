@@ -1,0 +1,106 @@
+---
+title: "Defect Claw 0-Cost Cycle Build — Best Cards & Relics"
+description: "Complete Claw 0-Cost Cycle build guide for Defect in Slay the Spire 2. Core cards, relic priorities, act-by-act strategy, and matchup advice."
+publishDate: 2026-07-24
+game: slay-the-spire-2
+gameVersion: "Early Access 0.3.x"
+featuredImage: "/images/characters/defect.jpg"
+character: Defect
+guideType: build
+phase: research
+difficulty: advanced
+relatedGuides:
+  - defect-overview
+  - defect-orb-focus-build
+coreCards:
+  - "Claw"
+  - "Scrape"
+  - "All for One"
+  - "Go for the Eyes"
+  - "FTL"
+  - "Reboot"
+keyRelics:
+  - "Unceasing Top"
+  - "Shuriken"
+  - "Kunai"
+  - "Ornamental Fan"
+  - "Art of War"
+---
+
+Claw is the Defect's most polarizing card. It's a 0-cost Attack that deals 3 damage and increases the damage of ALL Claws by 2 for the rest of combat. Draft five Claws, cycle your thin deck every turn with Scrape and All for One, and by turn 5 each Claw deals 30+ damage for 0 energy. This build turns the Defect into an aggro character — no orbs, no Focus, just claws.
+
+## Build Overview
+
+The Claw cycle build abandons the Defect's traditional orb scaling in favor of a razor-thin deck that plays every card every turn. All for One is the key recursion tool — it returns all 0-cost cards from your discard pile to your hand. Scrape draws 3 cards but only keeps 0-cost ones. With enough Claws and support, you play 10+ cards per turn for 0 energy.
+
+The build demands aggressive deck thinning. Strikes are garbage. Defends are acceptable. Every card that isn't 0-cost needs to justify its existence.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Claw / 0-Cost Spam"
+  character="Defect"
+  difficulty="advanced"
+  coreCards={["Claw", "Scrape", "All for One", "Go for the Eyes", "FTL", "Reboot"]}
+  keyRelics={["Unceasing Top", "Shuriken", "Kunai", "Ornamental Fan", "Art of War"]}
+  strategy="Draft every Claw you see — 4+ is ideal. Scrape draws Claws and other 0-cost cards directly to your hand. All for One returns all 0-cost cards from discard to hand, letting you play your entire deck twice in one turn. Go for the Eyes applies Weak for defense. FTL provides block and draw. Remove all Strikes — they're dead draws that clog your cycle."
+/>
+
+## Core Cards
+
+**Claw** — 0 cost, 3 damage, +2 to all Claws for the rest of combat. The damage compounds. With 4 Claws: first Claw = 3, second = 5, third = 7, fourth = 9. Next turn they start at 11 and climb from there. Draft every copy. Upgrade for 5 base damage.
+
+**Scrape** — Draw 3 cards, discard any that cost more than 0. In a deck of mostly 0-cost cards, Scrape reads "Draw 3." The discard is a feature — it puts cards into your discard pile for All for One to recover. Upgrade for Draw 4.
+
+**All for One** — Deal 15 damage, return all 0-cost cards from your discard pile to your hand. This is how you play 10 Claws in one turn. Costs 2 — make it your priority upgrade target (reduces to 1).
+
+**Go for the Eyes** — 0 cost, apply 1 Weak. If the enemy is attacking, apply 2 Weak instead. Free defense that also triggers Shuriken/Kunai for playing attacks.
+
+**FTL** — 0 cost, deal 7 damage, draw 1 card if you've played 3+ cards this turn. Play it 3rd or later in your sequence for a free draw. Upgrade for 10 damage.
+
+**Reboot** — Shuffle your discard pile into your draw pile, then draw 4 cards. Emergency refill when you run out of 0-cost cards. Also triggers Sundial and Abacus on shuffle.
+
+## Key Relics
+
+**Unceasing Top** — When your hand is empty, draw a card. In a 0-cost deck you empty your hand every turn. This relic means infinite draw.
+
+**Shuriken** — Every 3 attacks played in a turn, gain 1 Strength. You'll play 10+ attacks per turn. Permanent Strength scaling.
+
+**Kunai** — Every 3 attacks played in a turn, gain 1 Dexterity. Your block cards get better every turn. Combos with Shuriken since both trigger on attacks.
+
+**Ornamental Fan** — Every 3 attacks played in a turn, gain 4 block. Free defense while doing your Claw sequence.
+
+**Art of War** — If you play no Attacks during your turn, gain 1 extra energy next turn. Counter-intuitive for this build but useful on setup turns.
+
+## Act Strategy
+
+### Act 1
+**Goal:** Draft Claws aggressively. Survive Elites with whatever you can find.
+
+Pick priority: Claw > Ball Lightning > Scrape > Go for the Eyes > FTL > Cold Snap.
+
+Take 2-3 Claws. One Claw is not a build — you need at least 3 for the scaling to matter. Ball Lightning carries you through Act 1 until you have critical mass.
+
+### Act 2
+**Goal:** Find All for One. Add more Claws. Remove Strikes at every shop.
+
+Pick priority: All for One > Claw (more copies) > Scrape > Reboot > Go for the Eyes > FTL.
+
+Shop priority: remove Strikes > buy Claw if offered > buy Kunai/Shuriken.
+
+### Act 3
+**Goal:** Deck should be 15-20 cards. Thin to perfection. Add finishers.
+
+Pick priority: All for One (second copy) > Reboot > Madness > Beam Cell > Reprogram.
+
+Reprogram gives +1 Strength and +1 Dexterity per play. In a 0-cost cycling deck, you can play Reprogram 3+ times per fight for huge scaling.
+
+## Common Pitfalls
+
+**One Claw is not a build** — Taking one Claw and expecting it to work is the #1 mistake. You need 3+ Claws or the scaling is too slow.
+
+**Keeping Strikes** — A Strike is a dead draw that costs 1 energy and breaks the 0-cost cycle. Remove every Strike. Defends are acceptable early but should be removed by Act 3.
+
+**All for One at 2 cost** — An unupgraded All for One costs 2 in a deck where most turns generate 3 energy. That's crippling. Upgrade it immediately or don't play it.
+
+**Too many non-zero-cost cards** — Every card that costs 1+ is a card Scrape will discard and All for One won't retrieve. The golden ratio: 80% of your deck should cost 0.

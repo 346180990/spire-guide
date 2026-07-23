@@ -1,0 +1,106 @@
+---
+title: "Defect Power Spam Build — Best Cards & Relics"
+description: "Complete Power Spam build guide for Defect in Slay the Spire 2. Core cards, relic priorities, act-by-act strategy, and matchup advice."
+publishDate: 2026-07-24
+game: slay-the-spire-2
+gameVersion: "Early Access 0.3.x"
+featuredImage: "/images/characters/defect.jpg"
+character: Defect
+guideType: build
+phase: research
+difficulty: intermediate
+relatedGuides:
+  - defect-overview
+  - defect-orb-focus-build
+coreCards:
+  - "Creative AI"
+  - "Hello World"
+  - "Storm"
+  - "Amplify"
+  - "Heat Sinks"
+  - "Echo Form"
+keyRelics:
+  - "Mummified Hand"
+  - "Bird-Faced Urn"
+  - "Frozen Egg"
+  - "Data Disk"
+  - "Symbiotic Virus"
+---
+
+Power Spam is the Defect's most entertaining build — it turns every fight into a fireworks display. Each Power you play triggers Storm (channel Lightning), Heat Sinks (draw cards), and Mummified Hand (discounts). By turn 5 you have 10+ orbs, a hand full of free cards, and the enemy is getting zapped by passive Lightning every second.
+
+## Build Overview
+
+The engine is self-reinforcing: play Powers → Powers trigger effects → effects let you play more Powers. Storm is the payoff, converting each Power into a Lightning orb. Heat Sinks is the fuel, converting each Power into card draw. Together they create infinite loops where every card you play leads to another.
+
+Creative AI is the centerpiece — it generates a random Power every turn, guaranteeing you'll never run out of gas.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Power Spam"
+  character="Defect"
+  difficulty="intermediate"
+  coreCards={["Creative AI", "Hello World", "Storm", "Amplify", "Heat Sinks", "Echo Form"]}
+  keyRelics={["Mummified Hand", "Bird-Faced Urn", "Frozen Egg", "Data Disk", "Symbiotic Virus"]}
+  strategy="Play Creative AI first — it generates a free Power every turn. Storm channels Lightning each time you play a Power. Heat Sinks draws whenever you play a Power. The three cards form an engine: Power → channel Lightning → draw another Power → repeat. Amplify doubles your best Powers. By turn 6 you should have full orb slots and a hand full of 0-cost cards from Mummified Hand discounts."
+/>
+
+## Core Cards
+
+**Creative AI** — Generate a random Power card at the start of each turn. This card alone can win runs. The random Power pool includes everything from Defragment to Echo Form. Costs 3 — your priority upgrade target.
+
+**Storm** — Whenever you play a Power, channel 1 Lightning orb. In a Power-heavy deck this fills your orb slots in 2-3 turns. Upgrade for Innate (starts in your opening hand).
+
+**Heat Sinks** — Whenever you play a Power, draw 1 card. Turns every Power into a cantrip. With enough Powers you'll draw through your entire deck every turn. Upgrade for 2 card draw per Power.
+
+**Amplify** — Your next Power card is played twice. Double Creative AI or double Echo Form — the value is absurd. Costs 1 to play and is itself a Power, so it triggers Storm and Heat Sinks.
+
+**Hello World** — At the start of each turn, add a random common card to your hand. It's not a Power itself after playing, but it's cheap, fills your hand, and the random cards get discounted by Mummified Hand.
+
+**Echo Form** — The first card you play each turn is played twice. Costs 3, Ethereal. The ultimate Power payoff — double Storm triggers, double Lightning channels, double everything.
+
+## Key Relics
+
+**Mummified Hand** — Whenever you play a Power, a random card in your hand costs 0 this turn. This is the build's acceleration pedal. After 3-4 Powers, your entire hand is free.
+
+**Bird-Faced Urn** — Whenever you play a Power, heal 2 HP. In a deck playing 5+ Powers per fight, that's 10+ HP healed every combat. Free sustain.
+
+**Frozen Egg** — Powers are always upgraded when you add them to your deck. Creative AI generates random upgraded Powers. Double value.
+
+**Data Disk** — +1 Focus at combat start. All those Lightning orbs you're channeling with Storm hit harder from turn 1.
+
+**Symbiotic Virus** — The first Power each combat is played twice. Lead with Creative AI or Echo Form for an explosive start.
+
+## Act Strategy
+
+### Act 1
+**Goal:** Survive. Storm is the earliest Power payoff worth committing to.
+
+Pick priority: Ball Lightning > Cold Snap > Storm > Coolheaded > Sweeping Beam > Charge Battery.
+
+Storm is the signal to commit. Without it, draft standard orb cards and wait.
+
+### Act 2
+**Goal:** Add Creative AI or Heat Sinks. Your Power count should be 6+ by the boss.
+
+Pick priority: Creative AI > Heat Sinks > Echo Form > Amplify > Defragment > Capacitor.
+
+Once you have Storm + Creative AI, the build is online. Prioritize upgrading Creative AI to 2 cost.
+
+### Act 3
+**Goal:** Add Echo Form and more draw. The deck should play 3-4 Powers by turn 3.
+
+Pick priority: Echo Form > Seek > Reboot > Amplify > Buffer.
+
+Seek finds Creative AI on turn 1. Reboot resets your hand when it's full of 0-cost cards you want to play.
+
+## Common Pitfalls
+
+**Powers without Storm** — A deck with 8 Powers and no Storm is just a slow orb deck. Storm is the payoff that makes the Power density worth it.
+
+**Overshooting slot capacity** — Storm channels Lightning for every Power. If you have 3 orb slots and play 5 Powers, you'll evict your Frost orbs. Get Capacitor or Data Disk.
+
+**Heat Sinks before Power density** — Heat Sinks with 3 Powers draws 3 cards over a fight. That's a bad deal. Wait until you have 6+ Powers or you're wasting a card slot.
+
+**Creative AI at 3 cost** — Upgrading Creative AI from 3 to 2 cost is one of the highest-impact upgrades in the game. Do it before anything else.

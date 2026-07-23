@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { guide, gameMetadata, headerCards = [], headerRelics = [] } = Astro.props;
-const { title, description, publishDate, updatedDate, phase, guideType, character } = guide.data;
+const { title, description, publishDate, updatedDate, phase, guideType, character, gameVersion } = guide.data;
 const siteUrl = Astro.site?.href || 'https://example.com';
 
 const phaseLabels: Record<string, string> = {
@@ -118,6 +118,11 @@ const canonicalURL = new URL(articleUrl, siteUrl).href;
           <time datetime={updatedDate.toISOString()}>
             Updated: {formatDate(updatedDate)}
           </time>
+        )}
+        {gameVersion && (
+          <span class="text-xs font-medium px-2 py-0.5 rounded bg-blue-900/30 text-blue-300 border border-blue-700/50">
+            v{gameVersion}
+          </span>
         )}
       </div>
     </header>

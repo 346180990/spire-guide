@@ -11,6 +11,8 @@ const gameMetadataSchema = z.object({
   coverImage: z.string().optional(),
   releaseDate: z.string(),
   active: z.boolean().default(true),
+  version: z.string().optional(),
+  lastVersionCheck: z.string().optional(),
   steamAppId: z.string().optional(),
   heroImage: z.string().optional(),
   colorScheme: z.object({
@@ -36,6 +38,7 @@ const guideSchema = z.object({
   character: z.string().optional(),
   guideType: z.enum(['build', 'tier-list', 'beginner', 'advanced', 'character-overview', 'roadmap']),
   phase: z.enum(['research', 'verified', 'authoritative']).default('research'),
+  gameVersion: z.string().optional(),
   reviewed: z.boolean().default(false),
   reviewedDate: z.date().optional(),
   relatedGuides: z.array(z.string()).default([]),
