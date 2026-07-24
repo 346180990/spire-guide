@@ -1,0 +1,203 @@
+---
+title: "Necrobinder Osty Summoner Build — Companion Tank & Unleash One-Shot Guide"
+description: "Complete Osty Summoner build guide for Necrobinder in Slay the Spire 2. Grow Osty's HP into a tank, then convert it into massive damage with Unleash. Best cards, relics, and strategy."
+publishDate: 2026-07-24
+game: slay-the-spire-2
+featuredImage: "/images/characters/necrobinder.jpg"
+character: Necrobinder
+guideType: build
+phase: research
+difficulty: intermediate
+relatedGuides:
+  - necrobinder-overview
+  - necrobinder-doom-build
+  - necrobinder-minion-sacrifice
+coreCards:
+  - "Unleash"
+  - "Pull Aggro"
+  - "Reanimate"
+  - "Spur"
+  - "Calcify"
+  - "Sic 'Em"
+  - "Flatten"
+keyRelics:
+  - "Book Repair Knife"
+  - "Funerary Mask"
+  - "Unsettling Lamp"
+  - "Horn Cleat"
+  - "Anchor"
+---
+
+The Osty Summoner build focuses on the Necrobinder's most distinctive feature — Osty, the reanimated skeletal hand companion who acts as both tank and damage source. While Doom builds stack debuffs and Soul Cycle builds draw through their deck, the Osty build asks a simpler question: what if your pet had 80 HP and you could convert all of it into damage?
+
+The gameplay loop is satisfying: buff Osty's HP with Pull Aggro, Reanimate, and Spur → let Osty soak damage with its "Die For You" effect (intercepts attacks) → build up Necro Mastery stacks for passive scaling → finish fights with Unleash, which deals damage equal to Osty's current HP. At 60 HP, Unleash hits for 60. At 80 HP, it's a boss-killer. Osty is your shield, your sword, and your win condition — all in one skeletal package.
+
+## Build Overview
+
+The Osty Summoner game plan: buff Osty's HP throughout the fight → use Pull Aggro to redirect enemy attacks to Osty → maintain Osty's HP with Spur (heal) → stack Necro Mastery for passive damage scaling → cash in with Unleash (damage = Osty's HP) → repeat via Reanimate. Osty is a renewable resource — unlike your HP, Osty can be healed, buffed, and even resurrected.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Osty Summoner"
+  character="Necrobinder"
+  difficulty="intermediate"
+  coreCards={["Unleash", "Pull Aggro", "Reanimate", "Spur", "Calcify", "Sic 'Em", "Flatten"]}
+  keyRelics={["Book Repair Knife", "Funerary Mask", "Unsettling Lamp", "Horn Cleat", "Anchor"]}
+  strategy="Turn 1: play Pull Aggro to redirect attacks to Osty. Turns 2-3: buff Osty's HP with Reanimate and Spur, apply Calcify for damage scaling. Use Sic 'Em → Flatten → Rattle combo for mid-fight damage while Osty scales. When Osty reaches 50-80 HP, play Unleash for a massive single-target hit equal to Osty's current HP. Against bosses: cycle through multiple Unleash plays (Reanimate brings Osty back, repeat the HP stacking). Osty's HP = your damage ceiling."
+/>
+
+## Core Mechanics — Understanding Osty
+
+Before diving into cards, understand how Osty works:
+
+- **Osty is a companion** with its own HP pool (starts at 20-30 HP depending on Ascension unlocks).
+- **"Die For You"**: While Osty is alive, a portion of incoming damage is redirected to Osty instead of you. This is your primary defense mechanic.
+- **Osty can be buffed**: Increase its max HP (Reanimate, Pull Aggro), heal it (Spur), and add damage effects (Calcify, Squeeze).
+- **Osty can die**: If Osty's HP reaches 0, it's gone for the rest of combat (unless you have Reanimate or specific relics).
+- **Osty can be resummoned**: Reanimate brings Osty back at full HP.
+- **Unleash deals damage = Osty's current HP**: This is your finisher. 60 HP Osty = 60 damage Unleash. 80 HP = 80 damage.
+
+## Core Cards — The Osty Package
+
+### S-Tier: The Build-Defining Cards
+
+**Unleash** (Rare Attack, 2 energy) — Deal damage equal to Osty's current HP to ALL enemies. Exhaust. This is your win condition. With Osty at 40 HP: 40 AoE damage. At 60 HP: 60 AoE. At 80 HP: 80 AoE — enough to end most elite fights instantly. The Exhaust clause means you get one Unleash per fight (two with Hologram or recursion effects), so time it carefully. Don't Unleash at 25 HP — wait until Osty is fully buffed.
+
+> **Pick priority**: Build-defining. If you see Unleash, commit to the Osty build. Take 1 copy — you only need one because fights end when you play it.
+
+**Pull Aggro** (Common Skill, 1 energy) — Gain 7 Block. Redirect ALL incoming attacks to Osty this turn. This card solves the Necrobinder's fundamental problem: she has 66 HP, the lowest of any character. Pull Aggro says "attack Osty instead." Since Osty can be healed and buffed, redirecting damage is always correct. The 7 Block is a bonus. Take 2-3 copies. This is your defensive backbone.
+
+> **Pick priority**: Highest priority common. More Pull Aggros = more turns where enemies can't touch your HP. The Necrobinder's low HP stops being a problem.
+
+**Reanimate** (Uncommon Skill, 1 energy → 0 upgraded) — Fully restore Osty's HP. If Osty is dead, resummon it at full HP. This card resets your damage ceiling. Used Osty as a tank for 3 turns and it's at 5 HP? Reanimate back to full. Played Unleash (exhausts) and need Osty back? Reanimate resummons at full HP. At 0 energy upgraded, it's a free full restore. Take 1-2 copies.
+
+> **Pick priority**: High. Reanimate provides sustain for Osty and enables multiple Unleash cycles in boss fights.
+
+**Spur** (Common Skill, 1 energy) — Heal Osty for 8 HP (12 upgraded), gain 2 Summon stacks. Summon stacks increase Osty's damage via Calcify and Squeeze. Spur keeps Osty alive through redirected damage while building toward your payoff. The heal is essential — without Spur, Osty dies to accumulated chip damage before you can Unleash. Take 2-3 copies. Upgrade one copy (+50% healing).
+
+> **Pick priority**: Take after Pull Aggro. Spur is what keeps Osty alive between Pull Aggro turns.
+
+### A-Tier: The Damage Engine
+
+**Calcify** (Uncommon Power, 1 energy) — Osty gains +4 damage per Summon stack (upgraded: +6). Summon stacks come from Spur, Pull Aggro, and Necro Mastery. With 5 Summon stacks and Calcify+: Osty deals 30 bonus damage on top of its base attack. This provides consistent damage output while building toward Unleash. Take 1-2 copies.
+
+**Sic 'Em** (Common Attack, 1 energy) — Osty attacks the target. Deal 8 damage (12 upgraded). Simple, reliable, effective. Osty's base attack is your primary damage source outside of Unleash. Take 1-2 copies in Act 1; keep 1 copy for triggering attack chains.
+
+**Flatten** (Common Attack, 0 energy if Osty attacked this turn) — Deal 9 damage (13 upgraded). If Osty attacked this turn, Flatten costs 0 energy. The Sic 'Em → Flatten combo: 1 energy for 8 + 9 = 17 damage (25 upgraded). Add Rattle for a third hit.
+
+**Rattle** (Common Attack, 1 energy) — Deal 7 damage. If this is the third attack this turn (Sic 'Em → Flatten → Rattle), deal triple damage: 21. The full combo: Sic 'Em (8) + Flatten (9) + Rattle (21) = 38 damage for 2 energy. Excellent mid-fight damage while Osty scales toward Unleash.
+
+**Necro Mastery** (Rare Power, 2 energy → 1 upgraded) — At the start of each turn, gain 1 Summon stack. This provides passive Summon stacks without spending energy or cards. Over a 6-turn fight: 6 free Summon stacks = 24-36 extra Osty damage (with Calcify). Also increases Unleash damage indirectly by fueling Spur heals.
+
+> **Pick priority**: High. Necro Mastery is the Osty build's version of Demon Form — passive scaling that wins long fights.
+
+### B-Tier: The Support Cast
+
+**Squeeze** (Uncommon Attack, 1 energy) — Osty deals damage equal to its Summon stacks. With 6 Summon stacks: 6 damage baseline. With Calcify (+4 per stack): 30 damage. Scales with buffed Summon count. Take 1 copy.
+
+**Snap** (Common Attack, 0 energy) — Osty attacks. Retain. A 0-cost Osty attack that you can hold in hand for the perfect moment. Use it to enable Flatten (0-cost condition) or to add chip damage on setup turns. Retain makes it always available. Take 1-2 copies.
+
+**Death's Door** (Common Skill, 1 energy) — Gain 6 Block. If you've inflicted Doom this turn, gain 18 Block instead. While primarily a Doom card, the 6 Block is still solid defense. If you're running any incidental Doom (Blight Strike for damage), Death's Door becomes premium block.
+
+### Cards to AVOID
+
+- **Blight Strike, No Escape, Reaper Form**: Doom build cards. Osty doesn't apply Doom. Different archetype.
+- **Seance, Dirge, Soul Storm**: Soul Cycle cards. Osty doesn't generate or spend Souls.
+- **Haunt, Scythe**: Soul payoffs. Wrong build.
+- **Dark Pact**: Exhaust synergy. The Osty build doesn't want to exhaust cards — it wants to play them.
+
+## Relic Priority
+
+### Run-Defining
+
+- **Book Repair Knife**: When Osty kills an enemy, heal Osty for 8 HP. Turns every hallway fight into a full Osty heal. Osty becomes functionally immortal.
+- **Funerary Mask**: Start each combat with 2 Souls. While Souls aren't your primary engine, the free card draw accelerates your setup.
+- **Unsettling Lamp**: First debuff each combat is doubled. If you have any Doom cards (even 1 Blight Strike), the doubled Doom application provides incidental damage while Osty scales.
+
+### High Impact
+
+- **Horn Cleat**: 14 Block on turn 2. Buys you a free turn to play Reanimate or Spur without needing Pull Aggro.
+- **Anchor**: Start combat with 10 Block. Same value — lets you set up Osty buffs on turn 1 without taking damage.
+- **Sundial**: Every 3 shuffles, gain 2 energy. Osty decks cycle at normal speed, making this reliable energy income.
+
+### Nice to Have
+
+- **Burning Blood equivalent (any HP heal relic)**: The Necrobinder's 66 HP is fragile. Any source of passive healing is premium.
+- **Orichalcum**: Gain 6 Block if you end your turn without Block. Pull Aggro provides Block, but on turns where you don't draw it, Orichalcum covers you.
+
+## Act-by-Act Strategy
+
+### Act 1 — Secure Osty's Survival Tools
+
+The Necrobinder starts with Osty and 66 HP. Your immediate priority: find Pull Aggro to redirect damage away from your HP pool.
+
+**Floor 1-5 priorities:**
+1. **Pull Aggro** — Take every copy. Your HP depends on it.
+2. **Sic 'Em** — Reliable Osty attack for early damage.
+3. **Spur** — Osty heal + Summon stacks.
+4. **Snap** — 0-cost Osty attack with Retain.
+5. **Flatten** — Combo piece (0-cost after Sic 'Em).
+
+**Do NOT take early Doom cards.** Blight Strike and No Escape look tempting because they deal damage, but they dilute your Osty synergy. Commit to one archetype.
+
+**Elite strategy:**
+- **Sentries (Medium)**: Pull Aggro redirects their multi-hits to Osty. Spur heals Osty between cycles. Sic 'Em → Flatten kills one Sentry per cycle.
+- **Lagavulin (Favorable)**: Sleep phases = free Osty buff turns. Spur + Pull Aggro freely. Wake-up: Sic 'Em chain.
+- **Gremlin Nob (Dangerous)**: Pull Aggro and Spur are Skills. Bring Sic 'Em, Snap, and Flatten (Attacks). Avoid if possible.
+
+### Act 2 — Scale Osty and Add Payoffs
+
+**Priority picks:**
+1. Unleash (boss killer)
+2. Reanimate (Osty sustain + resummon)
+3. Calcify (Summon stack → damage conversion)
+4. Necro Mastery (passive Summon stacks)
+5. Rattle (combo finisher)
+
+**Shop priorities:** Remove Strikes. Buy Unleash if it appears. Book Repair Knife is a run-winning relic.
+
+**Elite strategy:**
+- **Tri-Slavers (Medium)**: Pull Aggro saves your HP. Focus red Slaver. Sic 'Em chain kills one per 2 turns.
+- **Book of Stabbing (Hard)**: Pull Aggro redirects the multi-hits to Osty. Spur keeps Osty alive. Unleash at 50+ Osty HP to end the fight.
+- **Gremlin Leader (Favorable)**: Sic 'Em kills minions. Osty tanks the Leader. Unleash clears all minions + chunk the Leader.
+
+### Act 3 — The Osty Powerhouse
+
+Your deck should be 20-25 cards with: 2-3 Pull Aggro, 1-2 Spur, 1-2 Reanimate, 1 Unleash, 1-2 Calcify, 1 Necro Mastery, the Sic 'Em → Flatten → Rattle combo, 1-2 Snap, 3-4 block cards.
+
+**Final boss strategy:**
+- **Time Eater (Medium)**: 12-card limit. Make each card count. Unleash at 60+ Osty HP is worth 6 turns of chip damage. Pull Aggro + Spur are efficient single-card plays.
+- **Awakened One (Favorable)**: Necro Mastery and Calcify are Powers (give it +Strength). But Unleash at 70+ HP kills phase 1 instantly. Reanimate → rebuild Osty during the transition.
+- **Donu & Deca (Favorable)**: Unleash hits BOTH (AoE). Buff Osty to 70+, Unleash for 70 AoE damage. Refocus on whichever survived.
+
+## Key Tips
+
+1. **Osty is your HP bar.** The Necrobinder's 66 HP is a trap — you should almost never take HP damage. Pull Aggro on any turn enemies are attacking. Osty's HP is renewable (Spur, Reanimate); yours is not.
+
+2. **Don't Unleash too early.** A 25-HP Unleash deals 25 damage — barely more than Sic 'Em. Wait until Osty has 50+ HP. The difference between Unleash at 25 and Unleash at 70 is the difference between "mediocre turn" and "fight over."
+
+3. **Reanimate enables multi-Unleash boss fights.** Unleash → exhausts → Reanimate resummons Osty → Spur + Pull Aggro to buff again → second Unleash. Against bosses, two 60+ damage Unleashes kill anything.
+
+4. **The Sic 'Em → Flatten → Rattle combo is your mid-fight damage.** While building toward Unleash, this 3-card sequence deals consistent damage. It also gives you something to do with your energy besides over-buffing Osty.
+
+5. **Summon stacks multiply with Calcify.** 1 Summon stack without Calcify = nothing. 5 Summon stacks with Calcify+ (+6 per stack) = 30 bonus Osty damage. The synergy is exponential — the more Summon stacks you have, the more each additional stack is worth.
+
+## Osty HP Management
+
+| Situation | Action |
+|---|---|
+| Osty at full HP, enemies attacking | Pull Aggro → redirect damage to Osty |
+| Osty at 50% HP | Spur to heal 8-12 HP |
+| Osty near death, Unleash in hand | Unleash NOW (cash in HP before Osty dies) |
+| Osty dead | Reanimate to resummon at full HP |
+| Osty at full HP, enemies not attacking | Sic 'Em chain for damage + Spur for more Summon stacks |
+| Osty at 70+ HP, Unleash in hand | Play Unleash. Fight should end. |
+
+## Matchup Guide
+
+**Favorable**: Lagavulin (sleep = free Osty buff turns), The Champ (buff phase = free setup, Unleash skips Execute), Awakened One (Unleash one-shots phase 1), Slime Boss (Unleash AoE clears all slimes), Sentries (Pull Aggro neutralizes multi-hits)
+
+**Unfavorable**: Book of Stabbing (multi-hit outpaces Spur healing), Reptomancer (exploding daggers demand immediate response before Osty is buffed), Gremlin Nob (Skill-heavy setup triggers Strength gain)
+
+**Nemesis**: Time Eater. The 12-card limit means you can't play the full Sic 'Em combo while also buffing Osty. Focus on buffing Osty and playing one Unleash. Make every card count.

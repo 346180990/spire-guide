@@ -1,0 +1,182 @@
+---
+title: "Silent Speedster Draw Loop Build — Passive AoE & Poison Engine Guide"
+description: "Complete Speedster Draw Loop build guide for Silent in Slay the Spire 2. Turn card draw into passive AoE damage and Poison stacks without playing attack cards."
+publishDate: 2026-07-24
+game: slay-the-spire-2
+featuredImage: "/images/characters/silent.jpg"
+character: Silent
+guideType: build
+phase: research
+difficulty: advanced
+relatedGuides:
+  - silent-overview
+  - silent-discard-build
+  - silent-poison-build
+coreCards:
+  - "Speedster"
+  - "Corrosive Wave"
+  - "Acrobatics"
+  - "Prepared"
+  - "Calculated Gamble"
+  - "Tactician"
+  - "Reflex"
+keyRelics:
+  - "Tough Bandages"
+  - "Hovering Kite"
+  - "Tingsha"
+  - "Ninja Scroll"
+  - "Bag of Marbles"
+---
+
+The Speedster Draw Loop is the Silent's most elegant build — and quite possibly the strongest archetype in Slay the Spire 2 Early Access. The concept is absurd: you deal 60-100+ damage per turn without playing a single attack card. Speedster deals 2-3 AoE damage every time you draw a card. Corrosive Wave applies 3 Poison to ALL enemies every time you draw a card. Then you chain Acrobatics, Prepared, and Calculated Gamble to draw 15-25 cards per turn. Elites die without you ever spending energy on an attack. Bosses die to combined AoE chip damage and stacking Poison. You spend ALL your energy on block, and enemies still die.
+
+The build is demanding to pilot — you need to track your draw chain, time your discard triggers, and manage a thin deck — but the payoff is unmatched. A fully online Speedster loop feels like you're playing a different game from everyone else.
+
+## Build Overview
+
+The Speedster game plan: play Speedster (passive AoE on draw) → play Corrosive Wave (passive Poison on draw) → chain draw cards to trigger both 10-20 times per turn → spend remaining energy on Wraith Form/Footwork for defense → watch enemies die to passive damage. Energy goes to block and setup. Damage comes from drawing cards.
+
+import BuildCard from '../../components/BuildCard.astro';
+
+<BuildCard
+  name="Speedster Draw Loop"
+  character="Silent"
+  difficulty="advanced"
+  coreCards={["Speedster", "Corrosive Wave", "Acrobatics", "Prepared", "Calculated Gamble", "Tactician", "Reflex"]}
+  keyRelics={["Tough Bandages", "Hovering Kite", "Tingsha", "Ninja Scroll", "Bag of Marbles"]}
+  strategy="Turn 1: play Speedster and Corrosive Wave. From then on, every card you draw deals 2-3 AoE damage + applies 3 Poison to all enemies. Chain Acrobatics (draw 3-4), Prepared (draw 2), and Calculated Gamble (discard hand, redraw) to trigger 10-25 draw effects per turn. Tactician and Reflex generate energy and extra draw when discarded. Spend all energy on block (Footwork, Wraith Form, Piercing Wail). Enemies die to the passive engine. Against bosses, the combined AoE + Poison stacks kill in 5-7 turns."
+/>
+
+## Core Cards — The Passive Engine
+
+### S-Tier: The Engine Core
+
+**Speedster** (Rare Power, 2 energy → 1 upgraded) — Every time you draw a card, deal 2 damage (3 upgraded) to ALL enemies. This is your primary win condition. In a turn where you draw 15 cards (Acrobatics × 2 + Prepared + Calculated Gamble + natural draw), Speedster+ deals 15 × 3 = 45 AoE damage. Against 3 enemies, that's 135 total damage. For zero energy spent on attacks. Take every copy you see. Upgrade immediately.
+
+> **Pick priority**: Build-defining. If you see Speedster in Act 1, commit to draw loop. The damage output scales with draw, not with turns — unlike Demon Form, Speedster kills at the same speed regardless of fight length.
+
+**Corrosive Wave** (Rare Power, 2 energy → 1 upgraded) — Every time you draw a card, apply 3 Poison (4 upgraded) to ALL enemies. This stacks with Speedster — every card draw now deals 3 AoE damage AND applies 3 Poison. In a 15-draw turn, that's 45 total Poison applied to every enemy. After 2 turns, every enemy has 100+ Poison. This is how you kill bosses — the AoE chip from Speedster clears hallway fights, and the Poison accumulation melts high-HP targets.
+
+> **Pick priority**: Second only to Speedster. Together, they form the "passive murder engine." Speedster alone kills hallways; Speedster + Corrosive Wave kills everything.
+
+### A-Tier: The Draw Engine
+
+**Acrobatics** (Common Skill, 1 energy) — Draw 3 cards (4 upgraded), discard 1 card. Your primary draw engine. One Acrobatics+ = 4 draw triggers (Speedster + Corrosive Wave) = 12 AoE damage + 12 Poison to all enemies. With two Acrobatics in your deck, you draw 7 extra cards per cycle. The discard cost isn't a cost — it triggers Tactician (energy) and Reflex (more draw).
+
+> **Pick priority**: Take 2-3 copies. This is the card you play most turns. More Acrobatics = more draw = more passive damage.
+
+**Calculated Gamble** (Uncommon Skill, 0 energy) — Discard your entire hand, draw that many cards. The ultimate burst trigger. With a full hand of 7 cards: discard 7, draw 7. That's 7 draw triggers (21 AoE damage + 21 Poison). With Reflex and Tactician in hand when discarded: free energy + extra draw. Best card for closing out fights — when the enemy is at 30 HP with 50 Poison, Calculated Gamble triggers lethal.
+
+> **Pick priority**: Take 1-2 copies. More than 2 is overkill because you need cards in hand to discard.
+
+**Prepared** (Common Skill, 0 energy) — Draw 2 cards, discard 2 cards. A 0-cost draw trigger that also enables discard synergies. Prepared → discard Tactician → gain 2 energy = net positive energy + 2 draw triggers (6 AoE + 6 Poison). In a Speedster loop, Prepared is both fuel and enabler. Take 2-3 copies.
+
+### B-Tier: The Discard Payoffs
+
+**Tactician** (Uncommon Skill, Sly) — When discarded: gain 1 energy (2 upgraded). The Sly keyword means this card plays itself for free when discarded. Discard Tactician via Acrobatics → gain 2 energy + Tactician plays itself. That's energy-positive AND a free card play. In a Speedster loop, Tactician generates the energy to play more Acrobatics, which discards more cards, which triggers more Tacticians. Take 1-2 copies.
+
+**Reflex** (Uncommon Skill, Sly) — When discarded: draw 2 cards (3 upgraded). Sly: plays itself for free when discarded. Discard Reflex → draw 3 cards → each draw triggers Speedster + Corrosive Wave = 9 AoE damage + 9 Poison from ONE discard. Plus Reflex plays itself. Take 1-2 copies.
+
+**Master Planner** (Rare Power, 1 energy) — All non-Sly Skills in your hand gain Sly. This makes Acrobatics, Prepared, and Calculated Gamble all trigger Sly effects. A hand with 3 Sly Acrobatics = 3 free card plays whenever you discard them. This is the card that pushes the Speedster loop from "strong" to "broken."
+
+### C-Tier: The Defensive Shell
+
+**Footwork** (Uncommon Power, 1 energy) — Gain 2 Dexterity (3 upgraded). With 3 Dexterity, Defend blocks 8, Survive blocks 11. You spend all energy on block in this build, so Dexterity is premium. Take 1-2 copies.
+
+**Wraith Form** (Rare Power, 3 energy) — Gain 2 Intangible (3 upgraded). Lose 1 Dexterity per turn. Intangible reduces ALL damage to 1. In a build where damage comes from passive draw triggers, you can afford to spend 3 energy on immortality. Play Wraith Form, then chain draw cards for 3 turns while taking 1 damage per hit.
+
+**Piercing Wail** (Common Skill, 1 energy) — ALL enemies lose 6 Strength (8 upgraded) for 1 turn. Against multi-hit enemies, this blocks 20-40 damage. Essential against Book of Stabbing and the Heart.
+
+### Cards to AVOID
+
+- **Blade Dance, Accuracy**: Shiv archetype. Wrong build. You don't play attack cards.
+- **Deadly Poison, Catalyst**: Single-target Poison. You're applying AoE Poison via Corrosive Wave, which is better.
+- **Grand Finale**: Requires deck counting. Speedster loop draws too erratically for precise manipulation.
+- **Eviscerate, Sneaky Strike**: Discard damage payoffs. You win through passive draw triggers, not attack damage.
+
+## Relic Priority
+
+### Run-Defining
+
+- **Tough Bandages**: Gain 3 Block (4 upgraded) every time you discard a card. In a Speedster loop, you discard 5-15 cards per turn. That's 15-60 passive block per turn. This relic makes you immortal.
+- **Hovering Kite**: Gain 1 energy every time you discard a card. In a 15-discard turn: 15 free energy. You can play every card in your hand every turn. This relic pushes the build into S+ tier.
+- **Tingsha**: Deal 3 damage to a random enemy every time you discard a card. This adds ANOTHER passive damage layer on top of Speedster. At 15 discards/turn: 45 extra random damage.
+
+### High Impact
+
+- **Ninja Scroll**: Start combat with 3 Shivs in hand. Shivs aren't your game plan, but they're cards you can discard for Calculated Gamble/Tactician triggers on turn 1.
+- **Bag of Marbles**: Free Vulnerable at combat start boosts Speedster's AoE damage by 50%.
+- **Ring of the Snake**: The Silent's starting relic draws 2 extra cards on turn 1 — that's 2 free Speedster/Corrosive Wave triggers before you play anything.
+- **Unceasing Top**: When your hand is empty, draw 1 card. In this build, your hand regularly empties from Calculated Gamble. Free draw = free damage.
+
+### Nice to Have
+
+- **Sundial**: Every 3 shuffles, gain 2 energy. With a thin deck, you shuffle 3-5 times per fight.
+- **Calipers**: Block only falls by 15 instead of resetting. With Tough Bandages generating 30+ passive block per turn, Calipers lets you carry 15 Block between turns.
+
+## Act-by-Act Strategy
+
+### Act 1 — Survive and Hunt Speedster
+
+The Speedster build is a late-bloomer. In Act 1, you don't have the engine yet. Play like a generic Silent: take damage cards, survive, and hunt for Speedster.
+
+**Floor 1-5 priorities:**
+1. **Poison Stab** — 6 damage + 3 Poison. Solid Act 1 damage.
+2. **Dagger Throw** — 9 damage + draw + discard. Preview of your future engine.
+3. **Acrobatics** — Take even before Speedster. Acrobatics is good in any Silent deck.
+4. **Prepared** — 0-cost cycle. Take 1 copy early.
+5. **Deadly Poison** — Boss damage. You'll pivot away later, but it helps in Act 1.
+
+**Speedster + Corrosive Wave are your build signals.** If you see either in Act 1, take them and commit. Don't take both in Act 1 — 4 energy of Powers is too slow against Act 1 elites.
+
+**Elite strategy:**
+- **Sentries (Medium)**: Dagger Throw + Poison Stab. Acrobatics to find your damage.
+- **Lagavulin (Hard)**: You lack burst. Deadly Poison is premium. Play Powers during sleep phase.
+- **Gremlin Nob (Dangerous)**: Skill-heavy deck = dead. Bring pure damage or avoid entirely.
+
+### Act 2 — Assemble the Engine
+
+By now you should have Speedster or Corrosive Wave (ideally both). The build starts to come online.
+
+**Priority picks:**
+1. Calculated Gamble — Burst draw trigger
+2. Tactician — Energy generation
+3. Reflex — Draw extension
+4. Footwork — Defense scaling
+5. Master Planner — Sly enabler
+
+**Shop priorities:** Remove Strikes aggressively. Every Strike is a dead draw that could have been Acrobatics. Buy Tough Bandages if it appears.
+
+**Elite strategy:**
+- **Tri-Slavers (Favorable with Speedster)**: AoE from Speedster kills all three simultaneously. Focus block.
+- **Book of Stabbing (Medium)**: Piercing Wail essential. Speedster AoE + Weak = survivable.
+- **Gremlin Leader (Favorable)**: Speedster AoE kills minions passively. You focus entirely on the Leader.
+
+### Act 3 — The Perfect Loop
+
+Your deck should be 20-25 cards with: 2 Speedster, 1-2 Corrosive Wave, 2-3 Acrobatics, 2 Prepared, 1 Calculated Gamble, 1-2 Tactician, 1-2 Reflex, 3-4 block cards.
+
+**Final boss strategy:**
+- **Time Eater (Hard)**: 12-card limit restricts draw chains. Make each card count. Speedster + Corrosive Wave must be played early. Acrobatics+ only.
+- **Awakened One (Medium)**: Powers-heavy deck gives it Strength. But your passive damage doesn't care — it deals 45/turn whether the boss has 0 or 10 Strength.
+- **Donu & Deca (Favorable)**: AoE hits both. You out-scale their buffing. By turn 5, both have 80+ Poison and die simultaneously.
+
+## Key Tips
+
+1. **Thin the deck aggressively.** 15-20 cards is ideal. Every non-draw, non-block card dilutes your engine. Remove Strikes at every shop.
+
+2. **Speedster + Corrosive Wave before draw cards.** Always play your Powers before chaining draw. The triggers only count if the Powers are already in play.
+
+3. **Tactician and Reflex MUST be in hand to trigger.** Don't play them directly unless desperate. Their value comes from being discarded by Acrobatics/Calculated Gamble.
+
+4. **Energy goes to block, not attacks.** Your damage is passive. Spend ALL energy on Wraith Form, Footwork, and Piercing Wail. You don't need attack cards in this deck past Act 1.
+
+5. **Boss fights: poison them, block, wait.** Corrosive Wave stacks 50+ Poison in 3-4 turns. After that, you can play 100% defense and let Poison kill.
+
+## Matchup Guide
+
+**Favorable**: Donu & Deca (dual AoE), Gremlin Leader (minions die passively), Slavers (simultaneous kills), Slime Boss (AoE clears splits), Hexaghost (Poison out-scales Inferno)
+
+**Unfavorable**: Time Eater (card limit), Gremlin Nob (Skill-heavy), Book of Stabbing (multi-hit demands perfect block before engine is online)
+
+**Nemesis**: The Corrupted Heart. Beat of Death (2 damage per card) punishes your high card volume. You play 10-15 cards per turn — that's 20-30 self-damage from Beat of Death. Wraith Form + Tough Bandages are mandatory. You need 3 Intangible turns to set up enough Poison to kill before Beat of Death kills you.
