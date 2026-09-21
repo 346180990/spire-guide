@@ -8,7 +8,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "preview": "npx --yes serve out",
-    "deploy": "npm run build && npx --yes wrangler pages deploy out --project-name=strategy-guide-site",
+    "deploy": "npm run build && npx --yes wrangler deploy",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "format": "prettier --write . && npm run lint"

@@ -1,0 +1,19 @@
+/**
+ * Cloudflare Worker（静态资源模式）部署配置
+ *
+ * 复用现有资源：
+ *   - Worker 名称：strategy-guide-site（沿用 spire-guide 原有 Worker）
+ *   - 自定义域：https://spireguide.top
+ *
+ * 站点为纯静态导出（out/），因此无需 main 入口脚本，
+ * 直接以 assets 模式部署；wrangler 会自动处理 /about -> about.html。
+ */
+{
+  "name": "strategy-guide-site",
+  "compatibility_date": "2026-04-15",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

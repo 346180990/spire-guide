@@ -8,7 +8,7 @@
 
 - **Next.js 15**（Pages Router）+ TypeScript + Tailwind CSS
 - **纯静态**：全部页面使用 `getStaticProps` / `getStaticPaths`，`next build` 直接导出静态站点到 `out/`
-- **Cloudflare Pages** 托管
+- **Cloudflare Workers（静态资源模式）** 托管
 - 支持 **Markdown**、**LaTeX 公式**（KaTeX）、**Mermaid 流程图**、代码高亮、RSS、sitemap
 - 主题基于 [PingRay](https://github.com/thedogb/PingRay) by [Bartender](https://thedoga.tech)（MIT）
 
@@ -51,28 +51,32 @@ npm run build        # 静态导出到 out/，并生成 sitemap / rss.xml
 npm run preview      # 本地静态预览 out/
 ```
 
-## 部署到 Cloudflare Pages
+## 部署到 Cloudflare
 
-站点复用现有的 Cloudflare Pages 项目 `strategy-guide-site` 与自定义域 `spireguide.top`。
+站点复用现有资源：
 
-### 方式一：手动部署（wrangler）
+| 资源 | 值 |
+| --- | --- |
+| Worker 名称 | `strategy-guide-site` |
+| 自定义域 | `https://spireguide.top` |
+| GA4 | `G-5EXR9W01MP` |
+| AdSense | `ca-pub-8481130725209151` |
+
+站点是纯静态导出，因此以 **Assets-only Worker** 方式部署（见 `wrangler.jsonc`），无需 Worker 入口脚本。
 
 ```bash
-npx wrangler login   # 首次需要授权
-npm run deploy       # 构建并上传 out/
+npx wrangler login   # 首次需要浏览器授权；CI/非交互环境改用 CLOUDFLARE_API_TOKEN
+npm run deploy       # 构建 out/ 并 wrangler deploy
 ```
 
-### 方式二：Cloudflare Pages Git 集成
+只构建不上传（用于本地校验产物）：
 
-在 Cloudflare Dashboard 中把该项目的构建配置设为：
+```bash
+npm run build && npx wrangler deploy --dry-run
+```
 
-| 配置项 | 值 |
-| --- | --- |
-| 构建命令 | `npm run build` |
-| 输出目录 | `out` |
-| Node 版本 | 20 或更高 |
-
-之后 `git push` 即自动构建发布。
+> 注意：旧的攻略站代码仍完整保留在本仓库 git 历史中（提交 `c7180cd`），
+> 需要回滚时执行 `git checkout c7180cd -- .` 后重新构建部署即可。
 
 ## 站点配置
 
