@@ -1,3 +1,1 @@
-# Character Overview → Dashboard redirects
-/games/:game/guides/defect-overview/  /games/:game/characters/defect/  301
-/games/:game/guides/regent-overview/  /games/:game/characters/regent/  301
+/feed /rss.xml 301

@@ -1,27 +1,53 @@
-# Obsidian vault source data (not committed)
-vault-source/
+# dependencies
+/node_modules
 
-# Dependencies
-node_modules/
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
 
-# Astro cache
-.astro/
-
-# Cloudflare cache
+# cloudflare / wrangler
+/.wrangler/
+.dev.vars
 .wrangler/
 
-# Build output
-dist/
-
-# Environment
+# env files
 .env
 .env.local
 .env.*.local
 
-# OS
-.DS_Store
-Thumbs.db
+# build output
+/build
+/dist/
 
-# IDE
+# 构建期生成的 SEO 产物（由 next-sitemap / genRss 生成）
+public/robots.txt
+public/sitemap.xml
+public/sitemap-0.xml
+public/rss.xml
+
+# editor
 .vscode/
 .idea/
+*.sw?
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# caches
+.tailwind/
+eslintcache
+.prettiercache
+.husky/_
+
+# misc
+.DS_Store
+Thumbs.db
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+coverage/
