@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "版本对比",
+  "usingComponents": {
+    "line-chart": "/components/line-chart/index"
+  }
+}

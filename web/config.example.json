@@ -1,0 +1,43 @@
+{
+  "host": "127.0.0.1",
+  "port": 8090,
+  "accessToken": "",
+  "barsTtlDays": 7,
+  "strategy": {
+    "kind": "标准分RSRS",
+    "n": 18,
+    "m": 700,
+    "up": 0.7,
+    "dn": -0.7,
+    "trend": false,
+    "maWin": 20
+  },
+  "symbols": ["000300", "000905", "399006"],
+  "scheduler": {
+    "enabled": true,
+    "slots": [
+      { "at": "08:45", "label": "盘前", "force": true, "onlyOnChange": true, "refreshBars": false },
+      { "at": "18:00", "label": "盘后", "force": false, "onlyOnChange": true, "refreshBars": true }
+    ]
+  },
+  "push": {
+    "enabled": false,
+    "provider": "wecom-bot",
+    "wecomBot": {
+      "webhook": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=把这里换成你的KEY"
+    },
+    "wecomApp": {
+      "corpid": "",
+      "corpsecret": "",
+      "agentid": "",
+      "touser": "@all"
+    },
+    "serverchan": {
+      "sendkey": ""
+    },
+    "pushplus": {
+      "token": "",
+      "topic": ""
+    }
+  }
+}

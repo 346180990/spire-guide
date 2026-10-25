@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/strategies/strategies",
+    "pages/backtest/backtest",
+    "pages/detail/detail",
+    "pages/replay/replay",
+    "pages/params/params",
+    "pages/result/result",
+    "pages/compare/compare"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "策略助手",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F7FB",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#748198",
+    "selectedColor": "#246BFE",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/strategies/strategies",
+        "text": "策略"
+      },
+      {
+        "pagePath": "pages/backtest/backtest",
+        "text": "回测"
+      }
+    ]
+  },
+  "cloud": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

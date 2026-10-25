@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#246BFE" />
+<title>策略助手 · RSRS 择时</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="app">
+
+  <!-- 顶部导航 -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">R</span>
+      <span class="brand-name">策略助手</span>
+      <span class="brand-sub">RSRS 择时</span>
+    </div>
+
+    <nav class="mainnav">
+      <button class="nav-link active" data-tab="strategy">策略</button>
+      <button class="nav-link" data-tab="defense">防守</button>
+      <button class="nav-link" data-tab="backtest">回测</button>
+      <button class="nav-link" data-tab="data">数据</button>
+      <button class="nav-link" data-tab="source">源码</button>
+    </nav>
+
+    <div class="topbar-right">
+      <span class="pill" id="statusPill">加载中</span>
+      <span class="topbar-meta" id="dataAsOf">—</span>
+      <button class="icon-btn" id="btnRefresh" title="刷新行情">⟳</button>
+    </div>
+  </header>
+
+  <!-- ============ 策略 ============ -->
+  <main class="view" id="view-strategy">
+    <div class="grid">
+
+      <div class="col-main">
+
+        <section class="card datebar">
+          <div class="datebar-left">
+            <div class="label">查看日期</div>
+            <div class="hint" id="dateHint">默认今天，只用该日及之前的数据</div>
+          </div>
+          <div class="datebar-right">
+            <input type="date" id="viewDate" class="date-input" />
+            <button class="btn btn-small" id="btnToday">今天</button>
+            <button class="btn btn-small" id="btnLastBuy" title="跳到最近一个开仓日">上一个买点</button>
+            <button class="btn btn-small" id="btnLastSell" title="跳到最近一个平仓日">上一个卖点</button>
+          </div>
+          <div id="viewModeBanner" class="datebar-banner"></div>
+        </section>
+
+        <section class="card">
+          <div class="summary">
+            <div class="summary-main">
+              <div class="label">当前结论</div>
+              <div class="conclusion" id="conclusion">—</div>
+              <div class="hint" id="appliesTo">—</div>
+            </div>
+            <div class="summary-asof">
+              <div class="label">行情数据截至</div>
+              <div class="big mono" id="asOfBig">—</div>
+              <div class="hint"><span id="dataSource">—</span> · <span id="fetchedAt">—</span></div>
+            </div>
+            <div class="counts-wrap">
+              <div class="counts" id="counts"></div>
+              <div class="hint counts-note">买入 / 卖出只在<b>仓位翻转当天</b>出现；其余日子是「持有」（在场）或「观望」（空仓）</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="reason" id="reason">—</div>
+          <div id="warnings"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">标的明细</h2>
+            <button class="btn btn-ghost btn-small" id="detailToggle">收起 ▴</button>
+          </div>
+          <div id="detailBody">
+            <div class="sym-head-row">
+              <span>标的</span><span>信号</span><span class="num">指标</span>
+              <span class="num">R²</span><span class="num">仓位</span>
+              <span class="num">持有</span><span>为什么</span>
+            </div>
+            <div class="symbols" id="detailTable"></div>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="col-side">
+
+        <section class="card">
+          <h2 class="card-title">策略参数</h2>
+          <div class="field">
+            <label>指标版本</label>
+            <select id="kindSelect"></select>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>回归窗口 N</label>
+              <input id="inputN" type="number" inputmode="numeric" />
+            </div>
+            <div class="field flex1">
+              <label>标准化窗口 M</label>
+              <input id="inputM" type="number" inputmode="numeric" />
+            </div>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>开仓阈值</label>
+              <input id="inputUp" type="number" step="0.1" />
+            </div>
+            <div class="field flex1">
+              <label>平仓阈值</label>
+              <input id="inputDn" type="number" step="0.1" />
+            </div>
+          </div>
+          <div class="field">
+            <label>计算标的</label>
+            <div class="chips" id="symbolChips"></div>
+          </div>
+          <div class="field">
+            <label class="check-row">
+              <input type="checkbox" id="inputTrend" />
+              <span>MA20 趋势过滤（钝化）</span>
+            </label>
+            <div class="hint mt6">信号为持仓且均线上倾才真的持仓：回撤小很多，牛市里会少吃一段</div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btnApplyParams">应用参数</button>
+          <div class="hint mt8" id="paramsHint"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">微信推送</h2>
+            <span class="pill" id="pushPill">未知</span>
+          </div>
+          <div class="hint" id="pushInfo">—</div>
+          <div class="row gap8 mt12">
+            <button class="btn flex1 btn-small" id="btnPushPreview">预览消息</button>
+            <button class="btn flex1 btn-small" id="btnPushTest">发测试</button>
+          </div>
+          <pre class="preview hidden" id="pushPreview"></pre>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">每日计算</h2>
+            <span class="pill" id="jobPill">—</span>
+          </div>
+          <div class="hint" id="jobNext">下一次：—</div>
+          <div class="job-slots" id="jobSlots"></div>
+          <div class="job-list" id="jobList"></div>
+          <button class="btn btn-small btn-full mt12" id="btnRunJob">立即跑一次</button>
+        </section>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- ============ 回测 ============ -->
+  <main class="view hidden" id="view-backtest">
+    <div class="grid">
+
+      <div class="col-main">
+        <section class="card hidden" id="btResult">
+          <div class="card-head">
+            <h2 class="card-title" id="btTitle">回测结果</h2>
+            <span class="pill" id="btSource">—</span>
+          </div>
+          <div class="metrics" id="btMetrics"></div>
+          <div class="chart-wrap">
+            <canvas id="btChart" class="chart"></canvas>
+            <div class="chart-tip hidden" id="btTip"></div>
+          </div>
+          <div class="legend">
+            <span><i class="dot dot-strategy"></i>策略净值</span>
+            <span><i class="dot dot-bench"></i>买入持有</span>
+          </div>
+          <div class="hint mt8" id="btNote"></div>
+
+          <div class="card-head mt16">
+            <h2 class="card-title">交易明细</h2>
+            <span class="hint" id="btTradeCount"></span>
+          </div>
+          <div class="table" id="btTrades"></div>
+        </section>
+
+      </div>
+
+      <aside class="col-side">
+        <section class="card">
+          <h2 class="card-title">新建回测</h2>
+          <div class="field">
+            <label>标的</label>
+            <select id="btSymbol"></select>
+          </div>
+
+          <div class="field">
+            <label>策略</label>
+            <select id="btKind"></select>
+            <div class="hint mt6" id="btKindDesc">—</div>
+          </div>
+
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>回归窗口 N</label>
+              <input id="btN" type="number" inputmode="numeric" />
+            </div>
+            <div class="field flex1">
+              <label>标准化窗口 M</label>
+              <input id="btM" type="number" inputmode="numeric" />
+            </div>
+          </div>
+
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>开仓阈值</label>
+              <input id="btUp" type="number" step="0.1" />
+            </div>
+            <div class="field flex1">
+              <label>平仓阈值</label>
+              <input id="btDn" type="number" step="0.1" />
+            </div>
+          </div>
+
+          <div class="row gap8">
+            <button class="btn btn-small flex1" id="btnBtFromStrategy">用策略页参数</button>
+            <button class="btn btn-small flex1" id="btnBtPreset">套用标的预设</button>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>开始日期</label>
+              <input id="btStart" type="date" />
+            </div>
+            <div class="field flex1">
+              <label>结束日期</label>
+              <input id="btEnd" type="date" />
+            </div>
+          </div>
+          <div class="field">
+            <label>初始资金</label>
+            <input id="btCapital" type="number" value="100000" />
+          </div>
+          <div class="field">
+            <label>成交假设</label>
+            <select id="btExec">
+              <option value="next_close">次日收盘</option>
+              <option value="next_open">次日开盘</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="check-row">
+              <input type="checkbox" id="btTrend" />
+              <span>MA20 趋势过滤（钝化）</span>
+            </label>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>手续费（单边）</label>
+              <input id="btFee" type="number" step="0.0001" value="0.0003" />
+            </div>
+            <div class="field flex1">
+              <label>滑点（单边）</label>
+              <input id="btSlip" type="number" step="0.0001" value="0.0005" />
+            </div>
+          </div>
+          <div class="hint mt8" id="btParams">参数：—</div>
+          <button class="btn btn-primary btn-full mt12" id="btnRun">开始回测</button>
+          <div class="hint mt8">历史模拟，不含分红税；不构成投资建议。</div>
+        </section>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ============ 防守开关 ============ -->
+  <main class="view hidden" id="view-defense">
+    <div class="grid">
+      <div class="col-main">
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">防守开关 · 时变夏普120 + MA200</h2>
+            <span class="pill" id="dfPill">—</span>
+          </div>
+          <div class="summary">
+            <div class="summary-main">
+              <div class="label">当前结论</div>
+              <div class="conclusion" id="dfConclusion">—</div>
+              <div class="hint" id="dfReason">—</div>
+            </div>
+            <div class="summary-asof">
+              <div class="label">行情数据截至</div>
+              <div class="big mono" id="dfAsOf">—</div>
+              <div class="hint"><span id="dfSource">—</span> · <span id="dfFetched">—</span></div>
+            </div>
+            <div class="counts-wrap">
+              <div class="counts" id="dfCounts"></div>
+              <div class="hint counts-note">持有 = 夏普与 MA200 同时满足；任一破坏即空仓，空仓资金可放 511010</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="reason" id="dfFlip">—</div>
+          <div id="dfWarnings"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">标的状态</h2>
+            <span class="hint" id="dfRange"></span>
+          </div>
+          <div id="dfTable"></div>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 class="card-title">同规则回测</h2>
+            <span class="pill" id="dfBtSource">—</span>
+          </div>
+          <div class="metrics" id="dfMetrics"></div>
+          <div class="chart-wrap">
+            <canvas id="dfChart" class="chart"></canvas>
+            <div class="chart-tip hidden" id="dfTip"></div>
+          </div>
+          <div class="legend">
+            <span><i class="dot dot-strategy"></i>防守净值</span>
+            <span><i class="dot dot-bench"></i>买入持有</span>
+          </div>
+          <div class="hint mt8" id="dfBtNote"></div>
+        </section>
+      </div>
+
+      <aside class="col-side">
+        <section class="card">
+          <h2 class="card-title">参数</h2>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>夏普窗口</label>
+              <input id="dfWindow" type="number" inputmode="numeric" />
+            </div>
+            <div class="field flex1">
+              <label>均线窗口</label>
+              <input id="dfMaWin" type="number" inputmode="numeric" />
+            </div>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1">
+              <label>开仓阈值</label>
+              <input id="dfUp" type="number" step="0.1" />
+            </div>
+            <div class="field flex1">
+              <label>平仓阈值</label>
+              <input id="dfDn" type="number" step="0.1" />
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btnDfApply">应用参数</button>
+          <div class="hint mt8" id="dfParamsHint"></div>
+          <div class="field mt12">
+            <label>关注标的</label>
+            <div class="chips" id="dfChips"></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="card-title">回测区间</h2>
+          <div class="row gap12">
+            <div class="field flex1"><label>开始</label><input id="dfStart" type="date" /></div>
+            <div class="field flex1"><label>结束</label><input id="dfEnd" type="date" /></div>
+          </div>
+          <div class="row gap12">
+            <div class="field flex1"><label>手续费</label><input id="dfFee" type="number" step="0.0001" value="0.0003" /></div>
+            <div class="field flex1"><label>滑点</label><input id="dfSlip" type="number" step="0.0001" value="0.0005" /></div>
+          </div>
+          <button class="btn btn-primary btn-full" id="btnDfRun">跑回测</button>
+          <div class="hint mt8">用当前参数 + 选中标的的第一个（指数优先）</div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ============ 数据 ============ -->
+  <main class="view hidden" id="view-data">
+    <div class="data-page">
+
+      <section class="card">
+        <div class="card-head">
+          <h2 class="card-title">标的对比 · 最新一根</h2>
+          <div class="row gap8">
+            <span class="hint" id="dataScope">—</span>
+            <button class="btn btn-small btn-ghost" id="btnDataScope">显示全部</button>
+            <button class="btn btn-small" id="btnDataRefresh">重新拉取</button>
+          </div>
+        </div>
+        <div class="bars-table" id="dataOverview"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <div class="src-head">
+            <h2 class="card-title" id="dataTitle">—</h2>
+            <div class="hint mt6 mono" id="dataMeta">—</div>
+          </div>
+        </div>
+
+        <div class="data-checks" id="dataChecks"></div>
+
+        <div class="card-head mt16">
+          <h2 class="card-title">最近 20 根 K 线</h2>
+          <span class="hint">策略拿到的原始 OHLCV</span>
+        </div>
+        <div class="bars-table" id="dataBars"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============ 源码 ============ -->
+  <main class="view hidden" id="view-source">
+    <div class="grid-src">
+
+      <aside class="card src-side">
+        <h2 class="card-title">实现文件</h2>
+        <div class="hint mt6">只读 · 只看策略核心（指标 / 信号 / 回测 / 校验），读的是磁盘上正在跑的那份</div>
+        <div class="src-list" id="srcList"></div>
+      </aside>
+
+      <section class="card src-main">
+        <div class="card-head">
+          <div class="src-head">
+            <h2 class="card-title" id="srcTitle">—</h2>
+            <div class="hint mt6 mono" id="srcMeta">—</div>
+          </div>
+          <div class="row gap8">
+            <button class="btn btn-small" id="btnSrcCopy">复制全文</button>
+            <a class="btn btn-small btn-ghost" id="srcRaw" href="#" target="_blank" rel="noopener">原始文件</a>
+          </div>
+        </div>
+        <div class="src-note" id="srcNote"></div>
+        <div class="code-wrap" id="srcCode"></div>
+      </section>
+
+    </div>
+  </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

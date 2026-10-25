@@ -1,0 +1,109 @@
+<view class="page-wrap">
+
+  <view class="card">
+    <view class="title-sm">新建回测</view>
+
+    <view class="field mt16">
+      <text class="field-label">标的</text>
+      <picker mode="selector" range="{{symbols}}" range-key="name" value="{{symbolIndex}}" bindchange="onSymbolChange">
+        <view class="input row between">
+          <text>{{symbolName}}（{{symbol}}）</text>
+          <text class="tiny">▾</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="row gap12">
+      <view class="field flex1">
+        <text class="field-label">开始日期</text>
+        <picker mode="date" value="{{start}}" bindchange="onStartChange">
+          <view class="input {{errors.start ? 'input-error' : ''}}">{{start || '选择'}}</view>
+        </picker>
+        <view wx:if="{{errors.start}}" class="field-error">{{errors.start}}</view>
+      </view>
+      <view class="field flex1">
+        <text class="field-label">结束日期</text>
+        <picker mode="date" value="{{end}}" bindchange="onEndChange">
+          <view class="input {{errors.end ? 'input-error' : ''}}">{{end || '选择'}}</view>
+        </picker>
+        <view wx:if="{{errors.end}}" class="field-error">{{errors.end}}</view>
+      </view>
+    </view>
+
+    <view class="row gap12">
+      <view class="field flex1">
+        <text class="field-label">初始资金（元）</text>
+        <input class="input {{errors.capital ? 'input-error' : ''}}" type="number" value="{{capital}}" data-field="capital" bindinput="onInput" />
+        <view wx:if="{{errors.capital}}" class="field-error">{{errors.capital}}</view>
+      </view>
+      <view class="field flex1">
+        <text class="field-label">成交假设</text>
+        <picker mode="selector" range="{{execOptions}}" value="{{executionIndex}}" bindchange="onExecutionChange">
+          <view class="input row between">
+            <text>{{executionIndex === 0 ? '次日收盘' : '次日开盘'}}</text>
+            <text class="tiny">▾</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="row gap12">
+      <view class="field flex1">
+        <text class="field-label">手续费（单边）</text>
+        <input class="input {{errors.fee ? 'input-error' : ''}}" type="digit" value="{{fee}}" data-field="fee" bindinput="onInput" />
+        <view wx:if="{{errors.fee}}" class="field-error">{{errors.fee}}</view>
+      </view>
+      <view class="field flex1">
+        <text class="field-label">滑点（单边）</text>
+        <input class="input {{errors.slip ? 'input-error' : ''}}" type="digit" value="{{slip}}" data-field="slip" bindinput="onInput" />
+        <view wx:if="{{errors.slip}}" class="field-error">{{errors.slip}}</view>
+      </view>
+    </view>
+
+    <view class="tiny">当前参数版本 {{configVersion}}：{{configBrief}}</view>
+    <view class="mt8"><button class="btn btn-ghost btn-small" bindtap="goParams">调整参数</button></view>
+  </view>
+
+  <!-- 预检结果 -->
+  <view class="card" wx:if="{{preflight}}">
+    <view class="row between">
+      <text class="title-sm">运行前预检</text>
+      <text class="pill {{preflight.enough ? 'pill-ok' : 'pill-warn'}}">{{preflight.enough ? '可回测' : '数据不足'}}</text>
+    </view>
+    <view class="sub mt12">{{preflight.message}}</view>
+    <view class="tiny mt8">数据区间 {{preflight.first}} ~ {{preflight.asOf}} · 来源 {{preflight.source}}</view>
+    <view wx:if="{{preflight.stale}}" class="info-bar warn-bar mt12">使用的是本地缓存行情，可能不是最新交易日。</view>
+  </view>
+
+  <button class="btn btn-full" bindtap="onRun" disabled="{{running || (preflight && !preflight.enough)}}">
+    {{running ? '回测中…' : '开始回测'}}
+  </button>
+  <view class="tiny mt12" style="text-align:center">回测为历史模拟，不含真实成交与分红税；结果不构成投资建议。</view>
+
+  <view class="row between mt16 mb8">
+    <text class="title">最近回测</text>
+    <text wx:if="{{runs.length >= 2}}" class="tiny" bindtap="goCompare">版本对比 ›</text>
+  </view>
+
+  <view wx:if="{{runs.length === 0}}" class="card">
+    <view class="empty">
+      <view class="empty-title">还没有回测记录</view>
+      <view>上面跑一次，结果会出现在这里。</view>
+    </view>
+  </view>
+  <view wx:for="{{runs}}" wx:key="runId" class="card">
+    <view class="row between">
+      <view class="title-sm">{{item.title}}</view>
+      <text class="pill pill-ok">完成</text>
+    </view>
+    <view class="tiny mt8">{{item.range}} · {{item.brief}}</view>
+    <view class="row between mt12">
+      <view class="sub">年化 <text class="bold mono {{item.cagrTone}}">{{item.cagrText}}</text>　最大回撤 <text class="bold mono">{{item.mddText}}</text></view>
+      <view class="row gap8">
+        <button class="btn btn-secondary btn-small" data-id="{{item.runId}}" bindtap="goResult">查看</button>
+        <button class="btn btn-ghost btn-small" bindtap="goCompare">对比</button>
+      </view>
+    </view>
+    <view class="tiny mt8">{{item.createdText}}</view>
+  </view>
+</view>

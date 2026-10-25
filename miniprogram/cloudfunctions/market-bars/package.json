@@ -1,0 +1,9 @@
+{
+  "name": "market-bars",
+  "version": "1.0.0",
+  "description": "拉日线 OHLCV 供 RSRS 与回测使用",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

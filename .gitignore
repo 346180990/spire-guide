@@ -1,0 +1,22 @@
+# 运行时数据：行情缓存 / 回测记录 / 状态 / 日志（可重新拉取，不入库）
+web/data/bars/
+web/data/runs/
+web/data/*.log
+web/data/state.json
+web/data/push-log.json
+web/data/job-log.json
+
+# 本地配置（可能含 webhook / sendkey，别提交）
+web/config.json
+scripts/lan-key.txt
+
+# DSH 工具目录与本机日志
+.dsh-vision-router/
+dsh-web.*.log
+
+# 系统与临时文件
+.tmp-*
+*.tmp
+node_modules/
+.DS_Store
+Thumbs.db

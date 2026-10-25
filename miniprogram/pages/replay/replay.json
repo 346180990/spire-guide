@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "历史信号回看",
+  "usingComponents": {
+    "status-pill": "/components/status-pill/index"
+  }
+}

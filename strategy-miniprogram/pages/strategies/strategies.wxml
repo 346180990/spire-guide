@@ -1,0 +1,61 @@
+<view class="page-wrap">
+
+  <view wx:if="{{error}}" class="info-bar danger-bar">
+    <view>{{error}}</view>
+    <view class="mt8"><button class="btn btn-small" bindtap="load">重试</button></view>
+  </view>
+
+  <!-- 行情状态：首屏必须能看到「数据截至」 -->
+  <view class="card">
+    <view class="row between">
+      <view class="flex1">
+        <view class="sub">行情数据截至</view>
+        <view class="big mono">{{dataAsOfText}}</view>
+      </view>
+      <status-pill text="{{statusLabel}}" tone="{{statusTone}}" />
+    </view>
+    <view class="row between mt12">
+      <text class="tiny">最近刷新 {{refreshedAt}}</text>
+      <text class="tiny">来源 {{source}}</text>
+    </view>
+    <view wx:for="{{warnings}}" wx:key="*this" class="info-bar warn-bar mt12">{{item}}</view>
+  </view>
+
+  <!-- RSRS 策略卡片 -->
+  <view class="card" bindtap="goDetail">
+    <view class="row between">
+      <view class="flex1">
+        <view class="title">RSRS 择时</view>
+        <view class="sub mt8">按高低价回归斜率生成择时信号（标准分 / 修正标准分）</view>
+      </view>
+    </view>
+
+    <view class="row wrap gap8 mt12">
+      <text class="pill pill-info">{{configBrief}}</text>
+      <text class="pill">{{symbolCount}} 个标的</text>
+    </view>
+
+    <view class="divider"></view>
+
+    <view class="row between">
+      <view class="flex1">
+        <view class="sub">当前结论</view>
+        <view class="title mt8">
+          <text class="{{conclusionTone === 'up' ? 'up' : conclusionTone === 'down' ? 'down' : conclusionTone === 'danger' ? 'warn' : ''}}">{{conclusionTitle}}</text>
+          <text class="tiny"> · {{appliesTo}} 生效</text>
+        </view>
+      </view>
+      <button class="btn btn-secondary btn-small" catchtap="goDetail">查看详情</button>
+    </view>
+
+    <view class="row gap12 mt16">
+      <view class="flex1"><text class="tiny">买入</text><view class="bold up">{{counts.buy}}</view></view>
+      <view class="flex1"><text class="tiny">卖出</text><view class="bold down">{{counts.sell}}</view></view>
+      <view class="flex1"><text class="tiny">持有</text><view class="bold">{{counts.hold}}</view></view>
+      <view class="flex1"><text class="tiny">观望</text><view class="bold muted">{{counts.wait}}</view></view>
+      <view class="flex1"><text class="tiny">不可用</text><view class="bold warn">{{counts.unavailable}}</view></view>
+    </view>
+  </view>
+
+  <view class="tiny mt20" style="text-align:center">模拟信号 · 不构成投资建议</view>
+</view>

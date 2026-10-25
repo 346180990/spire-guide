@@ -1,0 +1,4 @@
+<view class="pill pill-{{tone}}">
+  <text class="glyph">{{glyph}}</text>
+  <text>{{text}}</text>
+</view>

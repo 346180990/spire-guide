@@ -1,0 +1,2 @@
+.input.row { align-items: center; }
+.tabs { margin-top: 4rpx; }

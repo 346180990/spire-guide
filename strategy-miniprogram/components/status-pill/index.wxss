@@ -1,0 +1,19 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  background: #EEF3FB;
+  color: #53627A;
+}
+.glyph { font-size: 18rpx; opacity: 0.85; }
+.pill-ok { background: #E4F8EF; color: #11966D; }
+.pill-warn { background: #FFF3E0; color: #C4761A; }
+.pill-danger { background: #FDEBEB; color: #D64545; }
+.pill-info { background: #EAF1FF; color: #246BFE; }
+.pill-up { background: #FDECEC; color: #D64545; }
+.pill-down { background: #E4F8EF; color: #11966D; }
+.pill-muted { background: #F1F3F7; color: #7C8AA0; }

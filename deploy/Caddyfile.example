@@ -1,0 +1,24 @@
+# 可选：给策略助手套域名 + 自动 HTTPS
+#
+# 用法：
+#   1. 域名 A 记录指向服务器公网 IP
+#   2. 国内服务器绑域名必须完成 ICP 备案（不然 80/443 会被拦）
+#   3. apt install caddy 后把本文件放到 /etc/caddy/Caddyfile 并 systemctl reload caddy
+#
+# ⚠ 重要：server.mjs 的鉴权是「按来源 IP 判断本机」——
+#    套了反代之后所有请求都来自 127.0.0.1，会被当成「本机访问」直接放行，
+#    SA_TOKEN 形同失效。所以反代前面必须自己加一道密码，下面用 basic_auth。
+#    生成密码哈希: caddy hash-password --plaintext '你的密码'
+#
+# 不想折腾域名就跳过本文件：直接用 http://IP:8090/?token=xxx 就够了。
+
+your.domain.com {
+    encode gzip
+
+    basic_auth {
+        # 用户名 + caddy hash-password 生成的哈希
+        me $2a$14$REPLACE_WITH_CADDY_HASH_PASSWORD_OUTPUT
+    }
+
+    reverse_proxy 127.0.0.1:8090
+}

@@ -1,0 +1,89 @@
+<view class="page-wrap">
+
+  <view class="info-bar">保存会生成新的参数版本，旧版本的信号与回测结果保持不变。默认值来自 RSRS改进.ipynb。</view>
+
+  <view class="card">
+    <view class="title-sm">RSRS 参数</view>
+
+    <view class="field mt16">
+      <text class="field-label">指标版本</text>
+      <picker mode="selector" range="{{kinds}}" range-key="key" value="{{kindIndex}}" bindchange="onKindChange">
+        <view class="input row between">
+          <text>{{kinds[kindIndex].key}}</text>
+          <text class="tiny">▾</text>
+        </view>
+      </picker>
+      <view class="help">{{kinds[kindIndex].desc}}</view>
+    </view>
+
+    <view class="row gap12">
+      <view class="field flex1">
+        <text class="field-label">回归窗口 N</text>
+        <input class="input {{errors.n ? 'input-error' : ''}}" type="number" value="{{form.n}}" data-field="n" bindinput="onNumInput" />
+        <view wx:if="{{errors.n}}" class="field-error">{{errors.n}}</view>
+      </view>
+      <view class="field flex1">
+        <text class="field-label">标准化窗口 M</text>
+        <input class="input {{errors.m ? 'input-error' : ''}}" type="number" value="{{form.m}}" data-field="m" bindinput="onNumInput" />
+        <view wx:if="{{errors.m}}" class="field-error">{{errors.m}}</view>
+      </view>
+    </view>
+
+    <view class="row gap12">
+      <view class="field flex1">
+        <text class="field-label">开仓阈值</text>
+        <input class="input {{errors.up ? 'input-error' : ''}}" type="digit" value="{{form.up}}" data-field="up" bindinput="onNumInput" />
+        <view wx:if="{{errors.up}}" class="field-error">{{errors.up}}</view>
+      </view>
+      <view class="field flex1">
+        <text class="field-label">平仓阈值</text>
+        <input class="input {{errors.dn ? 'input-error' : ''}}" type="digit" value="{{form.dn}}" data-field="dn" bindinput="onNumInput" />
+        <view wx:if="{{errors.dn}}" class="field-error">{{errors.dn}}</view>
+      </view>
+    </view>
+
+    <view class="field">
+      <view class="row between">
+        <text class="field-label">MA20 趋势过滤（钝化）</text>
+        <switch checked="{{form.trend}}" bindchange="onTrendChange" color="#246BFE" />
+      </view>
+      <view class="help">信号为持仓且均线上倾才真的持仓：回撤小很多，牛市里会少吃一段。</view>
+    </view>
+
+    <view wx:if="{{errors.kind}}" class="field-error">{{errors.kind}}</view>
+    <view wx:for="{{warnings}}" wx:key="*this" class="info-bar warn-bar mt12">{{item}}</view>
+
+    <button class="btn btn-secondary btn-full mt12" bindtap="applyPreset">套用当前标的的 notebook 预设</button>
+  </view>
+
+  <view class="card">
+    <view class="title-sm">计算标的</view>
+    <view class="tiny mt8">点选切换，至少 1 个、最多 12 个。信号只算选中的标的。</view>
+    <view class="row wrap gap8 mt12">
+      <view wx:for="{{allSymbols}}" wx:key="id"
+            class="chip {{symbols.indexOf(item.id) >= 0 ? 'chip-on' : ''}}"
+            data-id="{{item.id}}" bindtap="onToggleSymbol">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="title-sm">成交假设</view>
+    <view class="field mt12">
+      <picker mode="selector" range="{{execOptions}}" value="{{executionIndex}}" bindchange="onExecutionChange">
+        <view class="input row between">
+          <text>{{executionIndex === 0 ? '次日收盘成交' : '次日开盘成交'}}</text>
+          <text class="tiny">▾</text>
+        </view>
+      </picker>
+      <view class="help">信号在 T 日盘后生成，默认按 T+1 收盘成交；该假设会写入回测快照。</view>
+    </view>
+  </view>
+
+  <view class="card card-flat">
+    <view class="tiny">当前生效版本 {{prevVersion}}：{{prevBrief}}</view>
+  </view>
+
+  <button class="btn btn-full" bindtap="onSave" disabled="{{saving}}">保存为新参数版本</button>
+</view>

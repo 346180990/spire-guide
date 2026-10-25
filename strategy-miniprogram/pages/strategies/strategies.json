@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "策略",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "status-pill": "/components/status-pill/index"
+  }
+}

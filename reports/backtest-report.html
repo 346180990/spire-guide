@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>定投策略回测报告</title>
+<style>
+  :root{--bg:#0a0f1c;--card:#111a2c;--bd:#1f2c47;--fg:#e9eef9;--dim:#8896b3;--up:#3ddc97;--down:#ff6b6b}
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px;background:var(--bg);color:var(--fg);font:14px/1.7 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+  h1{font-size:22px;margin:0 0 6px}
+  h2{font-size:17px;margin:34px 0 10px;padding-top:16px;border-top:1px solid var(--bd)}
+  h3{font-size:13px;color:var(--dim);margin:20px 0 8px;font-weight:500}
+  .range{font-size:12px;color:var(--dim);font-weight:400;margin-left:8px}
+  .meta{color:var(--dim);font-size:12px;margin-bottom:8px}
+  .warn{background:#2a2113;border-left:3px solid #f5b63f;color:#f5b63f;padding:8px 12px;border-radius:6px;font-size:12px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden;font-size:13px}
+  th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--bd)}
+  th{color:var(--dim);font-weight:500;font-size:12px;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  .n{text-align:right;font-variant-numeric:tabular-nums}
+  .up{color:var(--up)} .down{color:var(--down)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px}
+  .foot{margin-top:34px;padding:14px 16px;background:var(--card);border:1px solid var(--bd);border-radius:10px;font-size:12px;color:var(--dim)}
+  .foot b{color:var(--fg)}
+</style></head><body>
+<h1>定投策略回测报告</h1>
+<p class="meta">生成于 2026-10-18T05:35:26.540Z　·　基础月投 5,000 元
+　·　年化费率损耗 0.3%　·　债券假设年化 3.0%</p>
+<section>
+      <h2>沪深300 <span class="range">2005-01 → 2026-10　262 个月</span></h2>
+      
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">1,310,000</td>
+      <td class="n">2,723,438</td>
+      <td class="n up">107.9%</td>
+      <td class="n up">6.2%</td>
+      <td class="n down">-65.8%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">1,595,000</td>
+      <td class="n">3,253,931</td>
+      <td class="n up">104.0%</td>
+      <td class="n up">6.2%</td>
+      <td class="n down">-64.0%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">2,107,500</td>
+      <td class="n">4,230,934</td>
+      <td class="n up">100.8%</td>
+      <td class="n up">6.0%</td>
+      <td class="n down">-62.7%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">1,595,000</td>
+      <td class="n">3,118,094</td>
+      <td class="n up">95.5%</td>
+      <td class="n up">5.8%</td>
+      <td class="n down">-36.8%</td>
+      <td class="n">5</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">1,595,000</td>
+      <td class="n">3,102,939</td>
+      <td class="n up">94.5%</td>
+      <td class="n up">5.8%</td>
+      <td class="n down">-53.6%</td>
+      <td class="n">6</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">1,310,000</td>
+      <td class="n">2,919,046</td>
+      <td class="n up">122.8%</td>
+      <td class="n up">6.8%</td>
+      <td class="n down">-25.0%</td>
+      <td class="n">63</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">1,310,000</td>
+      <td class="n">3,695,465</td>
+      <td class="n up">182.1%</td>
+      <td class="n up">8.7%</td>
+      <td class="n down">-39.1%</td>
+      <td class="n">68</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">1,310,000</td>
+      <td class="n">9,468,837</td>
+      <td class="n up">622.8%</td>
+      <td class="n up">9.5%</td>
+      <td class="n down">-70.1%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">67.8%</td>
+      <td class="n">70.9%</td>
+      <td class="n">227</td>
+      <td class="n down">-28.2%</td>
+      <td class="n">10.0%</td>
+      <td class="n up">288.4%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">69.0%</td>
+      <td class="n">72.9%</td>
+      <td class="n">203</td>
+      <td class="n down">-27.5%</td>
+      <td class="n">16.6%</td>
+      <td class="n up">131.6%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">98.6%</td>
+      <td class="n">99.3%</td>
+      <td class="n">143</td>
+      <td class="n down">-3.1%</td>
+      <td class="n">44.3%</td>
+      <td class="n up">183.2%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">100.0%</td>
+      <td class="n">100.0%</td>
+      <td class="n">83</td>
+      <td class="n down">21.4%</td>
+      <td class="n">65.9%</td>
+      <td class="n up">146.4%</td>
+    </tr></tbody>
+      </table>
+    </section><section>
+      <h2>中证A500 <span class="range">2005-01 → 2026-10　262 个月</span></h2>
+      <p class="warn">⚠ 2024 年发布，历史为回溯计算，存在编制偏差</p>
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">1,310,000</td>
+      <td class="n">2,895,195</td>
+      <td class="n up">121.0%</td>
+      <td class="n up">6.7%</td>
+      <td class="n down">-63.7%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">1,580,000</td>
+      <td class="n">3,426,228</td>
+      <td class="n up">116.8%</td>
+      <td class="n up">6.7%</td>
+      <td class="n down">-62.1%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">1,972,500</td>
+      <td class="n">4,255,379</td>
+      <td class="n up">115.7%</td>
+      <td class="n up">6.5%</td>
+      <td class="n down">-60.6%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">1,580,000</td>
+      <td class="n">3,211,994</td>
+      <td class="n up">103.3%</td>
+      <td class="n up">6.2%</td>
+      <td class="n down">-31.4%</td>
+      <td class="n">5</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">1,580,000</td>
+      <td class="n">3,186,310</td>
+      <td class="n up">101.7%</td>
+      <td class="n up">6.1%</td>
+      <td class="n down">-52.3%</td>
+      <td class="n">5</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">1,310,000</td>
+      <td class="n">2,733,772</td>
+      <td class="n up">108.7%</td>
+      <td class="n up">6.3%</td>
+      <td class="n down">-13.8%</td>
+      <td class="n">70</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">1,310,000</td>
+      <td class="n">3,707,385</td>
+      <td class="n up">183.0%</td>
+      <td class="n up">8.7%</td>
+      <td class="n down">-36.1%</td>
+      <td class="n">75</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">1,310,000</td>
+      <td class="n">10,546,562</td>
+      <td class="n up">705.1%</td>
+      <td class="n up">10.1%</td>
+      <td class="n down">-68.2%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">69.2%</td>
+      <td class="n">73.1%</td>
+      <td class="n">227</td>
+      <td class="n down">-23.3%</td>
+      <td class="n">10.2%</td>
+      <td class="n up">283.8%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">73.9%</td>
+      <td class="n">80.3%</td>
+      <td class="n">203</td>
+      <td class="n down">-19.0%</td>
+      <td class="n">16.7%</td>
+      <td class="n up">121.0%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">98.6%</td>
+      <td class="n">99.3%</td>
+      <td class="n">143</td>
+      <td class="n down">-1.7%</td>
+      <td class="n">42.4%</td>
+      <td class="n up">175.4%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">100.0%</td>
+      <td class="n">100.0%</td>
+      <td class="n">83</td>
+      <td class="n down">21.7%</td>
+      <td class="n">69.5%</td>
+      <td class="n up">136.4%</td>
+    </tr></tbody>
+      </table>
+    </section><section>
+      <h2>标普500 <span class="range">1990-01 → 2026-10　442 个月</span></h2>
+      <p class="warn">⚠ 美元计价，未计汇率</p>
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">2,210,000</td>
+      <td class="n">23,279,886</td>
+      <td class="n up">953.4%</td>
+      <td class="n up">10.5%</td>
+      <td class="n down">-49.7%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">2,460,000</td>
+      <td class="n">25,724,094</td>
+      <td class="n up">945.7%</td>
+      <td class="n up">10.6%</td>
+      <td class="n down">-49.0%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">2,470,000</td>
+      <td class="n">25,938,455</td>
+      <td class="n up">950.1%</td>
+      <td class="n up">10.6%</td>
+      <td class="n down">-49.1%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">2,460,000</td>
+      <td class="n">12,087,382</td>
+      <td class="n up">391.4%</td>
+      <td class="n up">7.5%</td>
+      <td class="n down">-31.0%</td>
+      <td class="n">12</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">2,460,000</td>
+      <td class="n">19,022,432</td>
+      <td class="n up">673.3%</td>
+      <td class="n up">9.3%</td>
+      <td class="n down">-44.5%</td>
+      <td class="n">21</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">2,210,000</td>
+      <td class="n">3,571,126</td>
+      <td class="n up">61.6%</td>
+      <td class="n up">2.5%</td>
+      <td class="n down">-26.0%</td>
+      <td class="n">275</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">2,210,000</td>
+      <td class="n">6,821,113</td>
+      <td class="n up">208.6%</td>
+      <td class="n up">5.4%</td>
+      <td class="n down">-42.8%</td>
+      <td class="n">290</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">2,210,000</td>
+      <td class="n">88,821,220</td>
+      <td class="n up">3919.1%</td>
+      <td class="n up">10.6%</td>
+      <td class="n down">-51.3%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">85.7%</td>
+      <td class="n">86.5%</td>
+      <td class="n">407</td>
+      <td class="n down">-40.8%</td>
+      <td class="n">18.6%</td>
+      <td class="n up">60.6%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">88.0%</td>
+      <td class="n">88.3%</td>
+      <td class="n">383</td>
+      <td class="n down">-38.0%</td>
+      <td class="n">33.3%</td>
+      <td class="n up">99.4%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">95.4%</td>
+      <td class="n">95.7%</td>
+      <td class="n">323</td>
+      <td class="n down">-33.0%</td>
+      <td class="n">66.4%</td>
+      <td class="n up">198.6%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">98.9%</td>
+      <td class="n">99.6%</td>
+      <td class="n">263</td>
+      <td class="n down">-11.6%</td>
+      <td class="n">103.0%</td>
+      <td class="n up">238.9%</td>
+    </tr></tbody>
+      </table>
+    </section><section>
+      <h2>纳斯达克100 <span class="range">1991-08 → 2026-10　423 个月</span></h2>
+      <p class="warn">⚠ 美元计价，未计汇率</p>
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">2,115,000</td>
+      <td class="n">27,988,238</td>
+      <td class="n up">1223.3%</td>
+      <td class="n up">12.0%</td>
+      <td class="n down">-71.3%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">2,375,000</td>
+      <td class="n">31,688,481</td>
+      <td class="n up">1234.3%</td>
+      <td class="n up">12.0%</td>
+      <td class="n down">-70.2%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">2,900,000</td>
+      <td class="n">37,987,989</td>
+      <td class="n up">1209.9%</td>
+      <td class="n up">12.2%</td>
+      <td class="n down">-68.2%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">2,375,000</td>
+      <td class="n">13,524,593</td>
+      <td class="n up">469.5%</td>
+      <td class="n up">8.4%</td>
+      <td class="n down">-24.8%</td>
+      <td class="n">15</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">2,375,000</td>
+      <td class="n">24,018,066</td>
+      <td class="n up">911.3%</td>
+      <td class="n up">10.9%</td>
+      <td class="n down">-58.4%</td>
+      <td class="n">30</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">2,115,000</td>
+      <td class="n">2,856,372</td>
+      <td class="n up">35.1%</td>
+      <td class="n up">1.6%</td>
+      <td class="n down">-43.2%</td>
+      <td class="n">267</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">2,115,000</td>
+      <td class="n">8,072,824</td>
+      <td class="n up">281.7%</td>
+      <td class="n up">6.7%</td>
+      <td class="n down">-47.2%</td>
+      <td class="n">267</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">2,115,000</td>
+      <td class="n">116,639,106</td>
+      <td class="n up">5414.9%</td>
+      <td class="n up">12.1%</td>
+      <td class="n down">-74.6%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">84.8%</td>
+      <td class="n">86.3%</td>
+      <td class="n">388</td>
+      <td class="n down">-46.9%</td>
+      <td class="n">22.5%</td>
+      <td class="n up">140.0%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">85.7%</td>
+      <td class="n">90.7%</td>
+      <td class="n">364</td>
+      <td class="n down">-44.2%</td>
+      <td class="n">37.5%</td>
+      <td class="n up">219.4%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">95.7%</td>
+      <td class="n">96.7%</td>
+      <td class="n">304</td>
+      <td class="n down">-33.2%</td>
+      <td class="n">76.4%</td>
+      <td class="n up">202.0%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">98.0%</td>
+      <td class="n">100.0%</td>
+      <td class="n">244</td>
+      <td class="n down">-13.7%</td>
+      <td class="n">127.1%</td>
+      <td class="n up">337.1%</td>
+    </tr></tbody>
+      </table>
+    </section><section>
+      <h2>恒生指数 <span class="range">1990-05 → 2026-10　438 个月</span></h2>
+      <p class="warn">⚠ 港币计价</p>
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">2,190,000</td>
+      <td class="n">9,163,176</td>
+      <td class="n up">318.4%</td>
+      <td class="n up">6.8%</td>
+      <td class="n down">-56.2%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">2,597,500</td>
+      <td class="n">10,410,736</td>
+      <td class="n up">300.8%</td>
+      <td class="n up">6.8%</td>
+      <td class="n down">-55.9%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">3,085,000</td>
+      <td class="n">11,825,187</td>
+      <td class="n up">283.3%</td>
+      <td class="n up">6.7%</td>
+      <td class="n down">-55.8%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">2,597,500</td>
+      <td class="n">9,188,666</td>
+      <td class="n up">253.8%</td>
+      <td class="n up">6.2%</td>
+      <td class="n down">-32.6%</td>
+      <td class="n">8</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">2,597,500</td>
+      <td class="n">10,576,565</td>
+      <td class="n up">307.2%</td>
+      <td class="n up">6.8%</td>
+      <td class="n down">-47.6%</td>
+      <td class="n">11</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">2,190,000</td>
+      <td class="n">7,994,886</td>
+      <td class="n up">265.1%</td>
+      <td class="n up">6.2%</td>
+      <td class="n down">-34.3%</td>
+      <td class="n">157</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">2,190,000</td>
+      <td class="n">11,743,182</td>
+      <td class="n up">436.2%</td>
+      <td class="n up">7.9%</td>
+      <td class="n down">-35.0%</td>
+      <td class="n">176</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">2,190,000</td>
+      <td class="n">53,952,915</td>
+      <td class="n up">2363.6%</td>
+      <td class="n up">9.2%</td>
+      <td class="n down">-57.1%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">73.4%</td>
+      <td class="n">74.4%</td>
+      <td class="n">403</td>
+      <td class="n down">-35.7%</td>
+      <td class="n">14.8%</td>
+      <td class="n up">141.9%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">80.5%</td>
+      <td class="n">85.0%</td>
+      <td class="n">379</td>
+      <td class="n down">-37.8%</td>
+      <td class="n">19.8%</td>
+      <td class="n up">145.7%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">91.2%</td>
+      <td class="n">94.0%</td>
+      <td class="n">319</td>
+      <td class="n down">-28.6%</td>
+      <td class="n">41.7%</td>
+      <td class="n up">193.5%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">96.5%</td>
+      <td class="n">99.2%</td>
+      <td class="n">259</td>
+      <td class="n down">-15.9%</td>
+      <td class="n">84.6%</td>
+      <td class="n up">261.8%</td>
+    </tr></tbody>
+      </table>
+    </section><section>
+      <h2>中证红利 <span class="range">2008-08 → 2026-10　219 个月</span></h2>
+      
+      <table>
+        <thead><tr><th>组 / 策略</th><th>累计投入</th><th>终值</th><th>收益倍率</th><th>XIRR</th><th>账户最大回撤</th><th>止盈次数</th></tr></thead>
+        <tbody><tr>
+      <td><span class="dot" style="background:#8896B3"></span>A　普通定投</td>
+      <td class="n">1,095,000</td>
+      <td class="n">2,696,244</td>
+      <td class="n up">146.2%</td>
+      <td class="n up">9.2%</td>
+      <td class="n down">-30.7%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#4C8DFF"></span>B　均线分档</td>
+      <td class="n">1,330,000</td>
+      <td class="n">3,325,121</td>
+      <td class="n up">150.0%</td>
+      <td class="n up">9.3%</td>
+      <td class="n down">-30.2%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#A78BFA"></span>C　回撤分档</td>
+      <td class="n">1,347,500</td>
+      <td class="n">3,567,988</td>
+      <td class="n up">164.8%</td>
+      <td class="n up">9.5%</td>
+      <td class="n down">-30.7%</td>
+      <td class="n">—</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#3DDC97"></span>D　均线+分段止盈</td>
+      <td class="n">1,330,000</td>
+      <td class="n">3,101,668</td>
+      <td class="n up">133.2%</td>
+      <td class="n up">8.6%</td>
+      <td class="n down">-18.6%</td>
+      <td class="n">4</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#F5B63F"></span>E　均线+止盈+再平衡</td>
+      <td class="n">1,330,000</td>
+      <td class="n">3,278,653</td>
+      <td class="n up">146.5%</td>
+      <td class="n up">9.1%</td>
+      <td class="n down">-22.1%</td>
+      <td class="n">4</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#FF6B6B"></span>F　流速模型(留现金)</td>
+      <td class="n">1,095,000</td>
+      <td class="n">1,706,574</td>
+      <td class="n up">55.9%</td>
+      <td class="n up">4.7%</td>
+      <td class="n down">-12.1%</td>
+      <td class="n">106</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#E879F9"></span>G　流速模型(转债+再平衡)</td>
+      <td class="n">1,095,000</td>
+      <td class="n">2,427,813</td>
+      <td class="n up">121.7%</td>
+      <td class="n up">8.2%</td>
+      <td class="n down">-18.5%</td>
+      <td class="n">106</td>
+    </tr><tr>
+      <td><span class="dot" style="background:#5C6884"></span>X　期初一次性全投</td>
+      <td class="n">1,095,000</td>
+      <td class="n">5,848,668</td>
+      <td class="n up">434.1%</td>
+      <td class="n up">9.7%</td>
+      <td class="n down">-34.5%</td>
+      <td class="n">—</td>
+    </tr></tbody>
+      </table>
+      <h3>滚动窗口正收益占比（A 普通定投 vs D 均线+分段止盈）</h3>
+      <table>
+        <thead><tr><th>窗口</th><th>A 正收益</th><th>D 正收益</th><th>样本窗口</th><th>A 最差</th><th>A 中位</th><th>A 最好</th></tr></thead>
+        <tbody><tr>
+      <td>3 年</td>
+      <td class="n">81.0%</td>
+      <td class="n">82.6%</td>
+      <td class="n">184</td>
+      <td class="n down">-18.5%</td>
+      <td class="n">11.8%</td>
+      <td class="n up">125.1%</td>
+    </tr><tr>
+      <td>5 年</td>
+      <td class="n">93.8%</td>
+      <td class="n">94.4%</td>
+      <td class="n">160</td>
+      <td class="n down">-7.9%</td>
+      <td class="n">24.2%</td>
+      <td class="n up">125.3%</td>
+    </tr><tr>
+      <td>10 年</td>
+      <td class="n">100.0%</td>
+      <td class="n">100.0%</td>
+      <td class="n">100</td>
+      <td class="n down">32.1%</td>
+      <td class="n">65.4%</td>
+      <td class="n up">101.5%</td>
+    </tr><tr>
+      <td>15 年</td>
+      <td class="n">100.0%</td>
+      <td class="n">100.0%</td>
+      <td class="n">40</td>
+      <td class="n down">91.2%</td>
+      <td class="n">115.2%</td>
+      <td class="n up">130.0%</td>
+    </tr></tbody>
+      </table>
+    </section>
+<div class="foot">
+<b>口径说明</b><br>
+1. 全收益：2012-05 起用 510300 ETF 前复权价（含分红再投资），更早月份用「指数价格收益 + 股息率假设」近似。<br>
+2. 前视偏差：均线用 200 日 SMA、回撤用历史峰值，全部只用当时已知数据，未使用全样本分位。<br>
+3. 滚动窗口：从每个可能起点重跑同样长度，统计正收益占比与分布，比单一区间更接近「胜率」。<br>
+4. 分段止盈：账户累计收益率首次达 50% 卖出权益 20%，之后每再涨 30 个百分点再卖 20%，可重复触发；卖出资金转入债券桶（年化 3% 假设）。<br>
+5. 再平衡：股债目标 90/10，每年 12 月检查，偏离超 5 个百分点调回。<br>
+6. F 组是「期初一次性投入等额资金」的对照，用来对比「钱在市场里的时间」；它假设你现在就有全部资金，不符合靠工资定投的现实。<br>
+7. 未计汇率、QDII 溢价、申赎费；境外指数为本地货币计价。<br>
+<b>回测只能说明「历史上这套规则表现如何」，不能预测未来收益。本报告不构成投资建议。</b>
+</div>
+</body></html>

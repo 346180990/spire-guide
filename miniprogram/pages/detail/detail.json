@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "最新信号",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "status-pill": "/components/status-pill/index"
+  }
+}

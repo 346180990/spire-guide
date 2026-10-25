@@ -1,0 +1,10 @@
+.chart-wrap { width: 100%; }
+.chart { width: 100%; display: block; }
+.empty {
+  height: 260rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94A1B5;
+  font-size: 26rpx;
+}

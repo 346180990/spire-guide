@@ -1,0 +1,63 @@
+<view class="page-wrap">
+
+  <view wx:if="{{!ready}}" class="card">
+    <view class="empty">
+      <view class="empty-title">至少需要两次回测才能对比</view>
+      <view>回到「回测」新建一次，或调整参数后再跑一次。</view>
+    </view>
+  </view>
+
+  <block wx:if="{{ready}}">
+    <view class="card">
+      <view class="field">
+        <text class="field-label">基准运行</text>
+        <picker mode="selector" range="{{runs}}" range-key="label" value="{{baseIndex}}" bindchange="onBaseChange">
+          <view class="input">{{baseLabel}}</view>
+        </picker>
+      </view>
+      <view class="field">
+        <text class="field-label">本次运行</text>
+        <picker mode="selector" range="{{runs}}" range-key="label" value="{{curIndex}}" bindchange="onCurChange">
+          <view class="input">{{curLabel}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view wx:if="{{warning}}" class="info-bar warn-bar">{{warning}}</view>
+
+    <view class="card">
+      <view class="title-sm">关键指标对比</view>
+      <view class="tr tr-head mt12">
+        <view class="td">指标</view>
+        <view class="td">基准</view>
+        <view class="td">本次</view>
+        <view class="td">变化</view>
+      </view>
+      <view wx:for="{{rows}}" wx:key="label" class="tr">
+        <view class="td">{{item.label}}</view>
+        <view class="td">{{item.base}}</view>
+        <view class="td">{{item.cur}}</view>
+        <view class="td {{item.tone}}">{{item.diff}}</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="row between">
+        <text class="title-sm">资金曲线叠加</text>
+        <text class="tiny">灰=基准　蓝=本次</text>
+      </view>
+      <line-chart series="{{series}}" labels="{{labels}}" height="{{420}}" format="num" />
+    </view>
+
+    <view class="card">
+      <view class="title-sm">差异来源</view>
+      <view wx:if="{{changes.length === 0}}" class="sub mt12">两次运行的参数、代码版本、数据区间与成交假设完全一致，差异只可能来自行情数据更新。</view>
+      <view wx:for="{{changes}}" wx:key="label" class="row between mt12">
+        <text class="sub">{{item.label}}</text>
+        <text class="mono">{{item.from}} → {{item.to}}</text>
+      </view>
+    </view>
+
+    <view class="info-bar">只有代码、参数、数据区间、标的、成本与成交假设都可解释时，差异才能用于判断优化效果。</view>
+  </block>
+</view>

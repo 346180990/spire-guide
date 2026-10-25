@@ -1,0 +1,12 @@
+{
+  "name": "strategy-assistant-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "策略助手 Web 版：RSRS 择时信号 / 回测 / 微信推送（零依赖）",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node check-web.mjs"
+  }
+}

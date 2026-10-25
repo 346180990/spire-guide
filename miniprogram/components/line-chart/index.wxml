@@ -1,0 +1,4 @@
+<view class="chart-wrap">
+  <canvas wx:if="{{!empty}}" type="2d" id="chart" class="chart" style="height:{{height}}rpx"></canvas>
+  <view wx:else class="empty">{{placeholder}}</view>
+</view>

@@ -1,0 +1,8 @@
+.grid { display: flex; flex-wrap: wrap; }
+.grid-item {
+  width: 33.33%;
+  box-sizing: border-box;
+  padding: 12rpx 8rpx 12rpx 0;
+}
+.table-wrap { overflow-x: auto; }
+.nb-row { padding: 10rpx 0; border-bottom: 1rpx solid #F3F6FA; }

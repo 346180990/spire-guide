@@ -1,0 +1,28 @@
+[Unit]
+Description=Strategy Assistant Web (RSRS 择时)
+Documentation=file:///opt/simplejiaoyi/deploy/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=strategy
+Group=strategy
+WorkingDirectory=/opt/simplejiaoyi
+EnvironmentFile=/etc/strategy-web.env
+Environment=NODE_ENV=production
+# 应用内部按北京时间算（Intl 指定 Asia/Shanghai），这里再兜一层，日志时间也顺眼
+Environment=TZ=Asia/Shanghai
+ExecStart=/usr/local/bin/node web/server.mjs
+Restart=always
+RestartSec=3
+
+# 只允许写 web/data（行情缓存、回测记录、state.json 都在这）
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/simplejiaoyi/web/data
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+{
+  "description": "策略助手 —— RSRS 择时信号 / 历史回看 / 回测与版本对比",
+  "packOptions": { "ignore": [], "include": [] },
+  "setting": {
+    "coverView": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmRelationList": [],
+    "babelSetting": { "ignore": [], "disablePlugins": [], "outputPath": "" },
+    "compileWorklet": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.5.5",
+  "appid": "wx8e9cf1fe64c553e6",
+  "projectname": "strategy-assistant",
+  "miniprogramRoot": "./",
+  "condition": {},
+  "simulatorPluginLibVersion": {},
+  "editorSetting": {},
+  "cloudfunctionRoot": "cloudfunctions/"
+}

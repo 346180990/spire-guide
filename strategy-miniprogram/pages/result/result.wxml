@@ -1,0 +1,93 @@
+<view class="page-wrap">
+
+  <view wx:if="{{error}}" class="info-bar danger-bar">{{error}}</view>
+
+  <block wx:if="{{run}}">
+    <!-- 运行摘要 -->
+    <view class="card">
+      <view class="row between">
+        <view class="flex1">
+          <view class="title">{{run.symbolName}} · {{run.runId}}</view>
+          <view class="tiny mt8">{{run.range}}</view>
+        </view>
+        <text class="pill pill-ok">完成</text>
+      </view>
+      <view class="divider"></view>
+      <view class="row wrap gap8">
+        <text class="pill pill-info">代码 {{run.codeVersion}}</text>
+        <text class="pill">参数 {{run.configVersion}}</text>
+        <text class="pill pill-muted">{{run.execution}}</text>
+      </view>
+      <view class="tiny mt12">{{run.costText}} · 运行于 {{run.createdText}}</view>
+      <view wx:if="{{run.dataSource}}" class="tiny mt8">行情来源：{{run.dataSource}}</view>
+      <view wx:if="{{run.dataNote}}" class="info-bar warn-bar mt12">{{run.dataNote}}</view>
+    </view>
+
+    <!-- 核心指标 -->
+    <view class="card">
+      <view class="title-sm">核心指标</view>
+      <view class="grid mt12">
+        <view wx:for="{{metrics}}" wx:key="label" class="grid-item">
+          <view class="tiny">{{item.label}}</view>
+          <view class="bold mono mt8">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 资金曲线 -->
+    <view class="card">
+      <view class="row between">
+        <text class="title-sm">资金曲线</text>
+        <text class="tiny">蓝=策略　灰=买入持有</text>
+      </view>
+      <line-chart wx:if="{{hasChart}}" series="{{equitySeries}}" labels="{{labels}}" height="{{420}}" format="num" />
+      <view wx:else class="empty">没有曲线数据</view>
+    </view>
+
+    <!-- 回撤曲线 -->
+    <view class="card">
+      <view class="title-sm">回撤曲线</view>
+      <line-chart wx:if="{{ddSeries.length}}" series="{{ddSeries}}" labels="{{labels}}" height="{{320}}" format="pct" />
+      <view wx:else class="empty">没有回撤数据</view>
+    </view>
+
+    <!-- 交易明细 -->
+    <view class="card">
+      <view class="row between">
+        <text class="title-sm">交易明细</text>
+        <text class="tiny">{{trades.length}} 笔（最多显示 200）</text>
+      </view>
+      <view wx:if="{{trades.length}}" class="table-wrap mt12">
+        <view class="tr tr-head">
+          <view class="td">建仓</view>
+          <view class="td">平仓</view>
+          <view class="td">持有</view>
+          <view class="td">收益</view>
+        </view>
+        <view wx:for="{{trades}}" wx:key="entryDate" class="tr">
+          <view class="td">{{item.entryDate}}</view>
+          <view class="td">{{item.exitDate}}</view>
+          <view class="td">{{item.holdDays}} 天</view>
+          <view class="td {{item.tone}}">{{item.retText}}</view>
+        </view>
+      </view>
+      <view wx:else class="empty">区间内没有完整交易</view>
+    </view>
+
+    <!-- 质量检查 -->
+    <view class="card">
+      <view class="title-sm">结果质量检查</view>
+      <view wx:for="{{quality}}" wx:key="label" class="row between mt12">
+        <text class="sub">{{item.label}}</text>
+        <text class="{{item.ok ? '' : 'warn'}} bold">{{item.value}}</text>
+      </view>
+    </view>
+
+    <view class="row gap12 mt16">
+      <button class="btn btn-secondary flex1" bindtap="goCompare">版本对比</button>
+      <button class="btn btn-ghost flex1" bindtap="goBack">返回</button>
+    </view>
+
+    <view class="tiny mt16" style="text-align:center">历史模拟结果，不含真实成交、分红与税费，不构成投资建议。</view>
+  </block>
+</view>
